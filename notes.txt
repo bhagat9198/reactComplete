@@ -1,0 +1,49 @@
+1.1
+
+
+1.2
+what is react?
+"a javascript liberary for building user interface" - react docs
+EXPLAINATION:-
+'javascript liberary' : its a javascript liberary. its about building JS driven apps. react apps run in browser.they run the browser, not on server and that gives us great advantage.
+things happen instantly since they happen in user broswer, we dont have to wait for server response to get a new page or render something new.
+'user interface': user interface is basically what user sees and react is all about using components for building these.
+
+what are components?
+a single webpage divided into number of section(fig). these sections are known as components
+
+how components are useful?
+if we split up our web app or website into such components, we can build these building blocks as contained pieces of code.
+We don't have to build our entire web page as one bigger picture.
+We can build all these tiny things on their own.
+it makes it easy for us to keep our code manageable. If we change the headline later on,we only have to go into that component and update it; we don't have to find that code in our entire web page code.
+We can also easily reuse components.
+
+React components can be thought of as custom HTML elements. In the end, you're just writing custom HTML elements. This is what React is about and it therefore solves the problem of having to build complex user interfaces with what HTML and JavaScript gives you; by writing maintainable, manageable and reusable pieces of that code which you can throw into your web app wherever you need to use it.
+
+
+
+1.5
+
+There are more reasons why we want to use React. 
+  1. React helps us with a problem we'll encounter with normal JavaScript; the UI state becomes difficult to manage. In bigger JavaScript applications, you have to manually target elements in your DOM and if you then change the structure of your HTML code, chances are you will need to change the way you targeted your elements because you used querySelector. Even if you use jQuery, traversing the DOM is easier, but it's still always something you have to keep in mind. If you've got more complex web apps where you dynamically add and remove elements, this quickly can become cumbersome.
+
+  2. React helps us by making the whole UI state management a non-issue. It allows us to focus on our business logic instead of keeping our application from exploding. Additionally, React is maintained by a big community. So chances are, the React code is written better than we could have ever written it.
+
+  3. React features a huge ecosystem and an extremely-active community which means that there is a great chance that for a given problem you face, you'll find a solution or an extra package you can add to fix it.
+
+
+1.7
+
+In a single page application, we only get back one single HTML file from the server and we get back this file the first time the user visits the page; so the first time the user visits.
+
+In a multi-page application, we get back multiple HTML pages where each page has the content for a given route; a given URL we visited. 
+  On multi-page applications, we might also use React, but only to create little widgets, so to say; individually-contained components we dump into that page but the 'entire page' is not managed by React.
+
+more popular approach these days is to use the single-page-application approach, because if you manage the entire page with JavaScript, you never have to go back to the server and reload the page.This is an amazing user experience because everything happens instantly.
+
+single page applications, our page is built up with components and every component is a React component. The entire page is also managed by a root React component which is exclusively under React's control.
+In a multi-page application, on the other hand,we also could split up our app into theoretical components, but actually a lot of the page is just going to be normal HTML and CSS code and some widgets we dump in,that is managed by React.So, the entire page is not under React's control. The individual widgets don't know of each other's existence.
+
+in single page applications, we only need one ReactDOM.render call because we only have one root app component which is mounted to the DOM and which hosts all other React components. In a multi-page application, we would typically call ReactDOM.render more often to render our different components in different places of the app.
+

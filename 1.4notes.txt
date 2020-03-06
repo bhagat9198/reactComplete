@@ -1,0 +1,208 @@
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+//html
+
+<div class="person">
+  <h1>Max</h1>
+  <p>Age : 20</p>
+</div>
+<div class="person">
+  <h1>Manu</h1>
+  <p>Age : 29</p>
+</div>
+
+//css 
+
+.person {
+  display: inline-block;
+  margin: 10px;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 2px #ccc;
+  width: 200px;
+  padding: 20px;
+}
+
+// as html code is having the two contents. thus rendent code
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+using REACT
+
+adding : https://cdnjs.cloudflare.com/ajax/libs/react/16.13.0/umd/react.production.min.js
+         https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.0/umd/react-dom.production.min.js
+and changing JS type to bable
+
+// html
+
+<div id="p1"></div>
+<div class="person">
+  <h1>Manu</h1>
+  <p>Age : 29</p>
+</div>
+
+//css
+
+.person {
+  display: inline-block;
+  margin: 10px;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 2px #ccc;
+  width: 200px;
+  padding: 20px;
+}
+
+// JS
+
+// react is all about componenets
+// make suer that Person, "P" is in uppercase
+
+// this Person, is normal function component, which will render the content to actual DOM
+function Person() {
+// react uses JSX
+  return (
+    // using paranthese, to return multiline code
+//     its looks like HTML, but behind the sceans its JS
+    
+// to assign css class, we write "className" instead of "class".
+    <div className="person">
+      <h1>Max</h1>
+      <p>Age : 20</p>
+    </div>
+    
+  );
+}
+
+// this allows us to render JS function as component to real DOM
+// ReactDOM.render();
+
+// passing the "Person" as html, but its JS
+ReactDOM.render(<Person/>, document.querySelector('#p1'));
+
+// "display: inline-block;" will not work, as react is trageting compenets by id, and compenents targeted by "id" are block
+
+
+
+
+// now also, if we want to show all the compenets with diffreent data, we have to render two compenents.
+but as we are using react now, we can dont have to do duplicate our code 
+
+//////////////////////////////////////////////////
+
+
+// HTML
+
+<div id="p1"></div>
+<div id="p2"></div>
+
+
+
+//CSS
+
+.person {
+  display: inline-block;
+  margin: 10px;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 2px #ccc;
+  width: 200px;
+  padding: 20px;
+}
+
+
+//JS
+
+//  react gives us one automatic argument which creating a component. we can use any argument name
+function Person(props) {
+  // to insert the dynamic value, we use {}
+  return (
+    <div className="person">
+      <h1>{props.name}</h1>
+      <p>Age : {props.age}</p>
+    </div>
+  );
+}
+
+ReactDOM.render(<Person  name="Max" age="20" />, document.querySelector('#p1'));
+
+ReactDOM.render(<Person  name="Manu" age="28" />, document.querySelector('#p2'));
+
+
+///////////////////////////////////////////////////////////////////////
+
+// same thing can be done like this too
+
+// HTML
+
+<div id="app"></div>
+
+
+// CSS
+
+.person {
+  display: inline-block;
+  margin: 10px;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 2px #ccc;
+  width: 200px;
+  padding: 20px;
+}
+
+
+// JS
+
+//  react gives us one automatic argument which creating a component. we can use any argument name
+function Person(props) {
+  // to insert the dynamic value, we use {}
+  return (
+    <div className="person">
+      <h1>{props.name}</h1>
+      <p>Age : {props.age}</p>
+    </div>
+  );
+}
+
+// creating a variable of your choice
+// it also takes JSX
+// we have to pass all the elements in one div / root div
+var app = (
+  <div>
+    <Person name = "Max" age = "20"/>
+    <Person name = "Manu" age= "28"/>
+   </div>
+);
+
+ReactDOM.render(app, document.querySelector('#app'));
+
+
+//thus, reusing our code.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
