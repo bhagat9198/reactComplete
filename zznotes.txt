@@ -1,3 +1,6 @@
+3.6
+App.js
+
 3.5
 index.js
 App.js
@@ -6,46 +9,3 @@ react is all about creating compenents.
 "App" compenent gets used in "index.js" file and from it is reendered to "root" compenent of index.html file
 
 
-
-3.4
-root level: we have configration files which are locking the version of dependices which we are using(lock files)
-
-package.json : 
-  all the general dependices
-  "react-scripts"  : 
-    package offering all this build workflow,development of server, next gen JS support and all other things.
-  "build" : 
-    after development, we can optimize our code for production with "npm run build" script
-
-public : 
-  it is the root folder which gets served by the web server in the end. here we can edit the files
-  "index.html" : 
-    its single html page which will display all teh content. if we want to have mutiple html pages then we will create multiple react projects with "create-react-app". thus only one html page with one ract app.
-    "<div id="root"></div>" is imp for us.
-
-  "manifest.json" : 
-    react app give progressive web app (A Progressive Web App (PWA) is a web app that uses modern web capabilities to deliver an app-like experience to users.)thus it helps in defining metadata for our app.
-      metadata : Descriptive metadata properties include title, subject, genre, author, and creation date, for example. Rights metadata might include copyright status, rights holder, or license terms. Technical metadata properties include file types, size, creation date and time, and type of compression.
-  
-src : it is the folder where we can add the scripts files.
-  this folder is our react application.
-  "index.js" : 
-    it is imp file and have refference of "root" div elememnt from index.html. it renders react compenent.
-
-  "App.js" : 
-    contains react compenent.
-    it contains JSX
-    
-  "App.css" : 
-    contains the styling globaly for project
-
-  "index.css" : 
-    contains the styling globaly for project
-
-  "serviceWorker.js" : 
-    imp for registering the service worker which is generated automatically, which realtes to PWA(Progressive Web App). 
-    A service worker is a script that the client (your browser) runs in the background separate from the web page. Operating in the background separate from the web page enables you to use features that don’t actually require a web page or user interaction to trigger — like a push notification or background sync.
-    it basically pre-catch our script files
-
-  "App.test.js" : 
-    allow use to create unit test for our app

@@ -17,20 +17,29 @@
 import React, {Component} from 'react';
 import './App.css';
 
-// inherting 'Compenent' class from react library
 class App extends Component {
-  // method
   render() {
-    // it primary purpose is to render html to dom + otehr stuff according to logic
-    // this file can also be named as "App.jsx" instaed of "App.js". this is because of 'html' like code written below
-    return (
-      // this is not html code, its latter gets compiled into js code
-      <div className="App">
-        <h1>Hello React App</h1>
-      </div>
-    );
+    // return (
+    //   <div className="App">
+    //     <h1>Hello React App</h1>
+    //   </div>
+    // );
+
+    // writing abouve code in js form
+
+    // createElement() : takes infinite num of agruments(main 3)
+      // 1. html element(div, p, section)
+      // 2. configration like adding css class
+      // 3. subchild of html element 
+
+    // in this 'h1' element as taken as text not as text
+    // setting no configration
+    // return React.createElement('div', null, 'h1', 'Hello World');
+
+    // to make 'h1' as an element, we have to create another element within parent element
+    // configation can be set as object. as 'class' is keyword in js. thus css classes are reffered as 'className'
+    return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hello world of React!!!'));
   }
 }
-
-// 'default' : it means if we are importing this file then export 'App' class  
 export default App;
+
