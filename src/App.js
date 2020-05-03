@@ -24,23 +24,17 @@ import Person from './Person/Person';
 class App extends Component {
   render() {
     return (
-      // should be wrapped around only one component
-      // should use 'className' instead of 'class'
-      // <div class="App">
       <div className="App">
         <h1>Hello world of React!!!</h1>
-        {/* only components names should be in upper case, we write 'div' n uppercase, it will give error. as its just a syntatic suagr, not a html  */}
-        {/* <DIV>Hey</DIV>  */}
-        {/* <Person></Person> */}
-        {/* or */}
         <Person />
-        {/* we can reuse our component as many times we want. thats y we use components. as they are small pieces of code, so easier to mamange.*/}
-        <Person />
-        <Person />
-        <Person />
+        {/* if we want to pass our own data which can we displayed. we will pass those values as agruments to that componenent. */}
+        <Person name="Max" age="30"/>
+        <Person  name="Bob" age="19"/>
+        <Person name="Mark" age="50"/>
 
+        {/* passing extra data(html) other than passing argument */}
+        <Person name="alex" age="25"> My Hobbies are : Soccer </Person>
       </div>
-      // <h2>Hey!!</h2>
     );
   }
 }
