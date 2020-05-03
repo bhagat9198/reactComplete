@@ -1,3 +1,10 @@
+3.8
+Person/Person.js
+App.js
+
+it is convension that all the compenents name start with uppercase. as we are planning to create one component regarding person, hence created 'Person' compenent.
+
+
 3.6
 App.js
 
