@@ -29,9 +29,16 @@ class App extends Component {
       // <div class="App">
       <div className="App">
         <h1>Hello world of React!!!</h1>
+        {/* only components names should be in upper case, we write 'div' n uppercase, it will give error. as its just a syntatic suagr, not a html  */}
+        {/* <DIV>Hey</DIV>  */}
         {/* <Person></Person> */}
         {/* or */}
         <Person />
+        {/* we can reuse our component as many times we want. thats y we use components. as they are small pieces of code, so easier to mamange.*/}
+        <Person />
+        <Person />
+        <Person />
+
       </div>
       // <h2>Hey!!</h2>
     );
