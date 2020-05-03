@@ -1,3 +1,12 @@
+3.5
+index.js
+App.js
+
+react is all about creating compenents. 
+"App" compenent gets used in "index.js" file and from it is reendered to "root" compenent of index.html file
+
+
+
 3.4
 root level: we have configration files which are locking the version of dependices which we are using(lock files)
 
