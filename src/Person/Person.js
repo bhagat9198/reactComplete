@@ -4,7 +4,8 @@ const person = (props) => {
   return (
     <div>
       <p>Hello I am {props.name} and having age of {props.age} </p>
-      <span>{props.children}</span>
+      {/* passing onClick method and linking 'switchNameHandler'  */}
+      <span onClick={props.click} >{props.children}</span>
     </div>
   );
 };
