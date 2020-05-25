@@ -1,6 +1,3 @@
-/* although we have creted this file for Person component, but bydefault it has global scope. that means it can be used by any componenet.
-Hence, to prevent the collision we have given style under the class name. */
-
 .Person {
   width: 60%;
   margin: 16px auto;

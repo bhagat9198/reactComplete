@@ -39,9 +39,28 @@ class App extends Component {
   
 
   render() {
+    // Inline style is nothing but styling in JS way.
+    // thus creating an objecta and passing the values in key-value pair
+    const style = {
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+    };
+
+    // thus, inline css is helpful when we want to style a specific element only. as if we apply style in 'css' file, it will have gloval scope.
+    // inline has some limitation too, like we cant style button for hover effect. 
+
     return (
       <div className="App">
         <h1>Hello world of React!!!</h1>
+        <button  
+          // passing style property. here 'Style' is keyword which means it holds only css properties
+          // style1={style} //error: although passing css properties but will not get applied
+          style={style}
+          onClick={this.switchNameHandler.bind(this, 'Dark')}>Switch Names
+        </button>
         <Person  
           name={this.state.person[0].name}
           age={this.state.person[0].age}
@@ -56,7 +75,7 @@ class App extends Component {
           age={this.state.person[2].age}
           click={this.switchNameHandler.bind(this, 'Alex')}> My Hobbies : Soccer, Cricket  
         </Person>
-        <button  onClick={this.switchNameHandler.bind(this, 'Dark')}>Switch Names</button>
+        
       </div>
 
     );
