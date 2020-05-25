@@ -1,3 +1,7 @@
+3.24 :creating and linking css file
+Person.css
+Person.js
+
 3.23 : 
 now we want to user to enter the name and that should be visible instead of 'Bob'
 Person.js
