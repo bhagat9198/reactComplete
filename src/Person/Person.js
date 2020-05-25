@@ -1,17 +1,16 @@
 import React from 'react';
 
+// Although, Person.css file has global scope. but till teh time we dont include in our file, functionalities of Person.css will not be implemented 
+// import './Person.css';  // Eror, has to give full with respect to current directory.
+import './Person.css'
+
+// we are working with JS only. we are not telling to include CSS in our code from abouve statement. its a work webpack which will include css in html while rendering html page to browser. 
+
 const person = (props) => {
   return (
-    <div>
+    <div className="Person">
       <p>Hello I am {props.name} and having age of {props.age} </p>
-      {/* for better indentation, changing 'span' to 'div' */}
       <p onClick={props.click} >{props.children}</p>
-      {/* putting the inputbox, so that user can enter the text */}
-      {/* onChanged method will be triggered whenever user enter text in inputbox and hence state is changed. */}
-      {/* <input type="text" onChange={props.changed} value={props.name} /> */}
-
-      {/* we also want intially, textbox should contain the value as person name. */}
-      {/* This is known as two way binding, we are passing the text box data as well as getting the data */}
       <input type="text" onChange={props.changed} value={props.name} />
     </div>
   );
