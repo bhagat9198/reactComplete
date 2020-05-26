@@ -1,3 +1,6 @@
+4.7 : deleting list
+App.js
+
 4.6
 Person.js
 App.js
