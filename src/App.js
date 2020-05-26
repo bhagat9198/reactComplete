@@ -73,7 +73,7 @@ class App extends Component {
 
           // change of functionality,
           // now we want persons to get hide and show vise versa(toggle) when button is clicked
-          onClick={this.toggelPersonsHandler.bind(this)}>Switch Names
+          onClick={this.toggelPersonsHandler.bind(this)}>Toggele Persons
 
         </button>
         {/* wrapping all the persons within one div */}
@@ -106,6 +106,7 @@ class App extends Component {
             // if condition is false
             null
         }
+        {/* this is doing our work which we wanted, but this JSX can be confusing once it become large. */}
       </div>
     );
   }
