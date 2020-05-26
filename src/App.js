@@ -13,19 +13,6 @@ class App extends Component {
     something: 'hello',
     showPersons: false
   }
- 
-  // no need of this
-  // switchNameHandler = (newName) => {
-  //   this.setState(
-  //     {
-  //       persons : [
-  //         {name: newName, age:'29'},
-  //         {name:'Bob', age:'19'},
-  //         {name:'Mark', age:'55'},
-  //       ]
-  //     }
-  //   );
-  // };
 
   toggelPersonsHandler = () => {
     const doesShow = this.state.showPersons;
@@ -46,19 +33,19 @@ class App extends Component {
     );
   };
 
-  // whenever user clicks on person card, that should be deleted. so creating new handler
   deletePersonHandler = (index) => {
-    // getting the person array
-    const persons = this.state.persons;
-    // splice: Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.
-      // 1st arg: telling from where to start deleting
-      // 2nd arg: tells how many elements to delete from the index.
+    // we know that objects and array are refference type. thus when we change the data by calling the array or object, we are changing(mutating) the original array/object. 
+    // hence, this is not a good practice and before changing(mutating) the original array daya, we should make a copy of it.
+    // const persons = this.state.persons;
+
+    // slice: Returns a section of an array. if no args are passed, it will return whole array
+    // const persons = this.state.persons.slice();
+    // or
+    // using destructing the array(using spread operator)
+    const persons = [...this.state.persons];
     persons.splice(index, 1);
-    // updating the state.
     this.setState({persons: persons});
   }
-
-  // our app is working fine, but the implementaion has flaw.
   
   render() {
     const style = {
@@ -74,11 +61,9 @@ class App extends Component {
     if(this.state.showPersons) {
       persons = (
         <div>
-          {/* in map method, second argument is the index of that element in an array */}
           {this.state.persons.map((person, index) => {
             return (
               <Person
-                // adding the click param. passing the index, so that it can get to know which element to delete. 
                 click = {() => {this.deletePersonHandler(index)}}
                 name= {person.name}
                 age = {person.age}
