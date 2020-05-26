@@ -1,3 +1,7 @@
+4.6
+Person.js
+App.js
+
 4.5 : converting 'person' to 'persons' in state. hence changing at respective places where this.state.person is used
 App.js
 

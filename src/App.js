@@ -14,17 +14,18 @@ class App extends Component {
     showPersons: false
   }
  
-  switchNameHandler = (newName) => {
-    this.setState(
-      {
-        persons : [
-          {name: newName, age:'29'},
-          {name:'Bob', age:'19'},
-          {name:'Mark', age:'55'},
-        ]
-      }
-    );
-  };
+  // no need of this
+  // switchNameHandler = (newName) => {
+  //   this.setState(
+  //     {
+  //       persons : [
+  //         {name: newName, age:'29'},
+  //         {name:'Bob', age:'19'},
+  //         {name:'Mark', age:'55'},
+  //       ]
+  //     }
+  //   );
+  // };
 
   toggelPersonsHandler = () => {
     const doesShow = this.state.showPersons;
@@ -44,8 +45,21 @@ class App extends Component {
       }
     );
   };
+
+  // whenever user clicks on person card, that should be deleted. so creating new handler
+  deletePersonHandler = (index) => {
+    // getting the person array
+    const persons = this.state.persons;
+    // splice: Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.
+      // 1st arg: telling from where to start deleting
+      // 2nd arg: tells how many elements to delete from the index.
+    persons.splice(index, 1);
+    // updating the state.
+    this.setState({persons: persons});
+  }
+
+  // our app is working fine, but the implementaion has flaw.
   
-  // whenever the elements are rendered to DOM, whole rendered method is executed not just return method inside render method. hece, we can write JS within the render method which needed to be executed everytime whenever we want to render elements to DOM.  
   render() {
     const style = {
       backgroundColor: 'white',
@@ -54,38 +68,23 @@ class App extends Component {
       padding: '8px',
       cursor: 'pointer'
     };
-    // if, we see our code closing, we are passsing hard coded values. if we add another person then we have to make another div for it.
-    // as we are state in which we are storing persons as an array. thus, insraed of hard coding, we just loop over an array
+
 
     let persons = null;
     if(this.state.showPersons) {
       persons = (
         <div>
-          {/* Displaying dynamically with the help of loop */}
-          {this.state.persons.map(person => {
+          {/* in map method, second argument is the index of that element in an array */}
+          {this.state.persons.map((person, index) => {
             return (
               <Person
-              name= {person.name}
-              age = {person.age}
+                // adding the click param. passing the index, so that it can get to know which element to delete. 
+                click = {() => {this.deletePersonHandler(index)}}
+                name= {person.name}
+                age = {person.age}
               />
             );
           })}
-
-          {/* hence, no need of this */}
-          {/* <Person  
-            name={this.state.persons[0].name}
-            age={this.state.persons[0].age}
-          />
-          <Person 
-            name={this.state.persons[1].name} 
-            age={this.state.persons[1].age}
-            changed={this.nameChangedHandler}
-          />
-          <Person 
-            name={this.state.persons[2].name} 
-            age={this.state.persons[2].age}
-            click={this.switchNameHandler.bind(this, 'Alex')}> My Hobbies : Soccer, Cricket  
-          </Person> */}
         </div>
       );
     }
