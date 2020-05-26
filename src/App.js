@@ -5,7 +5,7 @@ import Person from './Person/Person';
 class App extends Component {
   
   state = {
-    person : [
+    persons : [
       {name:'Max', age:'29'},
       {name:'Bob', age:'19'},
       {name:'Mark', age:'15'},
@@ -17,7 +17,7 @@ class App extends Component {
   switchNameHandler = (newName) => {
     this.setState(
       {
-        person : [
+        persons : [
           {name: newName, age:'29'},
           {name:'Bob', age:'19'},
           {name:'Mark', age:'55'},
@@ -36,7 +36,7 @@ class App extends Component {
   nameChangedHandler = (event) => {
     this.setState(
       {
-        person : [
+        persons : [
           {name: 'Max', age:'29'},
           {name: event.target.value , age:'19'},
           {name:'Mark', age:'55'},
@@ -54,27 +54,38 @@ class App extends Component {
       padding: '8px',
       cursor: 'pointer'
     };
+    // if, we see our code closing, we are passsing hard coded values. if we add another person then we have to make another div for it.
+    // as we are state in which we are storing persons as an array. thus, insraed of hard coding, we just loop over an array
 
-    // its no a good practice to write conditions within JSX, hence followig different approach.
     let persons = null;
-    // putting the if condition and passing JSX
     if(this.state.showPersons) {
       persons = (
         <div>
-          <Person  
-            name={this.state.person[0].name}
-            age={this.state.person[0].age}
+          {/* Displaying dynamically with the help of loop */}
+          {this.state.persons.map(person => {
+            return (
+              <Person
+              name= {person.name}
+              age = {person.age}
+              />
+            );
+          })}
+
+          {/* hence, no need of this */}
+          {/* <Person  
+            name={this.state.persons[0].name}
+            age={this.state.persons[0].age}
           />
           <Person 
-            name={this.state.person[1].name} 
-            age={this.state.person[1].age}
+            name={this.state.persons[1].name} 
+            age={this.state.persons[1].age}
             changed={this.nameChangedHandler}
           />
           <Person 
-            name={this.state.person[2].name} 
-            age={this.state.person[2].age}
+            name={this.state.persons[2].name} 
+            age={this.state.persons[2].age}
             click={this.switchNameHandler.bind(this, 'Alex')}> My Hobbies : Soccer, Cricket  
-          </Person>
+          </Person> */}
         </div>
       );
     }
@@ -86,7 +97,6 @@ class App extends Component {
           style={style}
           onClick={this.toggelPersonsHandler.bind(this)}>Toggele Persons
         </button>
-        {/* just passing the dynamic value of persons which can be null or have Person component. */}
         {persons}
       </div>
     );
