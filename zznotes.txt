@@ -1,7 +1,7 @@
-4.8
+4.8 : adding key property
 App.js
 
-4.7
+4.7 : deleting a list
 App.js
 
 4.6
