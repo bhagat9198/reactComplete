@@ -21,17 +21,37 @@ class App extends Component {
     });
   };
 
-  nameChangedHandler = (event) => {
-    this.setState(
-      {
-        persons : [
-          // creating id attribute with random unique values
-          {name: 'Max', age:'29'},
-          {name: event.target.value , age:'19'},
-          {name:'Mark', age:'55'},
-        ]
-      }
-    );
+  nameChangedHandler = (event, id) => {
+    // 'find()' method will give the all detail of a person 
+    // const person = this.state.persons.find(p => {
+    //   return p;
+    // });
+
+    // but we will find the index, by using findIndex() method
+    const personIndex = this.state.persons.findIndex(p => {
+      return p.id === id;
+    });
+
+    // as we persons in an array, we will make a copy before changing its data
+    const person = {
+      // destructing the object
+      ...this.state.persons[personIndex]
+    }; 
+    // or (2nd method)
+    // Object.assign() : it creats an new object
+      // 1st arg: target object ir destination
+      // 2nd arg: source  object which should be copied to target object
+    // const person = Object.assign({}, this.state.persons[personIndex]);
+
+    person.name = event.target.value;
+
+    // extracting all the persons
+    const persons = this.state.persons;
+    persons[personIndex] = person;
+
+    // changing the state of 'state'
+    this.setState({persons: persons});
+
   };
 
   deletePersonHandler = (index) => {
@@ -53,16 +73,6 @@ class App extends Component {
     let persons = null;
     if(this.state.showPersons) {
       persons = (
-        // while displaying the Person component, we are getting this error
-        // index.js:1 Warning: Each child in a list should have a unique "key" prop.
-
-        // key prop is imporatnt arg which should be passed while redering list of data and so react tells us do so.
-        // as we have not given key property, we are getting the warning. its the default property whixh react try to find out in html or custom componenet which is rendered by te list.
-        // this key property, helps react to update the list efficently.
-        
-        // our app is working fine, but after deleting element when react rereder the DOM, it should know what exactly got changed from privous render.
-          // basically, it has virtual DOM which does all this comparison. 
-        // thus, it will re-render only the items in the list which are changed. else it will re-render whole list which can become inefficent for long list.
         <div>
           {this.state.persons.map((person, index) => {
             return (
@@ -70,8 +80,9 @@ class App extends Component {
                 click = {() => {this.deletePersonHandler(index)}}
                 name = {person.name}
                 age = {person.age}
-                // passing key property and key value should be something unique like id
-                key={person.id}
+                key = {person.id}
+                // 'event' param we will get from Person component.
+                changed = {(event) => {this.nameChangedHandler(event, person.id)}} 
               />
             );
           })}

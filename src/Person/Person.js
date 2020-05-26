@@ -4,7 +4,6 @@ import './Person.css'
 const person = (props) => {
   return (
     <div className="Person">
-      {/* adding onClick method in 1st paragraph */}
       <p onClick={props.click}>Hello I am {props.name} and having age of {props.age} </p>
       <p >{props.children}</p>
       <input type="text" onChange={props.changed} value={props.name} />
