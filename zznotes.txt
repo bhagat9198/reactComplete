@@ -1,3 +1,16 @@
+5.4. Setting Class Names Dynamically
+App.js
+App.css
+
+
+5.3. Setting Styles Dynamically
+App.js
+
+
+5.2. Outlining the Problem Set
+---
+
+
 4.9
 App.js
 

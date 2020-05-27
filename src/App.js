@@ -22,36 +22,18 @@ class App extends Component {
   };
 
   nameChangedHandler = (event, id) => {
-    // 'find()' method will give the all detail of a person 
-    // const person = this.state.persons.find(p => {
-    //   return p;
-    // });
-
-    // but we will find the index, by using findIndex() method
     const personIndex = this.state.persons.findIndex(p => {
       return p.id === id;
     });
 
-    // as we persons in an array, we will make a copy before changing its data
     const person = {
-      // destructing the object
       ...this.state.persons[personIndex]
     }; 
-    // or (2nd method)
-    // Object.assign() : it creats an new object
-      // 1st arg: target object ir destination
-      // 2nd arg: source  object which should be copied to target object
-    // const person = Object.assign({}, this.state.persons[personIndex]);
-
     person.name = event.target.value;
 
-    // extracting all the persons
     const persons = this.state.persons;
     persons[personIndex] = person;
-
-    // changing the state of 'state'
     this.setState({persons: persons});
-
   };
 
   deletePersonHandler = (index) => {
@@ -60,15 +42,18 @@ class App extends Component {
     this.setState({persons: persons});
   }
   
+  // btn should have green bg when persons are hidden and 'red' bg when persons are shown.
   render() {
     const style = {
-      backgroundColor: 'white',
+      // 
+      backgroundColor: 'green',
+      color: 'white',
+
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
       cursor: 'pointer'
     };
-
 
     let persons = null;
     if(this.state.showPersons) {
@@ -81,18 +66,37 @@ class App extends Component {
                 name = {person.name}
                 age = {person.age}
                 key = {person.id}
-                // 'event' param we will get from Person component.
                 changed = {(event) => {this.nameChangedHandler(event, person.id)}} 
               />
             );
           })}
         </div>
       );
+      // it will be only executed when persons are shown
+      // changing the property of object
+      style.backgroundColor = 'red';
+    }
+
+    // adding classes dynamically
+    // we want "this is really working" should add style dynamically depending upo the number of persons in the list
+    // defining two classes in App.css : red and bold
+
+    // inilizing an array which can store the class names
+    let classes = [];
+    if(this.state.persons.length <= 2) {
+      classes.push('red'); // classes = ['red']
+    }
+    if(this.state.persons.length <= 1) {
+      classes.push('bold');  // classes = ['red', 'bold]
     }
 
     return (
       <div className="App">
         <h1>Hello world of React!!!</h1>
+        {/* everything is JS, thus we can add classes also dynamically by putting {} */}
+        {/* now we have add an array which can contain both classes or single class or none of the class. className accepts a string not an array, hence we are converting array into  string with help of 'join()' method */}
+        {/* join(' ') : Adds all the elements of an array separated by the specified separator string. here one space is the seprator field */}
+        <p className={classes.join(' ')}>This is really working.</p>
         <button  
           style={style}
           onClick={this.toggelPersonsHandler.bind(this)}>Toggele Persons
