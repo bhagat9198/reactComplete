@@ -1,3 +1,16 @@
+5.6. Using Radium for Media Queries
+Person.js
+App.js
+
+5.5. Adding and Using Radium
+App.js
+Person.js
+
+npm install --save radium
+as we cant use sudo selectors in one line style and media queries. Radium helps us to solve this Problem
+  sudo selectors :  selectors which depands on other selectors 
+    eg: button:hover 
+
 5.4. Setting Class Names Dynamically
 App.js
 App.css

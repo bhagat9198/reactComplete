@@ -6,3 +6,11 @@
   padding: 16px;
   text-align: center;
 };
+
+/* impleneting media query through css */
+/* error: not working */
+/* @media (min-width: 500px) {
+  .Person {
+    width: 20%;
+  }
+} */
