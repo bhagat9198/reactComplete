@@ -1,9 +1,4 @@
 import React, {Component} from 'react';
-
-// to use radium, first we need to import it
-// Radium is defualt export, and then we imported 'styleRoot' named export  
-import Radium, { StyleRoot } from 'radium';
-
 import './App.css';
 import Person from './Person/Person';
 
@@ -17,7 +12,7 @@ class App extends Component {
     ],
     something: 'hello',
     showPersons: false
-  }
+  };
 
   toggelPersonsHandler = () => {
     const doesShow = this.state.showPersons;
@@ -45,7 +40,7 @@ class App extends Component {
     const persons = [...this.state.persons];
     persons.splice(index, 1);
     this.setState({persons: persons});
-  }
+  };
   
   render() {
     const style = {
@@ -55,11 +50,6 @@ class App extends Component {
       border: '1px solid blue',
       padding: '8px',
       cursor: 'pointer',
-      // now within the style we can add the sudo selector. but it should be wrapped in singke quotes ie like a string. this is because ':' is not a valid JS code. and its properties will be wrapped within object.
-      ':hover' : {
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
     };
 
     let persons = null;
@@ -80,13 +70,6 @@ class App extends Component {
         </div>
       );
       style.backgroundColor = 'red';
-      // adding over property
-      // we know we can extract the object values in array notation also.
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-      }
-
     }
 
     let classes = [];
@@ -98,27 +81,19 @@ class App extends Component {
     }
 
     return (
-      // as we are using media query in form of inline css, we need to wrap or application by special component provided by radium.
-      // wrapping our whole component which is rendered within <StyleRoot>
-      < StyleRoot>
-        <div className="App">
-          <h1>Hello world of React!!!</h1>
-          <p className={classes.join(' ')}>This is really working.</p>
-          <button  
-            style={style}
-            onClick={this.toggelPersonsHandler.bind(this)}>Toggele Persons
-          </button>
-          {persons}
-        </div>
-      </StyleRoot>
+      <div className="App">
+        <h1>Hello world of React!!!</h1>
+        <p className={classes.join(' ')}>This is really working.</p>
+        <button  
+          style={style}
+          onClick={this.toggelPersonsHandler.bind(this)}>Toggele Persons
+        </button>
+        {persons}
+      </div>
     );
   }
 }
 
-// Wraping the App in radium function. this is known as higher order componenet. 
-// higher order componenet :  a componenet which is wrapping one more component within it. thus. adding extra functionalities to our component.
-// it can be used on both class and funtional componenets.
-
-export default Radium(App);
+export default App;
 
 

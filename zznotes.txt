@@ -1,3 +1,29 @@
+5.8. Enabling & Using CSS Modules
+with radium its one way of scoping your style 
+another way:
+  Person.css should be only scoped with Person.js. thus, not over writing the styles in other componenets even if we have common names for css classes between components.
+  this feature is known as css modules
+
+Applying css module to current web app, for that removing all the radium implemenatations
+  :hover
+  styleRoot
+  media query
+  radium import and supercomponenet
+
+to apply css module, we have to make changes in our project.
+we, know we are using 'react-scripts' which exposes the whole build workflow and we cant really add the configrations. one thing whcj can be done is search for 'react-scripts' in node_modules, nut we should not do that as whenever we re-run our npm, our changes will get lost and will be re-written by default configrations.
+but,
+'eject' : its a command which gives us access to configrations.
+  npm run eject 
+  it will helps us to edit the configrations of whole managed project 
+  thus, to unlock the feature of 'css modules', we will do this
+
+
+
+
+5.7
+---
+
 5.6. Using Radium for Media Queries
 Person.js
 App.js
