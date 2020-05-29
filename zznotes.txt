@@ -1,4 +1,8 @@
 5.8. Enabling & Using CSS Modules
+webpack.config.js
+App.js
+Person.js
+
 with radium its one way of scoping your style 
 another way:
   Person.css should be only scoped with Person.js. thus, not over writing the styles in other componenets even if we have common names for css classes between components.
@@ -16,7 +20,31 @@ but,
 'eject' : its a command which gives us access to configrations.
   npm run eject 
   it will helps us to edit the configrations of whole managed project 
+  once this command run successfully,
+  we will get two folders:
+    scripts :-  its contains 3 files. one file each command. 
+      "start": "node scripts/start.js",
+      "build": "node scripts/build.js",
+      "test": "node scripts/test.js"
+    config :- its contains configration files. 
+      here we are interested in webpack.config.js file. 
+        webpack : it basically builds, its the bundling tool which applies all kinds of transforamation and optimizations on our files and bundles and bundles them together.
+          as of this process, it manages our css files. it parses all the the css imports in JS files. thus, it mamages our css files, we can add the configrations to it and unlock css module feature 
   thus, to unlock the feature of 'css modules', we will do this
+
+webpack.config.js:
+  modules:
+    // changes from line 427 to 435
+    {
+      test: cssRegex,
+      exclude: cssModuleRegex,
+      use: getStyleLoaders({
+        importLoaders: 1,
+        modules: {
+          localIdentName: '[name]__[local]___[hash:base64:5]'
+        }
+      }),
+    
 
 
 
