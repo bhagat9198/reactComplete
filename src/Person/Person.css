@@ -5,12 +5,12 @@
   box-shadow: 0 2px 3px #ccc;
   padding: 16px;
   text-align: center;
-};
+}
 
-/* impleneting media query through css */
-/* error: not working */
-/* @media (min-width: 500px) {
+
+/* adding media query */
+@media (min-width: 500px) {
   .Person {
-    width: 20%;
+    width: 450px;
   }
-} */
+}

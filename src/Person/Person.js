@@ -1,6 +1,4 @@
 import React from 'react';
-
-// css module has been unlocked. hence using that feature
 import classes from './Person.css';
 
 const person = (props) => {
