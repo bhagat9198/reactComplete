@@ -1,3 +1,8 @@
+6.5. Using Error Boundaries (React 16+)
+Person.js
+ErrorBoundary/ErrorBoundary.js
+App.js
+
 5.11. Working with Media Queries
 Person.js
 Person.css

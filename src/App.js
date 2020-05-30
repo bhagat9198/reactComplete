@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import classes from './App.css';
 import Person from './Person/Person';
 
+// importing ErrorBoundary
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+
 class App extends Component {
   
   state = {
@@ -43,17 +46,6 @@ class App extends Component {
   };
   
   render() {
-    // no need of implementing inline styles, using css class
-    // const style = {
-    //   backgroundColor: 'green',
-    //   color: 'white',
-    //   font: 'inherit',
-    //   border: '1px solid blue',
-    //   padding: '8px',
-    //   cursor: 'pointer',
-    // };
-    
-    
     let persons = null;
     let btnClass = '';
 
@@ -62,20 +54,23 @@ class App extends Component {
         <div>
           {this.state.persons.map((person, index) => {
             return (
-              <Person 
-                click = {() => {this.deletePersonHandler(index)}}
-                name = {person.name}
-                age = {person.age}
-                key = {person.id}
-                changed = {(event) => {this.nameChangedHandler(event, person.id)}} 
-              />
+              // using ErrorBoundary : error boundary is higher order componenet ie it is wrapping another component within itself. thus it is wrapped around a component which might through the error 
+              <ErrorBoundary key = {person.id}>
+                {/* moving the key at the top, because this(errorBoundary) is the outermost element which we map and key has be always on the outer most element as thats the element which we replicate(to repeat same element) */}
+                <Person 
+                  click = {() => {this.deletePersonHandler(index)}}
+                  name = {person.name}
+                  age = {person.age}
+                  // key = {person.id} //not needed here
+                  changed = {(event) => {this.nameChangedHandler(event, person.id)}} 
+                />
+              </ErrorBoundary>
+              // whenever we get error, the error message JSX will be rendered but only in production mode.in develelopment we will see error message.
+              // thus, we not not cluster every component with ErrorBoundary, as then it also means that as developer you are rectifying errors. only use where u think, error can popup.
             );
           })}
         </div>
       );
-      // style.backgroundColor = 'red';
-
-      // if the condition is true, adding the class 'Red' 
       btnClass = classes.Red;
     }
 
@@ -92,11 +87,7 @@ class App extends Component {
         <h1>Hello world of React!!!</h1>
         <p className={assignedClasses.join(' ')}>This is really working.</p>
         <button  
-          // style={style}
-
-          // adding the button class
           className={btnClass}
-
           onClick={this.toggelPersonsHandler.bind(this)}>Toggele Persons
         </button>
         {persons}

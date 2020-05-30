@@ -24,7 +24,6 @@
   color: black;
 }
 
-/* 'button.Red': any button which has 'RED' class */
 .App button.Red {
   background-color: red;
 }
