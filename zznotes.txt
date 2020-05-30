@@ -1,3 +1,15 @@
+7.2. A Better Project Structure
+ErrorBoundary : deleted
+Components/Cockpit/Cockpit.js : new file
+Components/Persons/Persons.js :new file
+Components/Persons/Person/Person.js : deleted random error
+Components/Persons/Person/Person.css : no changes
+Containers/App.js : ErrorBoundary deleted, changing path
+Containers/App.css : no change
+Containers/App.test.js :  no change
+index.js : changing path
+
+
 6.5. Using Error Boundaries (React 16+)
 Person.js
 ErrorBoundary/ErrorBoundary.js
