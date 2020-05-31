@@ -11,7 +11,7 @@ class App extends Component {
       {id: '434f', name:'Mark', age:'15'},
     ],
     something: 'hello',
-    showPersons: false
+    showPersons: false 
   };
 
   toggelPersonsHandler = () => {

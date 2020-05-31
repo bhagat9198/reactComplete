@@ -1,4 +1,17 @@
+
 7.2. A Better Project Structure
+
+// till now, we just have 2 components 
+  // 'Person.js' : output one sinle person at a time .
+    // its is quite specific and no need to change that. but if we cant gloval styling that we put styles in'index.css'. or if we want one 'inout box' at mmany places, we can remove it from here and make seprate componenet.
+  // 'App.js' : manages out state, but this file can be spilled as it is doing lot of work.
+    // 'Contanier Componenets' ie components which manages state should not invovele with UI. thus, their render method shiuld be lean and not contain much of JSX.
+    // thus, we can create one 'Persons' componenet which contain list of persons. and at last, imponting 'Persons' component in our app.
+    // another one is outputing cockpit into its own coponent. which contains the top most part of app and toggle button.
+    // thus. 'App.js' render will have just render Cockpit and Persons componenet. hence, making our app more focused. 
+  
+// once, done creating all the componenets, changing the import path and our app should shart working correctly.
+
 ErrorBoundary : deleted
 Components/Cockpit/Cockpit.js : new file
 Components/Persons/Persons.js :new file
@@ -8,6 +21,9 @@ Containers/App.js : ErrorBoundary deleted, changing path
 Containers/App.css : no change
 Containers/App.test.js :  no change
 index.js : changing path
+assets : new folder, in case we nned to add any img
+
+
 
 
 6.5. Using Error Boundaries (React 16+)
