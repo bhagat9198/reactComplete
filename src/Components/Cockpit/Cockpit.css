@@ -10,8 +10,6 @@
   font-weight: bolder;
 }
 
-/* we no longer use .App class here, as we Cockpit.js does have any 'App' class. Thus, changing 'App' to 'Cockpit */
-/* .App button { */
 .Cockpit button {
   border: 1px solid blue;
   padding: 16px;

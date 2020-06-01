@@ -1,6 +1,5 @@
 import React from 'react';
 
-// importing css class
 import classes from './Cockpit.css';
 
 const cockpit = (props) => {
@@ -18,12 +17,10 @@ const cockpit = (props) => {
     btnClass = classes.Red;
   }
 
-
-  // we are changing the style (button and paragraph), we need css file.
   return (
-    // we can only return one html tag, thus wrapping all the html tag to single 'div' element.
     <div className={classes.Cockpit}>
-      <h1>Hello world of React!!!</h1>
+      {/* as it is just another props and we are in functional component, we can access just by 'props' */}
+      <h1>{ props.title }</h1>
       <p className={assignedClasses.join(' ')}>This is really working.</p>
       <button  
         className={btnClass}
