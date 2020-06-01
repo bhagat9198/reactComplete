@@ -1,10 +1,8 @@
-.App {
+.Cockpit {
   text-align: center;
 }
 
-/* shifting all these classes to cockpit.css as that file is dealing with those classes */
-
-/* .red {
+.red {
   color: red;
 }
 
@@ -12,7 +10,9 @@
   font-weight: bolder;
 }
 
-.App button {
+/* we no longer use .App class here, as we Cockpit.js does have any 'App' class. Thus, changing 'App' to 'Cockpit */
+/* .App button { */
+.Cockpit button {
   border: 1px solid blue;
   padding: 16px;
   background-color: green;
@@ -21,16 +21,16 @@
   cursor: pointer;
 }
 
-.App button:hover {
+.Cockpit button:hover {
   background-color: lightgreen;
   color: black;
 }
 
-.App button.Red {
+.Cockpit button.Red {
   background-color: red;
 }
 
-.App button.Red:hover {
+.Cockpit button.Red:hover {
   background-color: salmon; 
   color: black;
-}  */
+} 

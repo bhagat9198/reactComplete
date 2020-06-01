@@ -1,3 +1,11 @@
+7.3. Splitting an App Into Components
+App.js
+Persons.js
+Cockpit.js
+Cockpit.css
+
+thus, like this we should create as much components pssible and making our code clean.
+
 
 7.2. A Better Project Structure
 
