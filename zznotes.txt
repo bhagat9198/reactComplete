@@ -1,3 +1,62 @@
+7.7. Component Creation Lifecycle in Action
+App.js
+Persons.js
+Person.js
+
+as we can see, all those class lifecycle methods executed in an order.
+
+
+7.6. Class Component Lifecycle Overview
+
+class based lifecycle: we have different methods which can add to differnt class based components and react will execute them for us at different points of time and we can do different things for them.
+  eg: fetch data from web,
+      or some cleanup work before a compoennt is removed from the DOM
+NOTE: lifecycle components === lifecycle hooks (nothing to do with react hooks)
+
+lets see how do they execute and in what order.
+
+component lifecycle during creation:
+  as there is diff between lifecycle hook that runs whenever something change (eg: props) and when compenent is rendered for the first time.
+
+  execution in order:-
+    1. constructor :
+      1. it is not a lifecycle hook, a  defualt es6 feature ie when class is created, constructure is called
+      2. it will recieve props of teh componenet
+      3. we have to call 'super(props)', only if we add own constructor.
+      4. id we dont create own constructor, no need to call super(props) explicitly.
+      5. this constructor, can be used for basic inilization phase
+      6. what we should not do (side effects) means : not making http req, storing something, etc...
+        all this we should not do as it will hinder our app proformance and can cause rerefer cycle
+    
+    2. getDerivedStateFromProps(props, state) :
+      1. it was added with 16.3
+      2. its idea is to whenver our props change for your class based componenet, you can sink your state to them
+        and it will happen every very rarely. thus, this hook is not much used.
+      3. thus, we want to update the component before it is rendered, we should use this.
+      4. cant do side effect: not sending http req
+      5. its a static method, hence add 'static' keyword before the method name.
+
+    3. render()
+      1. it returs JSX ie renders HTML code
+      2. cant do side effects: not sending http req or any timeouts or anything which can blo;ck this rendering process.
+
+    4. Render Child Components
+      1. once render start, any compenents which are added in render method will start rendering
+      2. once all the subcomponets life cycle finishes, our render method will be completed and futher execution takes palce.
+    
+    5. componentDidMount()
+      1. it will start once render method of componenet is finished.
+      2. its a imp hook and will be used more often.
+      3. can cause side effects ie can make http request
+      4. cant do: dont update the state unless it is in 'then()' block of teh promise. cant call setState synchronously as that can use rerender cycle and that is bad for performance.
+     
+
+
+
+
+
+
+
 7.5. Class-based vs Functional Components
 index.js
 App.js
