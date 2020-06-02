@@ -1,61 +1,61 @@
+7.8. Component Update Lifecycle (for props Changes)
+
+the way we have life cycle for compenent creation, same way we have lifeycle for component updation.
+
+so, when 'props' or 'state' change, react has to re-evalualte the compenent. at that time updation lifecycle is implemented.
+
+1. getDerivedStateFromProps(props, state):
+  1. not much used but will be used to inilize the state of the component that updates based on props
+  eg: in a form control when u gets the values eneterd by the user and then updating dom based on the values
+  2. used to sync the local state inside of the component to the props
+  3. no side effects can be used ie no sending http req
+
+2. shouldComponentUpdate(nextProp, nextSate):
+  1. its quite interesting hook. why?
+    because it can help us to cancel the updating process. thus, here we can decide id component should be updated and re-rendered.
+    why we should check it? 
+      for performance optimization. 
+  2. it should be used carefully as it can break the component while blocking the updating process from happening correctly.
+  3. its very powerful as it helps preventing unnessary updates cycles.
+  4. no side effects can be used ie no sending http req
+
+3. render():
+  1. constructs the virtual DOM and gives out JSX
+
+4. updates child compenents props
+  1. if render is having sub components, then their respective lifecyle is will be completed first.
+  2. once all the sub components of render is done. then render() method is marked as complete.
+
+5. getSnapshotBeforeUpadte(preProps, prevState):
+  1. takes the previous props and previous states as input and returns the snapshot object which can be freely configured
+  2. this hook is not much used
+  3. used for last minute dom oprertions, but that doesnt mean changes to DOM but like getting the current scrolling postion of the user.
+  4. cant use any side effects like hhtp request.
+
+6. componentDidUpdate() :
+  1. it tells that updating is completed.
+  2. can do side effects like making http request. 
+    just keep in mind not to enter infinte loop, as respond will come which will update the component and this cycle starts again
+  3. should not call setState syncronisly or outside of promise as that will simply lead to unnessary re-render cycle
+
+converting function based component(Person and Persons)  to class based compenent so that we can we see the functionilty
+
+
+Persons.js
+App.js
+
+as we can see, other commands didnt ran except the getDerivedStateFromProps because 'getDerivedStateFromProps' is part creational life cycle and other methods will run when there will some update.
+
+to run update methods, we will type somthing in inputbox, which will cause updating in state.
+
+
 7.7. Component Creation Lifecycle in Action
 App.js
 Persons.js
 Person.js
 
-as we can see, all those class lifecycle methods executed in an order.
-
-
 7.6. Class Component Lifecycle Overview
-
-class based lifecycle: we have different methods which can add to differnt class based components and react will execute them for us at different points of time and we can do different things for them.
-  eg: fetch data from web,
-      or some cleanup work before a compoennt is removed from the DOM
-NOTE: lifecycle components === lifecycle hooks (nothing to do with react hooks)
-
-lets see how do they execute and in what order.
-
-component lifecycle during creation:
-  as there is diff between lifecycle hook that runs whenever something change (eg: props) and when compenent is rendered for the first time.
-
-  execution in order:-
-    1. constructor :
-      1. it is not a lifecycle hook, a  defualt es6 feature ie when class is created, constructure is called
-      2. it will recieve props of teh componenet
-      3. we have to call 'super(props)', only if we add own constructor.
-      4. id we dont create own constructor, no need to call super(props) explicitly.
-      5. this constructor, can be used for basic inilization phase
-      6. what we should not do (side effects) means : not making http req, storing something, etc...
-        all this we should not do as it will hinder our app proformance and can cause rerefer cycle
-    
-    2. getDerivedStateFromProps(props, state) :
-      1. it was added with 16.3
-      2. its idea is to whenver our props change for your class based componenet, you can sink your state to them
-        and it will happen every very rarely. thus, this hook is not much used.
-      3. thus, we want to update the component before it is rendered, we should use this.
-      4. cant do side effect: not sending http req
-      5. its a static method, hence add 'static' keyword before the method name.
-
-    3. render()
-      1. it returs JSX ie renders HTML code
-      2. cant do side effects: not sending http req or any timeouts or anything which can blo;ck this rendering process.
-
-    4. Render Child Components
-      1. once render start, any compenents which are added in render method will start rendering
-      2. once all the subcomponets life cycle finishes, our render method will be completed and futher execution takes palce.
-    
-    5. componentDidMount()
-      1. it will start once render method of componenet is finished.
-      2. its a imp hook and will be used more often.
-      3. can cause side effects ie can make http request
-      4. cant do: dont update the state unless it is in 'then()' block of teh promise. cant call setState synchronously as that can use rerender cycle and that is bad for performance.
-     
-
-
-
-
-
-
+---
 
 7.5. Class-based vs Functional Components
 index.js
