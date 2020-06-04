@@ -41,6 +41,15 @@ class Persons extends Component {
     console.log(snapshot);
   }
 
+
+  // we know this component will get removed when we click on toggle button. so, we want to remove some eventlisteners which are in this componenet when we want to remove while removing this component.
+  // here, we dont have anything to clean but in actual website we can have like removing the connections from the server.
+  // to, do this we have one lifecycle hook
+  componentWillUnmount() {
+    // we can write any code which should be removed .
+    console.log('[Persons.js] componentWillUnmount');
+  }
+
   render() {
     console.log('[Persons.js] render...');
     

@@ -3,62 +3,52 @@ import React, { useEffect } from 'react';
 import classes from './Cockpit.css';
 
 const Cockpit = (props) => {
-  // // as we know, useEffect has functionality of both 'componenetDidMount()' and 'componentDidUpdate()' and so it is running everytime. 
-  // // but, we want to do certain task(like http req) only once when component is rendered for the first time.
-  // useEffect(() => {
-  //   console.log('[Cockpit.js] useEffect');
-    
-  //   // creating a seniour (like http req)
-  //   // a function will execyte after 1 sec
-  //   setTimeout(() => {
-  //     alert('Data saved to cloud');
-  //   }, 1000);
-  //    cycle.
-  // });
 
-
-
-
-
-  // // right now, this alert is poping up at every rerender. thus, controlling it when it should get executed.
-  // // useEffect, accepts 2nd argument of type array after the function. in an array, we simply point to all the varaiables or data that used in useEffect. it should rerun whenever one of the dependencies changes which is given in an array.
-  //   // right, we are not using any data. 
   // useEffect(() => {
   //   console.log('[Cockpit.js] useEffect');
 
   //   setTimeout(() => {
   //     alert('Data saved to cloud');
   //   }, 1000);
-  // }, 
-  // // we want this alert to popup only when perons change
-  // [props.persons]
-  // );
-  // // thus, one alert will come very first time when this component is rendered for the first time and then only when person data changed like its name or no of persons in an array
 
 
+  //   // cleanup work in functional components
+  //   // in useEffects, we can have nothing(no return statement) or we have return statement whch will have a anomous function.
+  //   // return statement: it runs before the main useEffect functions runs, but after the (first) render cycle. 
+  //   return () => {
+  //     console.log('[Cockpit.js] cleanup work in useEffect ');
+  //   };
+  //   // here we will not see above console log statement as cockpit componenet is never removed. thus, adding the button is 'App.js'
 
 
-
-  // but now we want alert only when componenent is rendered for the first time
+  // 1st useEffect
   useEffect(() => {
     console.log('[Cockpit.js] useEffect');
 
     setTimeout(() => {
       alert('Data saved to cloud');
     }, 1000);
-  }, 
-  // passing the empty array : it tell that there are no dependencies and it should rerun whenever one of the depdencies changes. as there are no dependencies mentioned, they can never changes and hence it will never rerun.
-  // it will fun very first time, that is default but after that, it will no rerun.
-  []);
-  // above is perferct eg when we only want use 'componenetDidMount()'
 
+    return () => {
+      console.log('[Cockpit.js] cleanup work in useEffect ');
+    };
+  },[]);
+  // now we are getting above console log. thus, it gets ouputed when it runs for one last time. 
+  // it also depends on 2nd argument
+    // when we pass empty array, useEffect() will only execute on first and last time before it is unmounted.
 
+  
+  // 2nd useEffect :  without having 2nd arg
+  useEffect(() => {
+    console.log('[Cockpit.js] 2nd useEffect');
 
-
-
-
-  // we can use more than one useEffects if we have more than one data which we want to control.
-  // useEffect(() => {});
+    return () => {
+      console.log('[Cockpit.js] cleanup work in 2nd useEffect ');
+    };
+  });
+  // here we can see, return statement is woking everytime whenever user clicks on toggle button or we can say whenever, componenet is rerendered.
+    // first return statement is getting executed and then code inside useEffect
+  // thus, it can be used whenever we want to do cleanup work before every re-render 
 
   const assignedClasses = [];
   let btnClass = '';

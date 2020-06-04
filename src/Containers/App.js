@@ -16,7 +16,9 @@ class App extends Component {
       {id: '434f', name:'Mark', age:'15'},
     ],
     something: 'hello',
-    showPersons: false 
+    showPersons: false,
+    // adding the state
+    showCockpit: true
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -85,12 +87,25 @@ class App extends Component {
 
     return (
       <div className={classes.App}>
-        <Cockpit 
-          title = {this.props.appTitle}
-          showPersons = {this.state.showPersons}
-          clicked = {this.toggelPersonsHandler}
-          persons = {this.state.persons}
-        />
+        {/* to see cleanup work in action, adding the button which can remove the cockpit */}
+        <button onClick={() => {
+          this.setState({
+            showCockpit: false
+          })
+        }}> Remove Cockpit </button>
+
+        {/* now adding the condition when to show cockpit. using ternery operator */}
+
+        { this.state.showCockpit ?
+          <Cockpit 
+            title = {this.props.appTitle}
+            showPersons = {this.state.showPersons}
+            clicked = {this.toggelPersonsHandler}
+            persons = {this.state.persons}
+          />
+        :
+          null
+      }
         {persons}
       </div>
     );
