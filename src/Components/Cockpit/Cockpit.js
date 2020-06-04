@@ -1,33 +1,64 @@
-// here ww are using function component. so, we cant use 'componentDidMount()'
-// we can manage state with help of 'useState()' but cant do work of 'componentDidMount()'. 
-// but, we have another hook 'useEffect()' which is the second imporatnt most used hook which can be used next to 'useState()'.
-  // why its imp?
-    // because, it can cover the functionality of all the lifecycle hooks of classbased.
-  // 'useEffect()' is react hook not lifecycle hook.
-
-// importing the useEffect
 import React, { useEffect } from 'react';
 
 import classes from './Cockpit.css';
 
-// React component names need to start with a capital letter.
-  // That's because React treats components starting with lowercase letters as DOM tags.
-// thus, changing 'cockpit' to 'Cockpit'. else we will get an error "React Hook "useEffect" is called in function "cockpit" which is neither a React function component or a custom React Hook function react-hooks/rules-of-hooks"
-
 const Cockpit = (props) => {
-  // how to use useEffect?
-    // we can add it anywhere in our functional body
-  
-  // useEffect takes a function(with no arguments) which will run at every render cycle
+  // // as we know, useEffect has functionality of both 'componenetDidMount()' and 'componentDidUpdate()' and so it is running everytime. 
+  // // but, we want to do certain task(like http req) only once when component is rendered for the first time.
+  // useEffect(() => {
+  //   console.log('[Cockpit.js] useEffect');
+    
+  //   // creating a seniour (like http req)
+  //   // a function will execyte after 1 sec
+  //   setTimeout(() => {
+  //     alert('Data saved to cloud');
+  //   }, 1000);
+  //    cycle.
+  // });
+
+
+
+
+
+  // // right now, this alert is poping up at every rerender. thus, controlling it when it should get executed.
+  // // useEffect, accepts 2nd argument of type array after the function. in an array, we simply point to all the varaiables or data that used in useEffect. it should rerun whenever one of the dependencies changes which is given in an array.
+  //   // right, we are not using any data. 
+  // useEffect(() => {
+  //   console.log('[Cockpit.js] useEffect');
+
+  //   setTimeout(() => {
+  //     alert('Data saved to cloud');
+  //   }, 1000);
+  // }, 
+  // // we want this alert to popup only when perons change
+  // [props.persons]
+  // );
+  // // thus, one alert will come very first time when this component is rendered for the first time and then only when person data changed like its name or no of persons in an array
+
+
+
+
+
+  // but now we want alert only when componenent is rendered for the first time
   useEffect(() => {
     console.log('[Cockpit.js] useEffect');
-    // we can see above console log statement every time something is rendered on the screen in chrome dev tools.
 
-    // thus, here we can do all our task what we can do in 'componentDidUpdate()'.
-    // like we can send http request
+    setTimeout(() => {
+      alert('Data saved to cloud');
+    }, 1000);
+  }, 
+  // passing the empty array : it tell that there are no dependencies and it should rerun whenever one of the depdencies changes. as there are no dependencies mentioned, they can never changes and hence it will never rerun.
+  // it will fun very first time, that is default but after that, it will no rerun.
+  []);
+  // above is perferct eg when we only want use 'componenetDidMount()'
 
-    // it doesnt have functionality of 'getDerivedStateFromProps()' and we actually dont need it also. as it is functional component, we are getting props. and so, we can use useState()
-  });
+
+
+
+
+
+  // we can use more than one useEffects if we have more than one data which we want to control.
+  // useEffect(() => {});
 
   const assignedClasses = [];
   let btnClass = '';
@@ -55,5 +86,4 @@ const Cockpit = (props) => {
   );
 };
 
-// chaging the export varaiable here also.
 export default Cockpit;
