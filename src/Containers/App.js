@@ -25,34 +25,14 @@ class App extends Component {
     return state;
   }
 
-
   shouldComponentUpdate(nextProps, nextState) {
     console.log('[App.js] shouldComponentUpdate');
-    // this method has to return something (true or flase)
-
-    // here, we are telling not to update component. which means that after prssing toggle button, our state will not be updated and hence no able to see the persons cards.
-    // return false;
-
     return true;
   }
-  // if, we dont include the above hook, bydefault 'shouldComponentUpdate' will be included with 'return true'
 
-
-  // as we are changing the state when user enter something in textbox, so adding one more lifecycle hook
   componentDidUpdate() {
-    // here, i am not accepting any state, prope or snapshot. although we can do.
     console.log('[App.js] componentDidUpdate');
   }
-  // or
-  // componentDidUpdate(pervProps, prevState, snapshot) {
-  //   console.log('[App.js] componentDidUpdate');
-  //   // here we will get 'undefined' as there is no method 'getSnapshotBeforeUpdate' in this component. thus, its not getting any values.
-  //   console.log(snapshot);
-  // }
-
-  // componentWillMount() {
-  //   console.log('[App.js] componentWillMount');
-  // }
 
   componentDidMount() {
     console.log('[App.js] componentDidMount');
@@ -79,6 +59,8 @@ class App extends Component {
     persons[personIndex] = person;
     this.setState({persons: persons});
   };
+
+  
 
   deletePersonHandler = (index) => {
     const persons = [...this.state.persons];

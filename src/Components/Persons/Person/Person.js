@@ -15,7 +15,6 @@
 
 // export default person;
 
-
 // converting it into class
 
 import React, { Component } from 'react';
