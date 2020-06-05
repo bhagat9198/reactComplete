@@ -1,3 +1,6 @@
+7.13. Cleanup Work with useEffect() - Ex
+Cockpit.js
+
 7.12. Cleaning up with Lifecycle Hooks & useEffect()
 Persons.js
 Cockpit.js

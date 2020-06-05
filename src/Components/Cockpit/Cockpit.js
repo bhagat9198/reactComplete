@@ -50,6 +50,25 @@ const Cockpit = (props) => {
     // first return statement is getting executed and then code inside useEffect
   // thus, it can be used whenever we want to do cleanup work before every re-render 
 
+
+
+  // // 7.13 (not needed, just for show)
+  // // 1st useEffect 
+  // useEffect(() => {
+  //   console.log('[Cockpit.js] useEffect');
+  //   // improvement: we want timer functionailty should end when this componenent is unmounted.
+  //   const timer =  setTimeout(() => {
+  //     alert('Data saved to cloud');
+  //   }, 1000);
+
+  //   return () => {
+  //     // clering the timer
+  //     clearTimeout(timer);
+  //     console.log('[Cockpit.js] cleanup work in useEffect ');
+  //   };
+  // },[]);
+
+  
   const assignedClasses = [];
   let btnClass = '';
 
