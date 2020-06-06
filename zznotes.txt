@@ -1,5 +1,5 @@
 7.19. Rendering Adjacent JSX Elements
-Persons.js
+Person.js
 hoc/Auxilliary.js 
 
 

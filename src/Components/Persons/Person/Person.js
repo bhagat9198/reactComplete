@@ -72,6 +72,7 @@
 // another way as array can be bit tedious(seprating and key). doing easier way
   // make warpping componenet that does not render any actual html code but its simply there to fulfull react requirement of having wrapping component.
   // to do this, creating a new folder 'hoc'(higher order functions :  components that wrap another components) and within new component 'Auxilliary.js'
+  // Auxilliary : providing supplementary or additional help and support.
 
 import React, { Component } from 'react';
 
