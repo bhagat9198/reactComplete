@@ -23,37 +23,11 @@
 
 
 
-// if we are using class based components which extends 'Components' and using 'shouldComponentUpdate()'.
-// and if we have to compare all the props which matter to the component to difference. then there is easier way 
-
-// import React, { Component } from 'react';
 import React, { PureComponent } from 'react';
 import Person from './Person/Person';
 
-// class Persons extends Component { //no need
-
-// PureComponent : it is a normal component that already implements 'shouldComponentUpdate()' with a complete(all) props checks. thus only changes when any props change in that component.
 
 class Persons extends PureComponent {
-
-
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   console.log('[Persons.js] shouldComponentUpdate');
-
-  //   // other than 'persons' props we have 'clicked' and 'changed' props also. and if those props value changes, we should update the component.
-  //   // hece, adding more conditions
-  //   if(nextProps.persons !== this.props.persons || 
-  //     nextProps.clicked !== this.props.clicked ||
-  //     nextProps.changed !== this.props.changed ) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
-  // // here, to update the component, we are checking all the props value. 
-  
-  // as we are using PureComponent, then there is no need to use 'shouldComponentUpdate()' as it already implememts beforehand. 
-  // app works mormal as before
 
   getSnapshotBeforeUpdate(prevProps, prevState) {
     console.log('[Persons.js] getSnapshotBeforeUpdate');
@@ -72,6 +46,9 @@ class Persons extends PureComponent {
   render() {
     console.log('[Persons.js] render...');
     
+    // here we are not returning one sigle element but mutiple element of an array. technaically array is one sigle element and within number of chid elements.
+    // Reat allows us to retuen an array of adjustent elements provded that all the elements have a key and key is req. so that react can effiectively update and reorder these elements as required.
+
     return this.props.persons.map((person, index) => {
       return (
         <Person 
