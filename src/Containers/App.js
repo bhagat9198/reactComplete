@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import classes from './App.css';
-import Persons from '../Components/Persons/Persons';
-import Cockpit from '../Components/Cockpit/Cockpit';
+import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
   constructor(props) {
@@ -57,7 +57,10 @@ class App extends Component {
     }; 
     person.name = event.target.value;
 
-    const persons = this.state.persons;
+    // correction
+    // const persons = this.state.persons; // Error
+    const persons = [...this.state.persons];
+
     persons[personIndex] = person;
     this.setState({persons: persons});
   };
@@ -87,25 +90,22 @@ class App extends Component {
 
     return (
       <div className={classes.App}>
-        {/* to see cleanup work in action, adding the button which can remove the cockpit */}
         <button onClick={() => {
           this.setState({
             showCockpit: false
           })
         }}> Remove Cockpit </button>
 
-        {/* now adding the condition when to show cockpit. using ternery operator */}
-
-        { this.state.showCockpit ?
+        { this.state.showCockpit ? (
           <Cockpit 
+            // optimizing our component, hence changing props
             title = {this.props.appTitle}
             showPersons = {this.state.showPersons}
             clicked = {this.toggelPersonsHandler}
-            persons = {this.state.persons}
+            // persons = {this.state.persons}
+            personsLength = {this.state.persons.length}
           />
-        :
-          null
-      }
+        ) : null  }
         {persons}
       </div>
     );

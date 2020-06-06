@@ -1,3 +1,8 @@
+7.15. Optimizing Functional Components with React.memo()
+Cockpit.js
+App.js
+
+
 7.14. Using shouldComponentUpdate for Optimization
 Persons.js
 
