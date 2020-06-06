@@ -4,24 +4,6 @@ import classes from './Cockpit.css';
 
 const Cockpit = (props) => {
 
-  // useEffect(() => {
-  //   console.log('[Cockpit.js] useEffect');
-
-  //   setTimeout(() => {
-  //     alert('Data saved to cloud');
-  //   }, 1000);
-
-
-  //   // cleanup work in functional components
-  //   // in useEffects, we can have nothing(no return statement) or we have return statement whch will have a anomous function.
-  //   // return statement: it runs before the main useEffect functions runs, but after the (first) render cycle. 
-  //   return () => {
-  //     console.log('[Cockpit.js] cleanup work in useEffect ');
-  //   };
-  //   // here we will not see above console log statement as cockpit componenet is never removed. thus, adding the button is 'App.js'
-
-
-  // 1st useEffect
   useEffect(() => {
     console.log('[Cockpit.js] useEffect');
 
@@ -33,12 +15,7 @@ const Cockpit = (props) => {
       console.log('[Cockpit.js] cleanup work in useEffect ');
     };
   },[]);
-  // now we are getting above console log. thus, it gets ouputed when it runs for one last time. 
-  // it also depends on 2nd argument
-    // when we pass empty array, useEffect() will only execute on first and last time before it is unmounted.
 
-  
-  // 2nd useEffect :  without having 2nd arg
   useEffect(() => {
     console.log('[Cockpit.js] 2nd useEffect');
 
@@ -46,29 +23,7 @@ const Cockpit = (props) => {
       console.log('[Cockpit.js] cleanup work in 2nd useEffect ');
     };
   });
-  // here we can see, return statement is woking everytime whenever user clicks on toggle button or we can say whenever, componenet is rerendered.
-    // first return statement is getting executed and then code inside useEffect
-  // thus, it can be used whenever we want to do cleanup work before every re-render 
 
-
-
-  // // 7.13 (not needed, just for show)
-  // // 1st useEffect 
-  // useEffect(() => {
-  //   console.log('[Cockpit.js] useEffect');
-  //   // improvement: we want timer functionailty should end when this componenent is unmounted.
-  //   const timer =  setTimeout(() => {
-  //     alert('Data saved to cloud');
-  //   }, 1000);
-
-  //   return () => {
-  //     // clering the timer
-  //     clearTimeout(timer);
-  //     console.log('[Cockpit.js] cleanup work in useEffect ');
-  //   };
-  // },[]);
-
-  
   const assignedClasses = [];
   let btnClass = '';
 
