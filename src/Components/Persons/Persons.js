@@ -45,10 +45,6 @@ class Persons extends PureComponent {
 
   render() {
     console.log('[Persons.js] render...');
-    
-    // here we are not returning one sigle element but mutiple element of an array. technaically array is one sigle element and within number of chid elements.
-    // Reat allows us to retuen an array of adjustent elements provded that all the elements have a key and key is req. so that react can effiectively update and reorder these elements as required.
-
     return this.props.persons.map((person, index) => {
       return (
         <Person 
@@ -61,7 +57,6 @@ class Persons extends PureComponent {
       );
     });
   }
-  
 } 
 
 export default Persons
