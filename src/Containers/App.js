@@ -17,7 +17,6 @@ class App extends Component {
     ],
     something: 'hello',
     showPersons: false,
-    // adding the state
     showCockpit: true
   };
 
@@ -57,10 +56,7 @@ class App extends Component {
     }; 
     person.name = event.target.value;
 
-    // correction
-    // const persons = this.state.persons; // Error
     const persons = [...this.state.persons];
-
     persons[personIndex] = person;
     this.setState({persons: persons});
   };
@@ -98,11 +94,9 @@ class App extends Component {
 
         { this.state.showCockpit ? (
           <Cockpit 
-            // optimizing our component, hence changing props
             title = {this.props.appTitle}
             showPersons = {this.state.showPersons}
             clicked = {this.toggelPersonsHandler}
-            // persons = {this.state.persons}
             personsLength = {this.state.persons.length}
           />
         ) : null  }

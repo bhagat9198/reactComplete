@@ -1,3 +1,10 @@
+7.17. PureComponents instead of shouldComponentUpdate
+Persons.js
+
+7.16. When should you optimize
+nil
+
+
 7.15. Optimizing Functional Components with React.memo()
 Cockpit.js
 App.js
