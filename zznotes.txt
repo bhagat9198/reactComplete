@@ -1,3 +1,12 @@
+7.22. Higher Order Components (HOC) - Introduction
+
+hoc will wrap another component and then adds extra logic to it. Here, Auxilliary is hoc but doent have/adds extra logic to warpped compenent.
+Auxilliary compenent is not putting any logic and hence it was just for refference. 
+Craeting another hoc. it is convension to name hoc with 'With' in the begging of hoc name.
+
+hoc/WithClass : new file
+App.js
+
 7.21. Using React.Fragment
 Person.js
 

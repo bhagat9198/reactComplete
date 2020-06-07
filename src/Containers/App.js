@@ -3,6 +3,9 @@ import classes from './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 
+// using hoc 'WithClass'
+import WithClass from '../hoc/WithClass';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -85,7 +88,10 @@ class App extends Component {
     }
 
     return (
-      <div className={classes.App}>
+      // here we are wrapping all our child elements in 'div'. as we have imported 'WithClass' hoc, we will use that.
+      // <div className={classes.App}>
+
+      <WithClass classes={classes.App}>
         <button onClick={() => {
           this.setState({
             showCockpit: false
@@ -101,7 +107,7 @@ class App extends Component {
           />
         ) : null  }
         {persons}
-      </div>
+      </WithClass>
     );
   }
 }
