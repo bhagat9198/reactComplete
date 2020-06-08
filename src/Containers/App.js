@@ -14,14 +14,13 @@ class App extends Component {
 
   state = {
     persons : [
-      {id: 'wmj1', name:'Max', age:'29'},
-      {id: 'vff22', name:'Bob', age:'19'},
-      {id: '434f', name:'Mark', age:'15'},
+      {id: 'wmj1', name:'Max', age: 29},
+      {id: 'vff22', name:'Bob', age: 19},
+      {id: '434f', name:'Mark', age: 15},
     ],
     something: 'hello',
     showPersons: false,
     showCockpit: true,
-    // adding 
     changeCounter: 0
   };
 

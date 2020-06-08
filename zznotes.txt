@@ -1,4 +1,7 @@
-7.26. Using PropTypes
+7.27. Using Refs
+Person.js
+
+
 npm install --save prop-types
 Person.js
 
