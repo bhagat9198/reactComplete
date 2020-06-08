@@ -3,8 +3,14 @@ import classes from './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 
-// using hoc 'WithClass'
-import WithClass from '../hoc/WithClass';
+// we dont have WithClass component.
+// import WithClass from '../hoc/withClass';
+
+// importing Auxilliary hoc
+import Auxillary from '../hoc/Auxilliary';
+// importing the function
+import withClass from '../hoc/withClass';
+
 
 class App extends Component {
   constructor(props) {
@@ -88,10 +94,11 @@ class App extends Component {
     }
 
     return (
-      // here we are wrapping all our child elements in 'div'. as we have imported 'WithClass' hoc, we will use that.
-      // <div className={classes.App}>
+      // WithClass is no more component, its a function
+      // <WithClass classes={classes.App}>
 
-      <WithClass classes={classes.App}>
+      // now we have adjustent elements, thus wrapping all the child elements with Auxillary component. 
+      <Auxillary>
         <button onClick={() => {
           this.setState({
             showCockpit: false
@@ -107,9 +114,17 @@ class App extends Component {
           />
         ) : null  }
         {persons}
-      </WithClass>
+      </Auxillary>
     );
   }
 }
 
-export default App;
+// withClass id hoc which accepts 2 args, component and classname
+// export default App;
+
+export default withClass(App, classes.App);
+
+
+// when to use which method (According to me)
+  // 1method : when u want to manulplate the styling or html in jsx
+  // 2method : when u want to add some logic like error checking, etc.

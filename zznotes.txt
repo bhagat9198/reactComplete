@@ -1,9 +1,9 @@
+7.23. Another Form of HOCs
+hoc/withClass : rename
+App.js
+Cockpit.js : comment timeout.
+
 7.22. Higher Order Components (HOC) - Introduction
-
-hoc will wrap another component and then adds extra logic to it. Here, Auxilliary is hoc but doent have/adds extra logic to warpped compenent.
-Auxilliary compenent is not putting any logic and hence it was just for refference. 
-Craeting another hoc. it is convension to name hoc with 'With' in the begging of hoc name.
-
 hoc/WithClass : new file
 App.js
 
