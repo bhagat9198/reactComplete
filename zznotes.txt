@@ -1,3 +1,7 @@
+7.25. Setting State Correctly
+App.js
+
+
 7.24. Passing Unknown Props
 Person.js
 withClass
