@@ -1,3 +1,7 @@
+7.26. Using PropTypes
+npm install --save prop-types
+Person.js
+
 7.25. Setting State Correctly
 App.js
 
