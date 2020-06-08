@@ -2,13 +2,7 @@ import React, {Component} from 'react';
 import classes from './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
-
-// we dont have WithClass component.
-// import WithClass from '../hoc/withClass';
-
-// importing Auxilliary hoc
 import Auxillary from '../hoc/Auxilliary';
-// importing the function
 import withClass from '../hoc/withClass';
 
 
@@ -94,10 +88,6 @@ class App extends Component {
     }
 
     return (
-      // WithClass is no more component, its a function
-      // <WithClass classes={classes.App}>
-
-      // now we have adjustent elements, thus wrapping all the child elements with Auxillary component. 
       <Auxillary>
         <button onClick={() => {
           this.setState({
@@ -119,12 +109,5 @@ class App extends Component {
   }
 }
 
-// withClass id hoc which accepts 2 args, component and classname
-// export default App;
-
 export default withClass(App, classes.App);
 
-
-// when to use which method (According to me)
-  // 1method : when u want to manulplate the styling or html in jsx
-  // 2method : when u want to add some logic like error checking, etc.

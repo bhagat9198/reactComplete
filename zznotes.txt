@@ -1,3 +1,7 @@
+7.24. Passing Unknown Props
+Person.js
+withClass
+
 7.23. Another Form of HOCs
 hoc/withClass : rename
 App.js

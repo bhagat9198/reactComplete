@@ -1,35 +1,33 @@
-// 1st mmethod
-// import React from 'react';
-// const WithClass = props => (
-//   <div className={props.classes}> 
-//     {props.children}
-//   </div>
-// )
-// export default WithClass;
-
-
-// 2nd method: 
-  // in this we will not return the functional component.
-  // we will use regular(normal) JS which will 2 args (but it can take as many you want. according our need we will take 2 args)
-    // 1st arg: Component and hence arg name will be capatilized
-    // 2arg: name of a class. 'className' is just arg, its not a keyword as we function, not JSX.
 import React from 'react';
 
-// WithClass => withClass
+// this, now Person component got it style back but itts missing its 'name' and 'age'
+  // what it means?
+    // it means taht Person compoent is missing all its props.
+  // and why its missing?
+    // according to our setup, Persons compoent is importing is Person Component. Thus, directly it cant import person comp. , it will import the return result of this hoc.
+    // thus, whichever proprs have been passed by Persons will come in this hoc props. 
+    // and from here we have to pass props to Person comp.
+
 const withClass = (WrappedComponent, className) => {
-  // in function body, we will return functional component , ie JSX
   return props => (
-    // className on LHS : keyword
-    //  className on RHS :  arg passed by function
     <div className={className}>
-      <WrappedComponent></WrappedComponent>
+      {/* we can hardcode the props here as */}
+      {/* <WrappedComponent name="max!!!"></WrappedComponent> */}
+      {/* but, it we want it to be dynamic */}
+
+      {/* to pass the props to warpped comp. we cant do like this */}
+      {/* <WrappedComponent props = {props} /> */}
+      {/* this is bec, react automatically takes all the attributes we add to jsx and combine them into props object. So, now props will not replace the props object but add as a single property in the props passed to warpped comp. */}
+
+      {/* thus, we will use spread operator */}
+      <WrappedComponent {...props} />
+      {/* the props we are getting in function agr is the JS obj and spraed operator will pulls out all the properties which is inside the props object and distributes as new key-value pair on the warraped comp. */}
+
     </div>
   )
 }
 
-// now, its is just a function which is returning functional component but itself is is not a functional component. hence changing the way we are exporting and file name.
-// export default WithClass;
-
-// only components names are captailized and its not component. thus lowercase name
 export default withClass;
+
+
 
