@@ -1,3 +1,14 @@
+7.29. Understanding Prop Chain Problems
+Cockpit
+App.js
+Persons.js
+Person
+
+thus, our login and app works fine. till the time 'LogIn' button is not pressed 'Please LogIn' status will be displayed and once button is pressed 'Authenticated!!!' status will be displayed.
+
+but, we have to pass Auth prop from App -> Persons -> Person although Persons doesnt use auth prop. there should be way where we can pass the prop directly from App -> Person so that no extra props are sent to any compoenent. This can be done be 'context'.
+
+
 7.28. Refs with React Hooks
 Cockpit.js
 

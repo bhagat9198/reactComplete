@@ -39,6 +39,8 @@ class Person extends Component {
     console.log('[Person.js] render...');
     return (
       <Auxilliary>
+        {/* outputing the status based on authenicated value */}
+        {this.props.isAuth ? <p>Authenticated!!!</p> : <p>Please LogIn</p>}
         <p onClick={this.props.click}>
           Hello I am {this.props.name} and having age of {this.props.age} 
         </p>

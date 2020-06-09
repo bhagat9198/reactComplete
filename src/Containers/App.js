@@ -21,7 +21,9 @@ class App extends Component {
     something: 'hello',
     showPersons: false,
     showCockpit: true,
-    changeCounter: 0
+    changeCounter: 0,
+    // 
+    authenticated: false
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -76,6 +78,13 @@ class App extends Component {
     persons.splice(index, 1);
     this.setState({persons: persons});
   };
+
+  // adding handler
+  loginHandler = () => {
+    this.setState({
+      authenticated: true
+    });
+  }
   
   render() {
     console.log('[App.js] render');
@@ -87,7 +96,9 @@ class App extends Component {
         <Persons 
           persons = {this.state.persons}
           clicked = {this.deletePersonHandler}
-          changed = {this.nameChangedHandler}        
+          changed = {this.nameChangedHandler}   
+          // as we want to show the status if peron is loged in or not in Person component, and to reach Person compoennt we have to pass the args in Persons Component also.
+          isAuthenicated = {this.state.authenticated}   
         />
       );
     }
@@ -106,6 +117,8 @@ class App extends Component {
             showPersons = {this.state.showPersons}
             clicked = {this.toggelPersonsHandler}
             personsLength = {this.state.persons.length}
+            // adding one more property for login
+            login = {this.loginHandler}
           />
         ) : null  }
         {persons}
