@@ -1,3 +1,8 @@
+
+7.31. contextType & useContext()
+Person
+Cockpit
+
 7.30. Using the Context API
 context/auth-context.js : new file
 App

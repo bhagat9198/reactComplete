@@ -24,7 +24,6 @@ import Auxilliary from '../../../hoc/Auxilliary'
 import classes from './Person.css';
 import withClass from '../../../hoc/withClass';
 import PropTypes from 'prop-types';
-// importing context
 import AuthContext from '../../../context/auth-context'
 
 class Person extends Component {
@@ -33,20 +32,35 @@ class Person extends Component {
     this.inputElementRef = React.createRef();
   }
 
+  // we show context api through which we can pass the data around without passing in props. but there more elegant way.
+  // in previous way, we can only use context in JSX ie we can put much logic there. for eg, if user is logged, we need to pass some http req and this we cant do in JSX.
+  // but, from 16.6+ we have alternative way
+
+  // adding a special static property named 'contextType'. 'static contextType' should be written exactly like this.
+    // static : it can be accessed from outside of class without the need to instantiate an object on this class.
+  // static contextType = <your value>
+  // in our case value will be AuthContext object.
+  static contextType = AuthContext;
+  // this allow react to automatically connect this component to context which we have craeted 'AuthContext'. and after connect
+
   componentDidMount() {
     this.inputElementRef.current.focus();
+
+    // after successfull connection with context, we will get one special propety 'this.context'.
+    // and with help of 'this.context', we can access the context values with help of dot operator 'this.contex.<yourValue>'
+    console.log(this.context.authenticated);
   }
   
   render() {
     console.log('[Person.js] render...');
-    // now, we want to consume the values of the context and hence using consumer comp.
     return (
       <Auxilliary>
-        <AuthContext.Consumer>
-          {/* but, consumer comp, doesnt take JSX code as child ie content between '{}'. Consumer comp, takes a function as a child between '{}' */}
-          {/* hence passing annomous function and function will pass JSX. and this function which will be executed by context api will have a arg (you can name the arg what you want) which contain context object  */}
+        {/* <AuthContext.Consumer>
           {(context) => context.authenticated ? <p>Authenticated!!!</p> : <p>Please LogIn</p>}
-        </AuthContext.Consumer>
+        </AuthContext.Consumer> */}
+        
+        {/* doing with help of 'this.context' */}
+        {this.context.authenticated ? <p>Authenticated!!!</p> : <p>Please LogIn</p>}
 
         <p onClick={this.props.click}>
           Hello I am {this.props.name} and having age of {this.props.age} 
