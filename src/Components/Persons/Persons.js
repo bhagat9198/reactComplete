@@ -26,7 +26,6 @@
 import React, { PureComponent } from 'react';
 import Person from './Person/Person';
 
-
 class Persons extends PureComponent {
 
   getSnapshotBeforeUpdate(prevProps, prevState) {
@@ -53,8 +52,8 @@ class Persons extends PureComponent {
           age = {person.age}
           key = {person.id}
           changed = {(event) => {this.props.changed(event, person.id)}} 
-          // passing down authenicated prop to Person
-          isAuth = {this.props.isAuthenicated}
+          // no need to pass this argument anymore
+          // isAuth = {this.props.isAuthenicated}
         />
       );
     });

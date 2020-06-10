@@ -1,6 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import classes from './Cockpit.css';
 
+// 
+import AuthContext from '../../context/auth-context';
+
 const Cockpit = (props) => {
   const toogleButtonRef = useRef(null);
 
@@ -34,21 +37,21 @@ const Cockpit = (props) => {
     btnClass = classes.Red;
   }
 
-  // lets say we want to add authentication. if user is authentcated, Person compoent should display if person is authentacted.
-  // but we want to manage authentication in Cockpit (ie butoon click) and state in App.js
-
   return (
-    <div className={classes.Cockpit}>
-      <h1>{ props.title }</h1>
-      <p className={assignedClasses.join(' ')}>This is really working.</p>
-      <button  
-        ref={toogleButtonRef}
-        className={btnClass}
-        onClick={props.clicked.bind(props.showPersons)}>Toggele Persons
-      </button>
-      {/* adding button for autheication */}
-      <button onClick={props.login}>LogIn</button>
-    </div>
+    // as we have 'login' button which changes the authentication state. so, we will need a context. hence, importing context and using consumer component.
+    <AuthContext.Consumer>
+      { (context) => <div className={classes.Cockpit}>
+        <h1>{ props.title }</h1>
+        <p className={assignedClasses.join(' ')}>This is really working.</p>
+        <button  
+          ref={toogleButtonRef}
+          className={btnClass}
+          onClick={props.clicked.bind(props.showPersons)}>Toggele Persons
+        </button>
+        {/* using context attribute. */}
+        <button onClick={context.login}>LogIn</button>
+      </div>}
+    </AuthContext.Consumer>
   );
 };
 

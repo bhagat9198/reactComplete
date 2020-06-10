@@ -24,6 +24,8 @@ import Auxilliary from '../../../hoc/Auxilliary'
 import classes from './Person.css';
 import withClass from '../../../hoc/withClass';
 import PropTypes from 'prop-types';
+// importing context
+import AuthContext from '../../../context/auth-context'
 
 class Person extends Component {
   constructor(props) {
@@ -37,10 +39,15 @@ class Person extends Component {
   
   render() {
     console.log('[Person.js] render...');
+    // now, we want to consume the values of the context and hence using consumer comp.
     return (
       <Auxilliary>
-        {/* outputing the status based on authenicated value */}
-        {this.props.isAuth ? <p>Authenticated!!!</p> : <p>Please LogIn</p>}
+        <AuthContext.Consumer>
+          {/* but, consumer comp, doesnt take JSX code as child ie content between '{}'. Consumer comp, takes a function as a child between '{}' */}
+          {/* hence passing annomous function and function will pass JSX. and this function which will be executed by context api will have a arg (you can name the arg what you want) which contain context object  */}
+          {(context) => context.authenticated ? <p>Authenticated!!!</p> : <p>Please LogIn</p>}
+        </AuthContext.Consumer>
+
         <p onClick={this.props.click}>
           Hello I am {this.props.name} and having age of {this.props.age} 
         </p>

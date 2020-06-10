@@ -5,6 +5,10 @@ import Cockpit from '../components/Cockpit/Cockpit';
 import Auxillary from '../hoc/Auxilliary';
 import withClass from '../hoc/withClass';
 
+// importing context
+import AuthContext from '../context/auth-context';
+// context can be used as component also and thus name is capatilse and it should warp all teh parts of the application that need access to the context.
+
 
 class App extends Component {
   constructor(props) {
@@ -22,7 +26,6 @@ class App extends Component {
     showPersons: false,
     showCockpit: true,
     changeCounter: 0,
-    // 
     authenticated: false
   };
 
@@ -79,7 +82,6 @@ class App extends Component {
     this.setState({persons: persons});
   };
 
-  // adding handler
   loginHandler = () => {
     this.setState({
       authenticated: true
@@ -97,12 +99,13 @@ class App extends Component {
           persons = {this.state.persons}
           clicked = {this.deletePersonHandler}
           changed = {this.nameChangedHandler}   
-          // as we want to show the status if peron is loged in or not in Person component, and to reach Person compoennt we have to pass the args in Persons Component also.
-          isAuthenicated = {this.state.authenticated}   
+          // no need to pass this arg in props
+          // isAuthenicated = {this.state.authenticated}   
         />
       );
     }
 
+    // in our case, context should be wrapped around Cockpit and Persons comp. we wrappe the component bit differently with context.
     return (
       <Auxillary>
         <button onClick={() => {
@@ -110,18 +113,26 @@ class App extends Component {
             showCockpit: false
           })
         }}> Remove Cockpit </button>
-
-        { this.state.showCockpit ? (
-          <Cockpit 
-            title = {this.props.appTitle}
-            showPersons = {this.state.showPersons}
-            clicked = {this.toggelPersonsHandler}
-            personsLength = {this.state.persons.length}
-            // adding one more property for login
-            login = {this.loginHandler}
-          />
-        ) : null  }
-        {persons}
+        {/* thus, now its a provider componenet and it takes a value prop. and thats why default values passed in 'auth-context' file doesnt matter. Defauly value will be applied only when we dont apply any other value */}
+        {/* in our case, we want to pass dynamic value as auth status can be changed. thus passing our object */}
+        {/* {{}} : object inside dynmaic values */}
+        <AuthContext.Provider value={{
+          authenticated: this.state.authenticated,
+          login : this.loginHandler
+        }}>
+          {/* thus, now Cockpit comp and Persons comp can access the above values as they are warrped inside provider comp. */}
+          { this.state.showCockpit ? (
+            <Cockpit 
+              title = {this.props.appTitle}
+              showPersons = {this.state.showPersons}
+              clicked = {this.toggelPersonsHandler}
+              personsLength = {this.state.persons.length}
+              // no need to pass this arg anymore here in props
+              // login = {this.loginHandler}
+            />
+          ) : null  }
+          {persons}
+        </AuthContext.Provider>
       </Auxillary>
     );
   }
