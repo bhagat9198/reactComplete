@@ -1,3 +1,10 @@
+8.8. Starting Implementation of The Burger Builder Container
+containers/BurgerBuilder/BurgerBuilder : new file
+App
+containers/Layout/Layout.css : new file
+Layout
+
+
 8.7. Creating a Layout Component
 starting to build the app, we can divide it into 2 parts ie
   1. layout (containing everything navbar + burgerBuilder)

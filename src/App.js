@@ -1,15 +1,14 @@
 import React from 'react';
-// 
 import Layout from './components/Layout/Layout'
+// 
+import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
 
 function App() {
   return (
     <div>
-      {/* it cant be self closing compoennt as whole idea is that it will have component which will be warrped in Layout */}
-      {/* <Layout /> */}
-
       <Layout>
-        <p>Test!!!</p>
+        {/* layour comp. will be warpping all our components. */}
+        <BurgerBuilder />
       </Layout>
     </div>
   );
