@@ -1,3 +1,9 @@
+8.9. Adding a Dynamic Ingredient Component
+Burger/Burger.js
+Burger/BurgerIngrediant/BurgerIngrediant.js
+Burger/BurgerIngrediant/BurgerIngrediant.css
+
+
 8.8. Starting Implementation of The Burger Builder Container
 containers/BurgerBuilder/BurgerBuilder : new file
 App
