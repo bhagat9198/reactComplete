@@ -1,3 +1,8 @@
+8.10. Adding Prop Type Validation
+BurgerIngrediant
+npm install --save prop-types
+
+
 8.9. Adding a Dynamic Ingredient Component
 Burger/Burger.js
 Burger/BurgerIngrediant/BurgerIngrediant.js
