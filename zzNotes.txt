@@ -1,0 +1,298 @@
+8.6. Setting up the Project
+commit before the npm run eject
+
+8.5. Planning the State
+---
+
+8.4. Planning our App - Layout and Component Tree
+---
+
+8.3. Planning an App in React - Core Steps
+---
+
+8.2. Module Introduction
+---
+
+8.1. About React Hooks
+---
+
+7.32. Wrap Up
+---
+
+7.31. contextType & useContext()
+Person
+Cockpit
+
+7.30. Using the Context API
+context/auth-context.js : new file
+App
+Person
+Cockpit
+Persons
+
+7.29. Understanding Prop Chain Problems
+Cockpit
+App.js
+Persons.js
+Person
+
+7.28. Refs with React Hooks
+Cockpit.js
+
+
+7.27. Using Refs
+Person.js
+
+7.26. Using PropTypes
+npm install --save prop-types
+Person.js
+
+7.25. Setting State Correctly
+App.js
+
+
+7.24. Passing Unknown Props
+Person.js
+withClass
+
+7.23. Another Form of HOCs
+hoc/withClass : rename
+App.js
+Cockpit.js : comment timeout.
+
+7.22. Higher Order Components (HOC) - Introduction
+hoc/WithClass : new file
+App.js
+
+7.21. Using React.Fragment
+Person.js
+
+7.20 Windows user
+nil
+
+7.19. Rendering Adjacent JSX Elements
+Person.js
+hoc/Auxilliary.js 
+
+
+7.18. How React Updates the DOM
+nil
+
+7.17. PureComponents instead of shouldComponentUpdate
+Persons.js
+
+7.16. When should you optimize
+nil
+
+
+7.15. Optimizing Functional Components with React.memo()
+Cockpit.js
+App.js
+
+
+7.14. Using shouldComponentUpdate for Optimization
+Persons.js
+
+
+7.13. Cleanup Work with useEffect() - Ex
+Cockpit.js
+
+7.12. Cleaning up with Lifecycle Hooks & useEffect()
+Persons.js
+Cockpit.js
+App.js
+
+7.11. Controlling the useEffect() Behavior
+Cockpit.js
+
+
+7.10. Using useEffect() in Functional Components
+Cockpit.js
+
+
+7.9. Component Update Lifecycle (for state Changes)
+App.js
+
+
+7.8. Component Update Lifecycle (for props Changes)
+Persons.js
+App.js
+
+7.7. Component Creation Lifecycle in Action
+App.js
+Persons.js
+Person.js
+
+7.6. Class Component Lifecycle Overview
+---
+
+7.5. Class-based vs Functional Components
+index.js
+App.js
+Cockpit.js
+
+
+7.4. Comparing Stateless and Stateful Components
+---
+
+7.3. Splitting an App Into Components
+App.js
+Persons.js
+Cockpit.js
+Cockpit.css
+
+
+7.2. A Better Project Structure
+ErrorBoundary : deleted
+Components/Cockpit/Cockpit.js : new file
+Components/Persons/Persons.js :new file
+Components/Persons/Person/Person.js : deleted random error
+Components/Persons/Person/Person.css : no changes
+Containers/App.js : ErrorBoundary deleted, changing path
+Containers/App.css : no change
+Containers/App.test.js :  no change
+index.js : changing path
+assets : new folder, in case we nned to add any img
+
+
+
+
+6.5. Using Error Boundaries (React 16+)
+Person.js
+ErrorBoundary/ErrorBoundary.js
+App.js
+
+5.11. Working with Media Queries
+Person.js
+Person.css
+
+
+5.10. Adding Pseudo Selectors
+App.js
+App.css
+
+5.9
+---
+
+5.8. Enabling & Using CSS Modules
+webpack.config.js
+App.js
+Person.js
+
+5.7
+---
+
+5.6. Using Radium for Media Queries
+Person.js
+App.js
+
+5.5. Adding and Using Radium
+App.js
+Person.js
+
+5.4. Setting Class Names Dynamically
+App.js
+App.css
+
+
+5.3. Setting Styles Dynamically
+App.js
+
+
+5.2. Outlining the Problem Set
+---
+
+
+4.9
+App.js
+
+4.8 : adding key property
+App.js
+
+4.7 : deleting a list
+App.js
+
+4.6
+Person.js
+App.js
+
+4.5 : converting 'person' to 'persons' in state. hence changing at respective places where this.state.person is used
+App.js
+
+4.4
+intro
+
+4.3
+App.js
+
+4.2
+App.js
+
+3.25
+App.js
+
+3.24 :creating and linking css file
+Person.css
+Person.js
+
+3.23 : 
+now we want to user to enter the name and that should be visible instead of 'Bob'
+Person.js
+App.js
+
+3.22 : passing params
+App.js
+Person/Person.js
+
+3.21
+App.js
+
+
+3.20
+App.js
+
+
+3.18
+App.js
+
+3.16
+App.js  :button
+
+3.14
+App.js : state
+
+3.13
+App.js
+Person/Person.js
+
+
+3.12
+App.js
+Person/Person.js
+
+3.11
+Person/Person.js
+
+3.10
+App.js
+
+
+
+3.8
+Person/Person.js
+App.js
+
+it is convension that all the compenents name start with uppercase. as we are planning to create one component regarding person, hence created 'Person' compenent.
+
+
+3.6
+App.js
+
+3.5
+index.js
+App.js
+
+react is all about creating compenents. 
+"App" compenent gets used in "index.js" file and from it is reendered to "root" compenent of index.html file
+
+
