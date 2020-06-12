@@ -1,5 +1,15 @@
 8.6. Setting up the Project
-commit before the npm run eject
+implemeneting css class modules with npm run eject
+
+config/webpack.config.js : modify
+App.css : delete
+logo.svg : delete
+App.js : modify
+public/index.html : title change
+index.css : font add
+favicon.ico : delete
+burger.ico : new icon
+
 
 8.5. Planning the State
 ---
