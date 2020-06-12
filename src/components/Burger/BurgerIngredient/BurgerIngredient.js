@@ -1,6 +1,3 @@
-// we can use PropTypes in functional comp also the way we do in class based comp.
-// changung functional comp into class based
-
 import React, { Component } from 'react';
 import classes from './BurgerIngredient.css';
 import PropTypes from 'prop-types';
@@ -10,6 +7,7 @@ class BurgerIngredient extends Component {
     let ingredient = null;
 
     switch(this.props.type) {
+      // correction
       case ('bread-bottom') :
         ingredient = <div className={classes.BreadBottom}></div>
         break;
@@ -41,10 +39,7 @@ class BurgerIngredient extends Component {
   };
 }
 
-// adding propTypes
 BurgerIngredient.propTypes = {
-  // thus, type property must be of 'string' data type and is required.
-  // so, we try to use this component (BurgerIngrediant) withour passing 'type' property, will get an error
   type: PropTypes.string.isRequired
 }
 

@@ -1,3 +1,9 @@
+8.11. Starting the Burger Component
+Burger/Burger.css : new file
+Burger
+BurgerIngrediant : correction 'bread-bottom'
+BurgerBuilder
+
 8.10. Adding Prop Type Validation
 BurgerIngrediant
 npm install --save prop-types
