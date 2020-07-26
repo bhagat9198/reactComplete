@@ -4,7 +4,6 @@ import Burger from '../../components/Burger/Burger';
 
 class BurgerBuilder extends Component {
 
-  // setting all the ingrediants to zero 
   state = {
     ingredients: {
       salad: 0,
@@ -17,7 +16,6 @@ class BurgerBuilder extends Component {
   render() {
     return (
       <Auxilliary>
-        {/* passing ingrediants */}
         <Burger ingredients={this.state.ingredients} />
         <div>Burger controls</div>
       </Auxilliary>

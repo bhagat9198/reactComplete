@@ -1,3 +1,11 @@
+8.14. Adding the Build Control Component
+
+BuildControls/BuildControls.js :new
+BuildControls/BuildControls.css :new
+BuildControls/BuildControl/BuildControl.js :new
+BuildControls/BuildControl/BuildControl.css :new
+
+
 8.13. Calculating the Ingredient Sum Dynamically
 making userfreindly ui. if no ingrediants are there, displaying message
 
