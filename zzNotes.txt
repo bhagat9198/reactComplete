@@ -1,3 +1,9 @@
+8.15. Outputting Multiple Build Controls
+
+BuildControls/BuildControls.js
+BurgerBuilder
+BuildControls/BuildControl/BuildControl.js :  correction button inplace of div
+
 8.14. Adding the Build Control Component
 
 BuildControls/BuildControls.js :new

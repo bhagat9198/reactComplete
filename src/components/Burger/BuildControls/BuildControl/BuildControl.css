@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 5px 0;
+  margin: 5px 0; 
 }
 
 .BuildControl button {
@@ -15,6 +15,7 @@
   cursor: pointer;
   outline: none;
 }
+
 
 .BuildControl button:disabled {
   background-color: #AC9980;
