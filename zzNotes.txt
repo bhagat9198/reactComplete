@@ -1,3 +1,10 @@
+8.13. Calculating the Ingredient Sum Dynamically
+making userfreindly ui. if no ingrediants are there, displaying message
+
+BurgerBuilder
+Burger
+
+
 8.12. Outputting Burger Ingredients Dynamically
 Our burger is getting displayed but the way we are displaying is hard coded. we need to display the ingrediants of the burger dynmically and for that we need a state.
 
