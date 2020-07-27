@@ -3,7 +3,7 @@
   height: 250px;
   margin: auto;
   /* as we have given the specific height and if our content doesnt fit itno that height, our content can cut off or look weird. thus, by this property, if our content gets increased, scroll bar will appear.  */
-  /* overflow-y: scroll; */
+  overflow-y: auto;
   text-align: center;
   font-weight: bold;
   font-size: 1.2rem;

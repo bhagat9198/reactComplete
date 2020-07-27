@@ -1,3 +1,9 @@
+18. Displaying and Updating the Burger Price
+
+BurgerBuilder
+BuildControls
+
+
 8.17. Removing Ingredients Safely
 first making 'Less' working, then giving the functionailty of disabled
 BurgerBuilder
