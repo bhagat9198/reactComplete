@@ -1,4 +1,13 @@
-18. Displaying and Updating the Burger Price
+8.19. Adding the Order Button
+add the 'order now' button
+check if burger is purchaseable or not.
+make 'order now' button disabled or enabled
+
+BuildControls
+BurgerBuilder
+
+
+8.18. Displaying and Updating the Burger Price
 
 BurgerBuilder
 BuildControls

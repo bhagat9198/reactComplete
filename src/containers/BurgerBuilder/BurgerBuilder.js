@@ -19,7 +19,27 @@ class BurgerBuilder extends Component {
       cheese: 0,
       meat: 0
     },
-    totalPrice: 20
+    totalPrice: 20,
+    // setting purchase option to false initially as we want user to add atleast one ingredient
+    purchaseable: false
+  }
+
+  // this function will called everytime whenever the ingredient is added or removed to set purchanseable to true or false. 
+  // and we accepting the updatedIngredient arg from both the function 
+  updatePurchseState(ingredients) {
+    const sum = Object.keys(ingredients)
+      .map(igKey => {
+        return ingredients[igKey];
+      })
+      .reduce((sum, el) => {
+        return sum + el;
+      }, 0);
+
+    // updating the state
+    this.setState({
+      purchaseable: sum > 0
+    });
+
   }
 
   addIngredientHandler = (type) => {
@@ -36,6 +56,9 @@ class BurgerBuilder extends Component {
       totalPrice: newPrice,
       ingredients: updatedIngredients
     });
+
+    // calling 
+    this.updatePurchseState(updatedIngredients);
   }; 
 
   removeIngrediantHandler = (type) => {
@@ -55,6 +78,9 @@ class BurgerBuilder extends Component {
       totalPrice: newPrice,
       ingredients: updatedIngredients
     });
+    
+    // calling 
+    this.updatePurchseState(updatedIngredients);
   }
 
   render() {
@@ -72,8 +98,9 @@ class BurgerBuilder extends Component {
           ingredientAdded={this.addIngredientHandler}
           ingredientRemoved={this.removeIngrediantHandler}
           disabled={disabledInfo}
-          // as we are outputing total price in controls tab, thus passing the prop
           price={this.state.totalPrice}
+          // 
+          purchaseable={this.state.purchaseable}
         />
       </Auxilliary>
     );

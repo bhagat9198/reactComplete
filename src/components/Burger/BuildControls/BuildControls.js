@@ -12,7 +12,6 @@ const controls = [
 
 const BuildControls = (props) => (
   <div className={classes.BuildControls}>
-    {/* displaying the total price */}
     <p>Current Price: <strong>{props.price}</strong></p>
     {controls.map((ctrl) => {
       return <BuildControl  
@@ -23,6 +22,9 @@ const BuildControls = (props) => (
         label={ctrl.label} 
       />;
     })}
+    <br /><br />
+    {/* not operator as per condition */}
+    <button disabled={!props.purchaseable} className={classes.OrderButton}>ORDER NOW</button>
   </div>
 );
 
