@@ -1,3 +1,23 @@
+8.20. Creating the Order Summary Modal
+
+once the order now button is clicked, we want to show summary of the order in a model
+model : to have a wrapping element which provide teh styling which then simply warps itself about any content we want to show in tat model
+
+creating new files:
+Burger/OrderSummary/OrderSummary.js : new
+Burger/UI/Backdrop/Backdrop.js : new
+Burger/UI/Modal/Modal.js : new
+Burger/UI/Modal/Modal.css : new
+
+
+filling out files:
+Burger/UI/Modal/Modal.js 
+Burger/UI/Modal/Modal.css
+Burger/OrderSummary/OrderSummary.js 
+BurgerBuilder
+
+
+
 8.19. Adding the Order Button
 add the 'order now' button
 check if burger is purchaseable or not.

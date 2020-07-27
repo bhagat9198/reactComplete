@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import Auxilliary from '../../hoc/Auxilliary';
 import Burger from '../../components/Burger/Burger';
 import BurgerControls from '../../components/Burger/BuildControls/BuildControls';
+// 
+import Modal from '../../components/UI/Modal/Modal';
+import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 
 const INGREDIENTS_PRICES = {
   salad: 15,
@@ -20,12 +23,9 @@ class BurgerBuilder extends Component {
       meat: 0
     },
     totalPrice: 20,
-    // setting purchase option to false initially as we want user to add atleast one ingredient
     purchaseable: false
   }
 
-  // this function will called everytime whenever the ingredient is added or removed to set purchanseable to true or false. 
-  // and we accepting the updatedIngredient arg from both the function 
   updatePurchseState(ingredients) {
     const sum = Object.keys(ingredients)
       .map(igKey => {
@@ -35,7 +35,6 @@ class BurgerBuilder extends Component {
         return sum + el;
       }, 0);
 
-    // updating the state
     this.setState({
       purchaseable: sum > 0
     });
@@ -56,8 +55,6 @@ class BurgerBuilder extends Component {
       totalPrice: newPrice,
       ingredients: updatedIngredients
     });
-
-    // calling 
     this.updatePurchseState(updatedIngredients);
   }; 
 
@@ -78,8 +75,6 @@ class BurgerBuilder extends Component {
       totalPrice: newPrice,
       ingredients: updatedIngredients
     });
-    
-    // calling 
     this.updatePurchseState(updatedIngredients);
   }
 
@@ -93,13 +88,16 @@ class BurgerBuilder extends Component {
 
     return (
       <Auxilliary>
+        {/* passing ordersummary within model */}
+        <Modal>
+          <OrderSummary ingredients={this.state.ingredients} />
+        </Modal>
         <Burger ingredients={this.state.ingredients} />
         <BurgerControls 
           ingredientAdded={this.addIngredientHandler}
           ingredientRemoved={this.removeIngrediantHandler}
           disabled={disabledInfo}
           price={this.state.totalPrice}
-          // 
           purchaseable={this.state.purchaseable}
         />
       </Auxilliary>

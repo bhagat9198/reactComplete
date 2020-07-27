@@ -23,7 +23,6 @@ const BuildControls = (props) => (
       />;
     })}
     <br /><br />
-    {/* not operator as per condition */}
     <button disabled={!props.purchaseable} className={classes.OrderButton}>ORDER NOW</button>
   </div>
 );
