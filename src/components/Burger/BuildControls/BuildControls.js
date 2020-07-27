@@ -15,9 +15,9 @@ const BuildControls = (props) => (
     {controls.map((ctrl) => {
       return <BuildControl  
         key={ctrl.label} 
-        // as ingredientAdded is a function which takes 'type' as an argumemnt so to correctly update the state.
-        // added={props.ingredientAdded}
-        added={() => props.ingredientAdded(ctrl.type)} //we are call the function, hence passing the args
+        added={() => props.ingredientAdded(ctrl.type)}
+        removed={() => props.ingredientRemoved(ctrl.type)}
+        disabled={props.disabled[ctrl.type]}
         label={ctrl.label} 
       />;
     })}

@@ -24,38 +24,67 @@ class BurgerBuilder extends Component {
     totalPrice: 25
   }
 
-  // as everything is connected, now we want to change the number of ingrediants in state as per the user wish.
   addIngredientHandler = (type) => {
     const oldCount = this.state.ingredients[type];
     const updatedCount = oldCount + 1;
-    // we cant mutate the state directly
     const updatedIngredients = {
       ...this.state.ingredients
     };
-    // updating the particular ingredient count
     updatedIngredients[type] = updatedCount;
-    // updating the price along with ingreduants count
     const priceAddition = INGREDIENTS_PRICES[type];
     const oldPrice = this.state.totalPrice;
     const newPrice = oldPrice + priceAddition;
-    // updating teh state
     this.setState({
       totalPrice: newPrice,
       ingredients: updatedIngredients
-    })
+    });
   }; 
 
   removeIngrediantHandler = (type) => {
-
+    // similar to adding ingredient
+    const oldCount = this.state.ingredients[type];
+    // before reducing the count by one we should see if that type value is greater than 1. otherwise value will go into negative and while displaying the burger we will get an error.
+      // Burger.js:7 Uncaught RangeError: Invalid array length
+    // hence checking
+    if(oldCount <= 0) {
+      // simply return without manupliating the state
+      return 
+    } 
+    const updatedCount = oldCount - 1;
+    const updatedIngredients = {
+      ...this.state.ingredients
+    };
+    updatedIngredients[type] = updatedCount;
+    const priceDeduction = INGREDIENTS_PRICES[type];
+    const oldPrice = this.state.totalPrice;
+    const newPrice = oldPrice - priceDeduction;
+    this.setState({
+      totalPrice: newPrice,
+      ingredients: updatedIngredients
+    });
   }
 
   render() {
+    // it will be better if we can displable the 'Less' button also when it is not req.
+    const disabledInfo = {
+      ...this.state.ingredients
+    };
+    for(let key in disabledInfo) {
+      // console.log(key);
+      disabledInfo[key] = disabledInfo[key] <= 0
+    } 
+    // console.log(disabledInfo);
+    // {salad: true, cheese: false,...}
+
     return (
       <Auxilliary>
         <Burger ingredients={this.state.ingredients} />
-        {/* passing the refference of addIngredientHandler*/}
         <BurgerControls 
           ingredientAdded={this.addIngredientHandler}
+          // 
+          ingredientRemoved={this.removeIngrediantHandler}
+          // we are within a function, no need of 'this'
+          disabled={disabledInfo}
         />
       </Auxilliary>
     );
