@@ -1,3 +1,9 @@
+8.21. Showing & Hiding the Modal (with Animation!)
+
+BurgerBuilder
+BuildControls : onclick
+Modal
+
 8.20. Creating the Order Summary Modal
 
 once the order now button is clicked, we want to show summary of the order in a model
