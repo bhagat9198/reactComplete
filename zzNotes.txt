@@ -1,3 +1,10 @@
+8.16. Connecting State to Build Controls
+
+BurgerBuilder
+BuildControls
+BuildControl
+
+
 8.15. Outputting Multiple Build Controls
 
 BuildControls/BuildControls.js

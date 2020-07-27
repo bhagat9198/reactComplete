@@ -9,7 +9,8 @@ const BuildControl = props => (
     <div className={classes.Label}>{props.label}</div>
     {/* correction: button inplace of div */}
     <button className={classes.Less}>Less</button>
-    <button className={classes.More}>More</button>
+    {/* no need of passing any args, we are calling the anaomous function. */}
+    <button className={classes.More} onClick={props.added}>More</button>
   </div>
 )
 

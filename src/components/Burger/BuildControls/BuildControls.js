@@ -1,25 +1,27 @@
-import React from 'react';
+import React from "react";
 
-import classes from './BuildControls.css';
-import BuildControl from './BuildControl/BuildControl';
-
-// in order to pass the labels to BuildControls, we should first create all the labels.
-// best way is to put all the labels in array so that we can loop over them when required.
+import classes from "./BuildControls.css";
+import BuildControl from "./BuildControl/BuildControl";
 
 const controls = [
-  {label: 'Salad', type: 'salad'},
-  {label: 'Bacon', type: 'bacon'},
-  {label: 'Cheese', type: 'cheese'},
-  {label: 'Meat', type: 'meat'},
-]; 
+  { label: "Salad", type: "salad" },
+  { label: "Bacon", type: "bacon" },
+  { label: "Cheese", type: "cheese" },
+  { label: "Meat", type: "meat" },
+];
 
-const BuildControls = props => (
+const BuildControls = (props) => (
   <div className={classes.BuildControls}>
-    {controls.map(ctrl => {
-      return <BuildControl key={ctrl.label} label={ctrl.label} />
+    {controls.map((ctrl) => {
+      return <BuildControl  
+        key={ctrl.label} 
+        // as ingredientAdded is a function which takes 'type' as an argumemnt so to correctly update the state.
+        // added={props.ingredientAdded}
+        added={() => props.ingredientAdded(ctrl.type)} //we are call the function, hence passing the args
+        label={ctrl.label} 
+      />;
     })}
   </div>
 );
-
 
 export default BuildControls;
