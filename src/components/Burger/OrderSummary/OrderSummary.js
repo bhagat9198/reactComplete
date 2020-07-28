@@ -17,6 +17,8 @@ const OrderSummary = (props) => {
     <ul>
       {ingredientsSummary}
     </ul>
+    {/* passing price with 2 decimal points */}
+    <p><strong>Your total price: {props.price.toFixed(2)}</strong></p>
     <p>Continue to checkout?</p>
     <Button btnType='Danger' clicked={props.purchaseCancelled}>CANCEL</Button>
     <Button btnType='Success' clicked={props.purchaseContinued}>CONTINUE</Button>
