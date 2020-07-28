@@ -1,3 +1,15 @@
+8.26. Adding a Toolbar
+
+creating seprate componenet
+compenents/Navigation/Toolbar/Toolbar.js : new
+compenents/Navigation/Toolbar/Toolbar.css : new
+
+Toolbar.js
+Toolbar.css
+Layout.js
+Layout.css : changing 16px to 12px
+
+
 8.25. Adding the Price to the Order Summary
 
 OrderSummary
@@ -12,7 +24,7 @@ BurgerBuilder
 
 8.23. Adding a Custom Button Component
 
-craeting seprate componenet
+creating seprate componenet
 UI/Button/Button.js : new
 UI/Button/Button.css : new (material)
 
