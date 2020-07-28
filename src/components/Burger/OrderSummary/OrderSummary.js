@@ -16,6 +16,10 @@ const OrderSummary = (props) => {
       {ingredientsSummary}
     </ul>
     <p>Continue to checkout?</p>
+    {/* cancel will have same functionilty as of backdroup  and continue for now will just show alert */}
+    {/* as buttons are very common, craeting a sepreate componenet for buttons */}
+    <button>CANCEL</button>
+    <button>CONTINUE</button>
   </Auxilliary>);
 };
 

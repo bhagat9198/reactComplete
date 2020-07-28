@@ -1,9 +1,6 @@
 import React from 'react';
 import classes from './Modal.css';
-// if modal is shown than backdrop should be shown
-// importing Auxilliary hoc as Modal and Backdrop will be side by side
 import Auxilliary from '../../../hoc/Auxilliary'
-// importing Backdrop
 import Backdrop from '../Backdrop/Backdrop';
 
 
