@@ -79,20 +79,13 @@ class BurgerBuilder extends Component {
     this.updatePurchseState(updatedIngredients);
   }
 
-  // "BurgerBuilder.js:83 Uncaught TypeError: Cannot read property 'setState' of undefined"
-  // we have set the state "this.setState({purchasing: true});" exactly the way it is done in other methods. the reason it fails here because of the way this method is craeted.
-  // this syntax will not work correctly while using 'this' keyword if method is triggred through an event. due to the way 'this' keyword works in js, it will then not reffer to class
-    // but this not the case for  "removeIngrediantHandler" and "addIngrediantHandler" as those methods are properties assigned with arrow function. 
-  // purchasHandler() {
-  //   console.log(this);  // undefined
-  //   // this.setState({purchasing: true});
-  // }
-
-  // thus, setting up above method by making it as property and assigning the arraoe function.
   purchasHandler = () => {
-    // console.log(this); 
-    // BurgerBuilder {props: {…}, context: {…}, refs: {…}, updater: {…}, state: {…}, …}
     this.setState({purchasing: true});
+  }
+
+  // 
+  purchasCancelHandler = () => {
+    this.setState({purchasing: false});
   }
 
   render() {
@@ -105,9 +98,11 @@ class BurgerBuilder extends Component {
 
     return (
       <Auxilliary>
-        {/* we dont want to show model everytime. it should be displayed only 'order now' utton is clicked. either we can put if condition to hide or show this model. but we will do it will css */}
-        {/* passing teh props */}
-        <Modal show={this.state.purchasing}>
+        <Modal 
+          show={this.state.purchasing}
+          // 
+          modalClosed={this.purchasCancelHandler}
+        >
           <OrderSummary ingredients={this.state.ingredients} />
         </Modal>
         <Burger ingredients={this.state.ingredients} />

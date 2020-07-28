@@ -1,3 +1,11 @@
+8.22. Implementing the Backdrop Component
+
+Backdrop.js
+Backdrop/Backdrop.css : new
+Modal
+BurgerBuilder
+
+
 8.21. Showing & Hiding the Modal (with Animation!)
 
 BurgerBuilder
