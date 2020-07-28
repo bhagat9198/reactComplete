@@ -1,5 +1,7 @@
 import React from 'react';
-import Auxilliary from '../../../hoc/Auxilliary'
+import Auxilliary from '../../../hoc/Auxilliary';
+// 
+import Button from '../../UI/Button/Button';
 
 const OrderSummary = (props) => {
   const ingredientsSummary = Object.keys(props.ingredients).map(igKey => {
@@ -16,10 +18,8 @@ const OrderSummary = (props) => {
       {ingredientsSummary}
     </ul>
     <p>Continue to checkout?</p>
-    {/* cancel will have same functionilty as of backdroup  and continue for now will just show alert */}
-    {/* as buttons are very common, craeting a sepreate componenet for buttons */}
-    <button>CANCEL</button>
-    <button>CONTINUE</button>
+    <Button btnType='Danger' clicked={props.purchaseCancelled}>CANCEL</Button>
+    <Button btnType='Success' clicked={props.purchaseContinued}>CONTINUE</Button>
   </Auxilliary>);
 };
 
