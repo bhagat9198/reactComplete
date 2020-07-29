@@ -23,7 +23,6 @@ class BurgerBuilder extends Component {
     },
     totalPrice: 20,
     purchaseable: false,
-    // it will become true when 'order now' button will be clicked
     purchasing: false
   }
 

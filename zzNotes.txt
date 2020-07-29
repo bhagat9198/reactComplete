@@ -1,3 +1,13 @@
+8.27. Using a Logo in our Application
+
+creating seprate componenet
+components/Logo/Logo.js : new
+components/Logo/Logo.css : new
+
+Logo.js
+Logo.css
+Toolbar
+
 8.26. Adding a Toolbar
 
 creating seprate componenet
