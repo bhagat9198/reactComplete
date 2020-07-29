@@ -1,5 +1,14 @@
+8.31. More about Responsive Adjustments
+
+NavigationItem.css : making mobile friendly
+NavigationItems.css : changing flex settings
+SideDrawer.css  : adding margin-bottom to logo
+Toolbar.css
+Toolbar
+
+
 8.30. Working on Responsive Adjustments
-rn, in our sidedrawer logo is way to big and thats is because it is inherting the style from Logo.css where height is 100% thust it is taking whole height of SlideDrawer and leaving space of other things.
+rn, in our SideDrawer logo is way to big and thats is because it is inherting the style from Logo.css where height is 100% thust it is taking whole height of SideDrawer and leaving space of other things.
 and thus, we are not able to see NavigationItems.
 
 thus, we can add media query in Logo.css but its better to control the style where we embed that componenet.
@@ -10,22 +19,22 @@ thus, we can add media query in Logo.css but its better to control the style whe
 
 Toolbar : 1st method
 Logo : 1st method
-Sidedrawer: 1st method
+SideDrawer: 1st method
 Toolbar : 2nd methods
 Toolbar.css : 2nd methods
-sidedrawer: 2nd method
-sidedrawer.css: 2nd method
+SideDrawer: 2nd method
+SideDrawer.css: 2nd method
 
 
 
-8.29. Creating a Responsive Sidedrawer
+8.29. Creating a Responsive SideDrawer
 
 creating separate componenet
-components/Navigation/SlideDrawer/SlideDrawer.js : new
-components/Navigation/SlideDrawer/SlideDrawer.css : new
+components/Navigation/SideDrawer/SideDrawer.js : new
+components/Navigation/SideDrawer/SideDrawer.css : new
 
-SlideDrawer.css
-SlideDrawer
+SideDrawer.css
+SideDrawer
 Layout
 
 
