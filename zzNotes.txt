@@ -1,3 +1,23 @@
+8.30. Working on Responsive Adjustments
+rn, in our sidedrawer logo is way to big and thats is because it is inherting the style from Logo.css where height is 100% thust it is taking whole height of SlideDrawer and leaving space of other things.
+and thus, we are not able to see NavigationItems.
+
+thus, we can add media query in Logo.css but its better to control the style where we embed that componenet.
+
+// 1.way: passing the styling property as props and then using inline style at that componenet.
+
+// 2. wrapping the componenet in the element and giving the css class name and editing css file.
+
+Toolbar : 1st method
+Logo : 1st method
+Sidedrawer: 1st method
+Toolbar : 2nd methods
+Toolbar.css : 2nd methods
+sidedrawer: 2nd method
+sidedrawer.css: 2nd method
+
+
+
 8.29. Creating a Responsive Sidedrawer
 
 creating separate componenet

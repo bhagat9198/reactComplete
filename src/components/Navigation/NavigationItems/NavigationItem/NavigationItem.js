@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './NavigationItem.css';
 
 const NavigationItem = props => {
-  console.log(props.active);
+  // console.log(props.active);
   return <li className={classes.NavigationItem}>
     <a 
       href={props.link} 
