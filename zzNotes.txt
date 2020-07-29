@@ -1,8 +1,19 @@
+8.29. Creating a Responsive Sidedrawer
+
+creating separate componenet
+components/Navigation/SlideDrawer/SlideDrawer.js : new
+components/Navigation/SlideDrawer/SlideDrawer.css : new
+
+SlideDrawer.css
+SlideDrawer
+Layout
+
+
 8.28. Adding Reusable Navigation Items
 
 creating seprate navigation items in seprate componenet as latter we will use it in sidedraw.
 
-creating seprate componenet
+creating separate componenet
 compenents/NavigationItems/NavigationItems.js : new
 compenents/NavigationItems/NavigationItems.css : new
 compenents/NavigationItems/NavigationItem/NavigationItems.js : new
@@ -17,7 +28,7 @@ Toolbar
 
 8.27. Using a Logo in our Application
 
-creating seprate componenet
+creating separate componenet
 components/Logo/Logo.js : new
 components/Logo/Logo.css : new
 
@@ -27,7 +38,7 @@ Toolbar
 
 8.26. Adding a Toolbar
 
-creating seprate componenet
+creating separate componenet
 compenents/Navigation/Toolbar/Toolbar.js : new
 compenents/Navigation/Toolbar/Toolbar.css : new
 
@@ -51,7 +62,7 @@ BurgerBuilder
 
 8.23. Adding a Custom Button Component
 
-creating seprate componenet
+creating separate componenet
 UI/Button/Button.js : new
 UI/Button/Button.css : new (material)
 
