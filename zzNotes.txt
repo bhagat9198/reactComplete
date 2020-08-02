@@ -1,3 +1,10 @@
+8.32. Reusing the Backdrop
+
+adding the backdrop behiend the SideDrawer and SideDrawer can be opened dynamically. 
+
+SideDrawer
+Layout : changing whole layout from function to class. 
+
 8.31. More about Responsive Adjustments
 
 NavigationItem.css : making mobile friendly

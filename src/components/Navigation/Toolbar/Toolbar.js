@@ -10,11 +10,10 @@ const Toolbar = props => {
       <Logo /> 
     </div>
 
-    {/* we only want to out this nav only screen size is more than 499px. thus adding media query */}
     <nav className={classes.DesktopOnly}>
       <NavigationItems />
     </nav>
-  </header>;
+  </header>; 
 }
 
 export default Toolbar;
