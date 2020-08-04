@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
-import Auxilliary from '../../../hoc/Auxilliary';
+import Auxilliary from '../../../hoc/Auxilliary/Auxilliary';
 import Button from '../../UI/Button/Button';
 
 class OrderSummary extends Component {
-  // seeing when this component is getting updated
   componentDidUpdate() {
     console.log('Component Updated');
   }
-  // and we can see that this compoenent is getting updated everytime when infrediant is added. thus, it should only be updated only when 'Order Now' btn is clicked ie when orderSummary componenet should be visible.
-  // and thus, this compoenent is controlled by Model compoenent.(from BurgerBuilder componenet we can see. OrderSummary resides in Modal)
-  // going to Modal
+
 
   render() {
     const ingredientsSummary = Object.keys(this.props.ingredients).map(igKey => {

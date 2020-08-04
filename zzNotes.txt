@@ -1,3 +1,27 @@
+8.39. Changing the Folder Structure
+
+restructuring the Layout and Aux files
+as we are maintaning state in Layout, we can put it in 'containers' folder.
+
+but, as Layout is just warpping our others components. thus, its is just a HOC.
+and same goes for App.js but we are just keeping is outside unchanged.
+
+as we have Layout in hoc folder, hence creating 'Auxilliary' folder Auxilliary.js
+
+correcting the imports of Layout and Auxilliary 
+
+Layout
+Auxilliary
+BurgerBuilder
+OrderSummary
+App.js
+
+8.38. Using Component Lifecycle Methods
+what about rest of the lifecycle functions like componentDidUpdate or componentWillUpdate. these function are also important when we do HTTP request.
+componentDidUpdate and componentWillUpdate are imporatnt to cause side effects ie doing some additional work as backend.
+---
+
+
 8.37. Improving Performance
 we can add shouldComponentUpdate conditions at many places as we are changin the state again and again. but, we cant cluster our app with shouldComponentUpdate which can cause more perforamce hit than without checking.
 

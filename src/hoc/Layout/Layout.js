@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import Auxilliary from '../../hoc/Auxilliary';
+// 
+import Auxilliary from '../Auxilliary/Auxilliary';
 import classes from './Layout.css';
-import Toolbar from '../Navigation/Toolbar/Toolbar';
-import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
+import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
+import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 
 class Layout extends Component {
   state = {
@@ -13,12 +14,7 @@ class Layout extends Component {
     this.setState({showSideDrawer: false});
   };
 
-  // 
   sideDrawerToggleHandler = () => {
-    // it can lead to flaw due to async nature of JS
-    // this.setState({showSideDrawer: !this.state.showSideDrawer});
-
-    // getting teh previous state and using it to extarct the values
     this.setState(prevState => {
       return {showSideDrawer: !prevState.showSideDrawer};
     });
@@ -27,7 +23,6 @@ class Layout extends Component {
   render() {
     return (
       <Auxilliary>
-        {/* passing teh reffence to the function but not calling */}
         <Toolbar drawerToggleClicked={this.sideDrawerToggleHandler} />
         <SideDrawer 
           closed={this.SideDrawerCloserHandler}
