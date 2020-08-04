@@ -1,10 +1,17 @@
-// creating a seprate componen as we will give its own stlying 
-
 import React from 'react';
+// 
+import classes from './DrawerToggle.css';
 
 const DrawerToggle = props => {
   return ( 
-    <div onClick={props.clicked} >MENU</div>
+    <div
+      // adding the class
+      className={classes.DrawerToggle} 
+      onClick={props.clicked} >
+      <div></div>
+      <div></div>
+      <div> </div>
+    </div>
   );
 };
 
