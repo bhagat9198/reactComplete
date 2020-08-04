@@ -1,3 +1,21 @@
+8.37. Improving Performance
+we can add shouldComponentUpdate conditions at many places as we are changin the state again and again. but, we cant cluster our app with shouldComponentUpdate which can cause more perforamce hit than without checking.
+
+but, at one place we should check . this is OrderSummary. 
+lets see when the OrderSummary is getting rerendered. to use Lifecycle function, changing the OrderSummary functional componenet to class based.
+
+OrderSummary
+MOdal
+
+
+8.36. Prop Type Validation
+---
+
+
+8.35. Improving the App - Introduction
+---
+
+
 8.34. Adding a Hamburger Icon
 replacing 'menu' with hanberger icon 
 
