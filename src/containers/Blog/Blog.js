@@ -10,31 +10,30 @@ import axios from "axios";
 class Blog extends Component {
   state = {
     post: [],
+    // 
+    selectedPostId: null
   };
 
   componentDidMount() {
     axios.get("https://jsonplaceholder.typicode.com/posts").then((response) => {
-      // console.log(response);
-
-      // now we are geeting soo many posts which we dont want.
-      // 1. we can pass to some query paramerters to backend to limit the data
-      // 2. or we can transform the data here
-
-      // only extracting the first 4 posts out of all the posts
       const posts = response.data.slice(0, 4);
-      // these fetched posts, doesnt have author field attached. hence hardcoding it
       const updatedPosts = posts.map((post) => {
         return {
-          // spraeding
           ...post,
-          // adding extra field
           author: "Max",
         };
       });
-      // this.setState({ post: response.data });
       this.setState({ post: updatedPosts });
     });
   }
+
+
+  // adding click listner for post
+  postSelectedHandler = (id) => {
+    // updating the id in the state
+    this.setState({selectedPostId: id}); 
+  }
+
 
   render() {
     const posts = this.state.post.map((el) => {
@@ -43,15 +42,19 @@ class Blog extends Component {
         <Post 
           key={el.id} 
           title={el.title} 
-          // 
-          author={el.author} />);
+          author={el.author}
+          // click handler
+          // clicked={this.postSelectedHandler} />);
+          // passing the id arg, so that we can get to know which post is to select
+          clicked={() => this.postSelectedHandler(el.id)} />);
     });
 
     return (
       <div>
         <section className="Posts">{posts}</section>
         <section>
-          <FullPost />
+          {/* and selected post id should be passed here, so that full post can be seen.hence, one propperty should be created in a state */}
+          <FullPost id={this.state.selectedPostId} />
         </section>
         <section>
           <NewPost />

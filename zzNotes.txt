@@ -1,3 +1,11 @@
+9.7. Making a Post Selectable
+
+now if we click on any one of the post, then its whole info should be visible down below.
+
+Post
+Blog
+
+
 9.6. Transforming Data
 
 Blog
