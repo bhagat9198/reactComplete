@@ -1,3 +1,10 @@
+9.8. Fetching Data on Update (without Creating Infinite Loops)
+
+showing one post details once it is clicked.
+which lifecycle hook should be used to display fullpost?
+we can Update lifecycle hook as componenet is already present from the start, we need to update(ie fetching the pdata for that post id) it when specific post is clicked.
+"componentDidUpdate" is good place but it has one issue. if we update the state in there which means updating the state and hence again componentDidUpdate will be executed. thus, Infinite loop will be created.
+
 9.7. Making a Post Selectable
 
 now if we click on any one of the post, then its whole info should be visible down below.
