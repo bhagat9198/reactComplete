@@ -1,53 +1,58 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import Post from '../../components/Post/Post';
-import FullPost from '../../components/FullPost/FullPost';
-import NewPost from '../../components/NewPost/NewPost';
-import './Blog.css';
+import Post from "../../components/Post/Post";
+import FullPost from "../../components/FullPost/FullPost";
+import NewPost from "../../components/NewPost/NewPost";
+import "./Blog.css";
 
-// importing
-import axios from 'axios';
-
+import axios from "axios";
 
 class Blog extends Component {
+  // creating the state
+  state = {
+    post: []
+  }
 
-    // 
-    componentDidMount() {
-        // using axios. 
-        // GET method :1arg required ie URL, 2nd arg optional to configure the request 
-        // axios.get('https://jsonplaceholder.typicode.com/posts')
+  componentDidMount() {
+    axios.get("https://jsonplaceholder.typicode.com/posts").then((response) => {
+      // console.log(response);
 
-        // if we try to save all the data which was fetched by this url, it will not work as GET request happens asynchronously ie it doesnt finish immediatley, it needs some time but JS executes synchronously, it will not wait async request to finish.
-        // this is wanted behaviour because we dont want to block the execution of our appliaction. 
-        // const post = axios.get('https://jsonplaceholder.typicode.com/posts');
+      // updating the state once the fetching the data from server is done
+      this.setState({post: response.data})
+    });
+  }
 
+  render() {
+    // creating post array which will have dynamic post and it will be passed dynamically
+    const posts = this.state.post.map(el => {
+      console.log(el);
+      return (
+        <Post 
+          key={el.id}
+          title={el.title} />
+      ) 
+    });
+    
+    
+    return (
+      <div>
+        <section className="Posts">
 
-        // thus, we will use promises and axios uses promise
-        axios.get('https://jsonplaceholder.typicode.com/posts')
-        .then(response => {
-            console.log(response);
-        })
-
-
-    }
-
-    render () {
-        return (
-            <div>
-                <section className="Posts">
-                    <Post />
-                    <Post />
-                    <Post />
-                </section>
-                <section>
-                    <FullPost />
-                </section>
-                <section>
-                    <NewPost />
-                </section>
-            </div>
-        );
-    }
+          {/* <Post />
+          <Post />
+          <Post /> */}
+          {/* passing post array */}
+          {posts}
+        </section>
+        <section>
+          <FullPost />
+        </section>
+        <section>
+          <NewPost />
+        </section>
+      </div>
+    );
+  }
 }
 
 export default Blog;

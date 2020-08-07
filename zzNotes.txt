@@ -1,64 +1,30 @@
+9.5. Rendering Fetched Data to the Screen
+
+instaed of 3 static post which we are getting from <Post /> we want dynamic data(post)to be printed
+for taht we need to manage the state of the post
+
+Blog
+Post
+Post.css :  width changing to 250px
+
 9.4. Creating a Http Request to GET Data
-
-in container/Blog we have <Post /> components. there we will get the data from 
-  https://jsonplaceholder.typicode.com/posts
-
-where to make http request?
-in lifecycle hooks we can see "componentDidMount()" cause sideeffect and http request is a sideeffect. it doesnt affect our logic or something. but our sideeffect will be fectching some data. 
-  but its not good for updating the state since it trigger re-render
-  we will update the state once the http request is completeted
-
 
 container/Blog/Blog
 
 
-
 9.3. Understanding our Project and Introducing Axios
 
-starting project
-  no css class modules, hence global styling
-  couple of components
-  one container
-
-have the dummpy text, "title" and "auther". but we will populate with the data from server. instaed of real server, we will use "https://jsonplaceholder.typicode.com/" which is RESTful API backend  which is typically used to send request to fetch soem dummy data or simulating to store some dummy data(fake).
-there are lot of urls which we can use which will give JSON data.
-
-AJAX request :
-  Update a web page without reloading the page
-  Request data from a server - after the page has loaded
-  Receive data from a server - after the page has loaded
-  Send data to a server - in the background
-
-
-to send these AJAX request there are 2 ways :
-1. XMLHttpRequest object :with this we can construct our own AJAX request, sending to specific url and handle teh response.
-  but writting and handling request manually with that object is cumbersome
-2. 3rd party package : eg Axios, it can be connected to any JS project not only react
-  https://github.com/axios/axios
-
 ---
-
 
 
 9.2. Understanding Http Requests in React
-in mutipage appliaction, enter the data in form => submit the form => new page appear with new react code. that is not strong decoupling.
-but in single page appliaction, instaed of getting new react page ie html code in browser we get JSON data from the server or we send JSON data to server if any servers are to created on the server.
-thus server is like RESTful API which exposes some API endpoints to which we can send request to get or send data from your standalone react appliaction
 
 ---
-
 
 
 9.1. Module Introduction
 
-we will see how to send http request from our react app to server.
-react is a library to create frontend of our application(html code, code which runs in browser). and when we have single page application at taht time we have more decoupled appliaction
-  decoupled appliaction: A decoupled application architecture allows each component to perform its tasks independently - it allows components to remain completely autotnomous and unaware of each other.
-
-thus,its imp to know how http  or ajax request going on from frontend to backend.
-
 ---
-
 
 
 8.39. Changing the Folder Structure
