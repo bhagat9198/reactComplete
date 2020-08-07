@@ -4,7 +4,7 @@ now if we click on any one of the post, then its whole info should be visible do
 
 Post
 Blog
-
+FullPost
 
 9.6. Transforming Data
 
