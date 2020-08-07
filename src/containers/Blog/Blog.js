@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import Post from "../../components/Post/Post";
 import FullPost from "../../components/FullPost/FullPost";
 import NewPost from "../../components/NewPost/NewPost";
@@ -10,11 +9,15 @@ import axios from "axios";
 class Blog extends Component {
   state = {
     post: [],
-    selectedPostId: null
+    selectedPostId: null,
+    // 
+    error: false
   };
 
   componentDidMount() {
-    axios.get("https://jsonplaceholder.typicode.com/posts").then((response) => {
+    // axios.get("https://jsonplaceholder.typicode.com/posts").then((response) => {
+    // passing the wrong url
+    axios.get("https://jsonplaceholder.typicode.com/postss").then((response) => {
       const posts = response.data.slice(0, 4);
       const updatedPosts = posts.map((post) => {
         return {
@@ -23,6 +26,12 @@ class Blog extends Component {
         };
       });
       this.setState({ post: updatedPosts });
+    })
+    // catch block to handle errors(any kind of error)
+    .catch(error => {
+      // console.log(error);
+      // updating the state
+      this.setState({error: true});
     });
   }
 
@@ -30,16 +39,22 @@ class Blog extends Component {
     this.setState({selectedPostId: id}); 
   }
 
-
   render() {
-    const posts = this.state.post.map((el) => {
-      return (
-        <Post 
-          key={el.id} 
-          title={el.title} 
-          author={el.author}
-          clicked={() => this.postSelectedHandler(el.id)} />);
-    });
+    // if error = true
+    let posts = <p style={{textAlign:'center', color:'red'}}>Something went wrong! </p>
+
+    // if state = flase
+    if(!this.state.error) {
+      posts = this.state.post.map((el) => {
+        return (
+          <Post 
+            key={el.id} 
+            title={el.title} 
+            author={el.author}
+            clicked={() => this.postSelectedHandler(el.id)} />
+        );
+      });
+    }
 
     return (
       <div>

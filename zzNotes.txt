@@ -1,3 +1,13 @@
+9.12. Handling Errors Locally
+
+Blog
+
+
+9.11. Fixing a Bug
+
+---
+
+
 9.10. Sending a DELETE Request
 
 FullPost
