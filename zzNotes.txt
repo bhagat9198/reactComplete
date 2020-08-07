@@ -1,3 +1,22 @@
+9.13. Adding Interceptors to Execute Code Globally
+
+sometimes it can happen that we want to execute a function globally irrespective of from which component is throwing that request.
+
+
+index.js
+see the various outputs by making url in Blog correct and wrong.
+
+
+9.12. Handling Errors Locally
+
+Blog
+
+
+9.11. Fixing a Bug
+
+---
+
+
 9.10. Sending a DELETE Request
 
 FullPost
