@@ -1,3 +1,8 @@
+9.10. Sending a DELETE Request
+
+FullPost
+
+
 9.9. POSTing Data to the Server
 
 NewPost

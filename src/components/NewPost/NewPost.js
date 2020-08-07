@@ -10,11 +10,6 @@ class NewPost extends Component {
   };
 
   postDataHandler = () => {
-    // send post request using axios. it will automtically convert our data into JSON formante, we dont have to do it.
-    // post request accept 2 main args
-      // 1st arg: url, 2nd arg: data, 3rd arg: configrations if any
-    // axios.post('https://jsonplaceholder.typicode.com/posts', data);
-
     const data = {
       title: this.state.title,
       body: this.state.content,
@@ -24,8 +19,6 @@ class NewPost extends Component {
     axios.post('https://jsonplaceholder.typicode.com/posts', data)
     .then(response => {
       console.log(response);
-      // thus, once we get the response means our data is stored successfully. 
-      // similiarly, we can store in real server also. 
     })
   }
 
@@ -53,7 +46,6 @@ class NewPost extends Component {
           <option value="Max">Max</option>
           <option value="Manu">Manu</option>
         </select>
-        {/* adding the click listner */}
         <button onClick={this.postDataHandler}>Add Post</button>
       </div>
     );
