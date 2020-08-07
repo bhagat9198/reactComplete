@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import axios from 'axios';
 import "./NewPost.css";
 
 class NewPost extends Component {
@@ -8,6 +8,26 @@ class NewPost extends Component {
     content: "",
     author: "Max",
   };
+
+  postDataHandler = () => {
+    // send post request using axios. it will automtically convert our data into JSON formante, we dont have to do it.
+    // post request accept 2 main args
+      // 1st arg: url, 2nd arg: data, 3rd arg: configrations if any
+    // axios.post('https://jsonplaceholder.typicode.com/posts', data);
+
+    const data = {
+      title: this.state.title,
+      body: this.state.content,
+      author: this.state.author
+    };
+
+    axios.post('https://jsonplaceholder.typicode.com/posts', data)
+    .then(response => {
+      console.log(response);
+      // thus, once we get the response means our data is stored successfully. 
+      // similiarly, we can store in real server also. 
+    })
+  }
 
   render() {
     return (
@@ -33,7 +53,8 @@ class NewPost extends Component {
           <option value="Max">Max</option>
           <option value="Manu">Manu</option>
         </select>
-        <button>Add Post</button>
+        {/* adding the click listner */}
+        <button onClick={this.postDataHandler}>Add Post</button>
       </div>
     );
   }
