@@ -3,40 +3,33 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-
-// this is the file, which is wrapping our whole application, thus here we can excute our request/response function globally.
-// this can be done by interceptors in axiom.
-  // interceptors: these are the function which are defined gloabally which will be excuted for every request leaving the app and every response returning to our app.
-  // these basically used to set some common header like authorization or handle errors globally, etc.
 import axios from 'axios';
 
-// interceptors: object attached to axios
-// request: object attached to interceptors
-// use() : to register new interceptors. 
-  // it takes a 2 functions
-    // 1st: input fun. which recieves the request configration
-    // 2nd: error fun if any error occurs which sending the request or recieving the response such as internet failer,etc.
+// removing "https://jsonplaceholder.typicode.com" url from everywhere as its a base url which is used at all the places.
+axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
+// setting up common header. 
+  // these are simply the general headers which are set for all types of request 
+axios.defaults.headers.common['Authorization'] = 'AUTH TOKEN';
+axios.defaults.headers.common['Header-Test'] = 'Test Pass';
+// we set up header for specific request type too, like for 'POST' method request where we we can set the content type.
+// no need to set, it by default 
+axios.defaults.headers.post['Content-Type'] = 'appliaction/json';
+axios.defaults.headers.post['Post-Test'] = 'Test Pass';
+// and we can check all these headers in requestConfig
+
 axios.interceptors.request.use(requestConfig => {
-  // to see how interceptors looks
   console.log(requestConfig);
-
-  // in interceptors, we always have to return the requestConfig/responseConfig else req/res will be blocked.
-
-  // before we return the req/res, we can edit it also
   return requestConfig;
 }, error => {
-  console.log(error);
-  // we need to return our error also so that still we can forward our request to app in component where we can handle it in catch block
+  // console.log(error);
   return Promise.reject(error);
 })
 
-
-// inceptors for handling responses
 axios.interceptors.response.use(responseConfig => {
-  console.log(responseConfig);
+  // console.log(responseConfig);
   return responseConfig;
 }, error => {
-  console.log(error);
+  // console.log(error);
   return Promise.reject(error);
 })
 

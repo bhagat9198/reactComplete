@@ -1,3 +1,13 @@
+9.15. Setting a Default Global Configuration for Axios
+
+index.js
+
+
+9.14. Removing Interceptors
+
+---
+
+
 9.13. Adding Interceptors to Execute Code Globally
 
 sometimes it can happen that we want to execute a function globally irrespective of from which component is throwing that request.

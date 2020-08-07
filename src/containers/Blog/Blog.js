@@ -10,14 +10,11 @@ class Blog extends Component {
   state = {
     post: [],
     selectedPostId: null,
-    // 
     error: false
   };
 
   componentDidMount() {
-    // axios.get("https://jsonplaceholder.typicode.com/posts").then((response) => {
-    // passing the wrong url
-    axios.get("https://jsonplaceholder.typicode.com/posts").then((response) => {
+    axios.get("/posts").then((response) => {
       const posts = response.data.slice(0, 4);
       const updatedPosts = posts.map((post) => {
         return {
@@ -27,10 +24,7 @@ class Blog extends Component {
       });
       this.setState({ post: updatedPosts });
     })
-    // catch block to handle errors(any kind of error)
     .catch(error => {
-      // console.log(error);
-      // updating the state
       this.setState({error: true});
     });
   }
@@ -40,10 +34,8 @@ class Blog extends Component {
   }
 
   render() {
-    // if error = true
     let posts = <p style={{textAlign:'center', color:'red'}}>Something went wrong! </p>
 
-    // if state = flase
     if(!this.state.error) {
       posts = this.state.post.map((el) => {
         return (
