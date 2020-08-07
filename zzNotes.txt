@@ -1,3 +1,10 @@
+9.6. Transforming Data
+
+Blog
+Post
+
+
+
 9.5. Rendering Fetched Data to the Screen
 
 instaed of 3 static post which we are getting from <Post /> we want dynamic data(post)to be printed
