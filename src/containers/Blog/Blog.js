@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import {Route} from "react-router-dom"
+// import {Route} from "react-router-dom"
+// so that our page doesnt get reload, we will not use normal anchor tags of html, instaed we will use 'link' component from 'react-router-dom'
+import {Route, Link} from "react-router-dom"
+
 import "./Blog.css";
 import Posts from './Posts/Posts';
-// 
 import NewPost from './NewPost/NewPost';
 
 class Blog extends Component {
@@ -12,20 +14,26 @@ class Blog extends Component {
         <header>
           <nav>
             <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/new-post">New Post</a></li>
+              {/* <li><a href="/">Home</a></li>
+              <li><a href="/new-post">New Post</a></li> */}
+
+              <li><Link to="/">Home</Link></li>
+              {/* instead to just passing the address ie string, 'to' property can accept the dynmaic object also  */}
+              <li><Link to={{
+                // pathname: url
+                pathname: '/new-post',
+                // hash: it allows us to jump at particular place on the webpage. EG:in our case it will jump to element where element have id="submit". 
+                hash: '#submit',
+                // sending query parameters
+                search: '?quick-submit=true'
+              }}>New Post</Link></li>
+              {/* thus, like this we can configure our route and when clicking on these links, our page will be re-rendered without reloading.*/}
             </ul>
           </nav>
         </header>
-        {/* component: it is same like render method. just like img, we have to pass the refference to the component. */}
         <Route path="/" exact component={Posts} />
-        {/* similary, adding teh route for 'new-post' route */}
         <Route path="/new-post" component={NewPost} />
       </div>
-
-      // our both the routes are working.
-      // but one problem, can u guess?
-        // our page is reloading every time we change the route. whicj means that our state is getting reseted as we are reloading the page/JS. thus, we should re-render the page not reload so that our JS code doesnt get refresh.
     );
   }
 }

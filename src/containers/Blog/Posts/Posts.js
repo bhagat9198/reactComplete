@@ -7,8 +7,13 @@ class Posts extends Component {
   state = {
     post: []
   };
-
+  
+  // once we will use Link component, props get additional attributes also by help of React Router
+  // as we user comes on this path, component will be reladed each and every time as it is getting removed when user goes on someother route. 
   componentDidMount() {
+    // 
+    console.log(this.props);
+
     axios.get("/posts").then((response) => {
       const posts = response.data.slice(0, 4);
       const updatedPosts = posts.map((post) => {
@@ -35,7 +40,12 @@ class Posts extends Component {
           key={el.id} 
           title={el.title} 
           author={el.author}
-          clicked={() => this.postSelectedHandler(el.id)} />
+          clicked={() => this.postSelectedHandler(el.id)} 
+          // 11.12
+          // as we saw, all the props info sent by React Router is not passed Post componenet in props. so we can manually pass the props, like
+          // {...this.props}
+          // 2nd way: Post
+          />
       );
     });
 
