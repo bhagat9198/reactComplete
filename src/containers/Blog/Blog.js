@@ -3,17 +3,7 @@ import Post from "../../components/Post/Post";
 import FullPost from "../../components/FullPost/FullPost";
 import NewPost from "../../components/NewPost/NewPost";
 import "./Blog.css";
-
-// no loger importing axios, we will use the instance which we just created 
-// import axios from "axios";
-
-// name can be anything, as other places in this file uses 'axios'so name variable as axios
 import axios from '../../axios';
-
-// hence, our home page works. we know axios is working and not the default global functions as we did we get the log statements from interceptors
-// but, we now try to post somepost or select soempost. we will get an error as those url are incomplete and baseURL is commented out.
-  // uncommenting the baseURL globally
-// now, this componenet uses axios instance whereas other components use global axios functions
 
 class Blog extends Component {
   state = {
@@ -56,9 +46,20 @@ class Blog extends Component {
         );
       });
     }
+    // instaed of showing everything on one page, we will add a navbar so that user can switch between pages.
 
+    // thus, rn if we click on any of the link, it will give us the same index page. this is because of the way how our production/devlopment server is set up. it always return one page.  
     return (
-      <div>
+      <div className="Blog">
+      <header>
+        <nav>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/new-post">New Post</a></li>
+            {/* and seprate route to display Full Post when user clicks on any post */}
+          </ul>
+        </nav>
+      </header>
         <section className="Posts">{posts}</section>
         <section>
           <FullPost id={this.state.selectedPostId} />

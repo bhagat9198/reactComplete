@@ -1,3 +1,23 @@
+11.3. Setting Up Links
+
+Blog
+Blog.css
+
+
+11.2. Routing and SPAs
+
+Routing: its about being able to show different pafges to user.
+Multiple pages in single page Application?
+SAP: we will have single html file but still want to provide normal web expirence to the user. we want to show different pages for differnt URLs.
+  we will not have mutiple HTML files, but we will use JS to render diff pages to diff url/path.
+
+thus, parsing the path and showing different JSX/components is routing. and to do the routing we will use "Router Package" as doing own our own is trival.
+Router Package: it has couple to tasks :
+  1.parsing the URL to understand what user needs
+  2.once router understand our path, it can read our configrations ie what should happen where user visit those paths
+  3.rendering of JSX
+
+
 9.16. Creating and Using Axios Instances
 
 index.js
