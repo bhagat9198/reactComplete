@@ -1,13 +1,11 @@
 import React, { Component } from "react";
-// react-router-dom: as it helping in rendering. importing 'Route' object or we can say Route component.
 import {Route} from "react-router-dom"
-
 import "./Blog.css";
 import Posts from './Posts/Posts';
+// 
+import NewPost from './NewPost/NewPost';
 
 class Blog extends Component {
-  
-
   render() {
     return (
       <div className="Blog">
@@ -19,21 +17,15 @@ class Blog extends Component {
             </ul>
           </nav>
         </header>
-        {/* not showing Posts anymore bydefault */}
-        {/* < Posts /> */}
-
-        {/* it take couple of parameters and props names are fixed, has to written in same way as they are reserved words. 
-          path: url
-          render: it defines what should be the output when that path specified is active. this method will takes a callback which should return JSX
-          exact: its a keyword, which will match if path is exact or not otherwise path will get active even if prefix of path is same as some other path. eg : '/' and '/new-post' => both path will render same page.
-        */}
-        {/* <Route path="/" render={() => {return <h1>Home</h1>}} /> */}
-        {/* <Route path="/" exact render={() => <h1>Home</h1>} /> */}
-
-        {/* we can have more than 1 route for single path and Rote will render the as many as path are defined*/}
-        <Route path="/" exact render={() => <h1>Home</h1>} />
-        <Route path="/" exact render={() => <h1>Home 2</h1>} />
+        {/* component: it is same like render method. just like img, we have to pass the refference to the component. */}
+        <Route path="/" exact component={Posts} />
+        {/* similary, adding teh route for 'new-post' route */}
+        <Route path="/new-post" component={NewPost} />
       </div>
+
+      // our both the routes are working.
+      // but one problem, can u guess?
+        // our page is reloading every time we change the route. whicj means that our state is getting reseted as we are reloading the page/JS. thus, we should re-render the page not reload so that our JS code doesnt get refresh.
     );
   }
 }
