@@ -1,3 +1,9 @@
+9.16. Creating and Using Axios Instances
+
+index.js
+axios.js : new file
+Blog
+
 9.15. Setting a Default Global Configuration for Axios
 
 index.js
