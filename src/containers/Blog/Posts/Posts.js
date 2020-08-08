@@ -8,10 +8,7 @@ class Posts extends Component {
     post: []
   };
   
-  // once we will use Link component, props get additional attributes also by help of React Router
-  // as we user comes on this path, component will be reladed each and every time as it is getting removed when user goes on someother route. 
   componentDidMount() {
-    // 
     console.log(this.props);
 
     axios.get("/posts").then((response) => {

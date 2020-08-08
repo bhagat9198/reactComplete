@@ -9,7 +9,6 @@ class NewPost extends Component {
     author: "Max",
   };
 
-  // checking what all props we have access to
   componentDidMount() {
     console.log(this.props);
   }
