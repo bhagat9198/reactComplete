@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import Post from "../../components/Post/Post";
-import FullPost from "../../components/FullPost/FullPost";
-import NewPost from "../../components/NewPost/NewPost";
+
+// no more using of these routes
+// import FullPost from "../FullPost/FullPost";
+// import NewPost from "../../components/NewPost/NewPost";
+
 import "./Blog.css";
 import axios from '../../axios';
 
@@ -46,27 +49,29 @@ class Blog extends Component {
         );
       });
     }
-    // instaed of showing everything on one page, we will add a navbar so that user can switch between pages.
 
-    // thus, rn if we click on any of the link, it will give us the same index page. this is because of the way how our production/devlopment server is set up. it always return one page.  
     return (
       <div className="Blog">
-      <header>
-        <nav>
-          <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/new-post">New Post</a></li>
-            {/* and seprate route to display Full Post when user clicks on any post */}
-          </ul>
-        </nav>
-      </header>
+        <header>
+          <nav>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/new-post">New Post</a></li>
+            </ul>
+          </nav>
+        </header>
         <section className="Posts">{posts}</section>
-        <section>
+        {/* as we want to only post should be visible on the home page ie '/', thus commenting out other sections. */}
+
+        {/* we are routing now and each route will be having its own component. and those component will have there own state and its own sub components. thus, bring FullPost, NewPost into container/Blog folder. 'Post' is just representational componenet, hence not needed to shift  */}
+        {/* creting new component 'Posts' within 'Blog' */}
+        {/* now we are ready for routing */}
+        {/* <section>
           <FullPost id={this.state.selectedPostId} />
         </section>
         <section>
           <NewPost />
-        </section>
+        </section> */}
       </div>
     );
   }

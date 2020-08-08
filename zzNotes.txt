@@ -1,3 +1,16 @@
+11.4. Setting Up the Router Package
+
+install 2 new packages
+ npm install --save react-router react-router-dom
+
+these 2 packages are not craeted by Facebook but its a de-facto standard for routing in React.
+
+
+App.js
+Blog
+Containers/Blog/Posts/Posts : new
+
+
 11.3. Setting Up Links
 
 Blog
