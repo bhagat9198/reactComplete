@@ -1,3 +1,21 @@
+11.6. Preparing the Project For Routing
+
+shifting state, componentDidUpdate, selectedPostHandler to Posts
+
+Posts
+Blog.css
+Posts.css
+Blog
+
+
+11.5. react-router vs react-router-dom
+We installed both react-router  and react-router-dom . Technically, only react-router-dom  is required for web development. It wraps react-router  and therefore uses it as a dependency. 
+
+We don't need to install react-router  on our own for it to work. You can omit this installation step, I left it in there for historic reasons and because I like to emphasize that the main package is named react-router. If you ever search for assistance, you probably want to search for "react router" - that's the name of the package.
+
+---
+
+
 11.4. Setting Up the Router Package
 
 install 2 new packages
