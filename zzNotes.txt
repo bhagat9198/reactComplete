@@ -1,3 +1,10 @@
+11.7. Setting Up and Rendering Routes
+
+Now our project structure is setup, we dont want to render only 'Posts'. inilizing routing
+
+Blog
+
+
 11.6. Preparing the Project For Routing
 
 shifting state, componentDidUpdate, selectedPostHandler to Posts

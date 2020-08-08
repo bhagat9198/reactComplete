@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import axios from '../../../axios';
 import Post from '../../../components/Post/Post';
-// no using css modules, hence different syntax
 import './Posts.css';
 
 class Posts extends Component {
@@ -21,7 +20,6 @@ class Posts extends Component {
       this.setState({ post: updatedPosts });
     })
     .catch(error => {
-      // this.setState({error: true});
       console.log(error);
     });
   }
