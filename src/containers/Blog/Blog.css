@@ -17,6 +17,9 @@
 }
 
 .Blog a:hover,
-.Blog a:active {
+/* will be used when we click on it */
+.Blog a:active,
+/* adding active class */
+.Blog a.active {
     color: #fa923f;
 }
