@@ -12,7 +12,7 @@ axios.defaults.headers.post['Content-Type'] = 'appliaction/json';
 axios.defaults.headers.post['Post-Test'] = 'Test Pass';
 
 axios.interceptors.request.use(requestConfig => {
-  console.log(requestConfig);
+  // console.log(requestConfig);
   return requestConfig;
 }, error => {
   // console.log(error);

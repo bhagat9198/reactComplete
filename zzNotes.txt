@@ -1,3 +1,18 @@
+11.20. Navigating Programmatically
+
+Posts
+
+
+11.19. Using Switch to Load a Single Route
+
+Blog
+Posts
+
+
+11.18. Parsing Query Parameters & the Fragment
+
+---
+
 11.17. Extracting Route Parameters
 
 FullPost
