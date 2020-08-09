@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-
-// import {Link} from 'react-router-dom'
-
 import axios from '../../../axios';
+// 
+import {Route} from 'react-router-dom';
+
 import Post from '../../../components/Post/Post';
 import './Posts.css';
-
+// 
+import FullPost from '../FullPost/FullPost';
 
 class Posts extends Component {
   state = {
@@ -29,47 +30,49 @@ class Posts extends Component {
   }
 
   postSelectedHandler = (id) => {
-    // this.setState({selectedPostId: id}); 
-    
-    // in props info, we have history object.we can make use of that and can use differnt functions such as 'goBack' or 'goForward'.
-    // console.log(this.props);
-
-    // we will push method of history object
-    // this.props.history.push('/' + id);
-    // we can evenpass the object to it as we have done in NavLink
     this.props.history.push({
-      pathname: '/' + id
+      // pathname: '/' + id
+      // 2. changing path here also
+      // pathname: '/posts/' + id
+      // 3. dynamically changing
+      pathname: this.props.match.url + '/'+ id
     });
-
   }
 
   render() {
     let posts = this.state.post.map((post) => {
       return (
-        // 1.way
-        // <Link to={'/posts/' + post.id} key={post.id} > 
-        // <Link to={'/' + post.id} key={post.id} > 
-        //   <Post 
-        //     title={post.title} 
-        //     author={post.author}
-        //     clicked={() => this.postSelectedHandler(post.id)} />
-        // </Link>
-
-
-
-        // 11.20
-        // here we are using Link to to render the differnt component. now we will do programtically. removing Link and puting key back to post as it will be top most component
-        // <Link to={'/' + post.id} key={post.id} > 
-          <Post 
-            // adding key
-            key={post.id}
-            title={post.title} 
-            author={post.author}
-            clicked={() => this.postSelectedHandler(post.id)} />
-        // </Link>
+        <Post 
+          key={post.id}
+          title={post.title} 
+          author={post.author}
+          clicked={() => this.postSelectedHandler(post.id)} />
       );
     });
-    return (<section className="Posts">{posts}</section>);
+    // return (<section className="Posts">{posts}</section>);
+    return(
+      // 1.
+      // wrapping both components in a div
+      // <div>
+      //   <section className="Posts">{posts}</section>
+      //   <Route path="/:id" component={FullPost} />
+      // </div>
+      // now our single post ie FullPost componenet will be visible under all the posts.
+
+
+
+      // 2
+      // the route path which we are using is absolute . it will go to (localhost:3000/1) but now as our root path is changed we have to make it relavtive and it should be something like this (localhost:3000/posts/1)
+      <div>
+        <section className="Posts">{posts}</section>
+        {/* <Route path="/:id" component={FullPost} /> */}
+
+        {/* either we can statically change this path */}
+        {/* <Route path="/posts/:id" component={FullPost} /> */}
+        {/* or we setup the dynamic realtive path */}
+        <Route path={this.props.match.url + '/:id'} component={FullPost} />
+      </div>
+    );
   }
 }
 

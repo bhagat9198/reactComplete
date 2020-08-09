@@ -1,3 +1,22 @@
+11.23. Creating Dynamic Nested Routes
+
+FullPost
+
+
+11.22. Understanding Nested Routes
+
+nested routing: one route below the another route. we can use Route object anywhere provided where ever we are using, that page is warrped with "BrowserRouter".
+putting the single post route indide the '/' where all the posts are shown.
+
+Blog
+Posts
+
+
+11.21. Additional Information Regarding Active Links
+
+Blog
+
+
 11.20. Navigating Programmatically
 
 Posts

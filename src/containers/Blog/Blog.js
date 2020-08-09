@@ -1,12 +1,9 @@
 import React, { Component } from "react";
-// import {Route, NavLink} from "react-router-dom"
-
-// importing Switch
 import {Route, NavLink, Switch} from "react-router-dom"
 import "./Blog.css";
 import Posts from './Posts/Posts';
 import NewPost from './NewPost/NewPost';
-import FullPost from './FullPost/FullPost';
+// import FullPost from './FullPost/FullPost';
 
 class Blog extends Component {
   render() {
@@ -22,7 +19,15 @@ class Blog extends Component {
                   textDecoration: 'underline'
                 }}
                 exact 
-                to="/">Home</NavLink></li>
+                // to="/">Home</NavLink></li>
+                // here if we want 'Posts' lik should be highligted when all the posts are visible and when FullPost is visible. for that we need to remove 'excat' keyword and if we remove the 'exact' keyword than it will highlighted when we are on NewPost.
+                // so, this some problem which can be faced while dealing with common route like home(/) route.
+                // to="/">Posts</NavLink></li>
+
+
+
+                // 11.22
+                to="/posts">Posts</NavLink></li>
               <li><NavLink to={{
                 pathname: '/new-post',
                 hash: '#submit',
@@ -31,30 +36,22 @@ class Blog extends Component {
             </ul>
           </nav>
         </header>
-        {/* when switching to NewPost, we can see FullPost component is alsi getting displayed below it. this is bec React Router will try to math all teh paths and displayed the content of all teh matching routes.
-        hence, now we need to control it.
-        1.way: changing the '/:id' => '/posts/:id' and in Posts Link component, so that both the paths are different. 
-          <Route path="posts/:id" component={FullPost} />
-        */}
-        {/* <Route path="/" exact component={Posts} />
-        <Route path="/new-post" component={NewPost} />
-        <Route path="/posts/:id" component={FullPost} /> */}
-
-
-        {/* 2.way: import Switch from react-router-dom. 'Switch' componenet, it helps in loading only one route(1st match) even if other routes are matching. 
-        */}
-        {/* <Switch>
-          <Route path="/" exact component={Posts} />
-          <Route path="/new-post" component={NewPost} />
-          <Route path="/posts/:id" component={FullPost} /> 
-        </Switch> */}
-
-
-        {/* if we want any route to be checked everytime, we can put is outside of switch.  */}
-        <Route path="/" exact component={Posts} />
+        {/* <Route path="/" exact component={Posts} /> */}
         <Switch>
+          {/*1. we can remove the Switch if we want, not matter much */}
+          {/* <Route path="/" exact component={Posts} /> */}
+
+
+          {/*2. as we have nested route within this route. so when we go on '/1' or '/2' etc, its never gets rendered as we are using the 'exact'. only url changes but componenet doesnt get rendered. */}
+          {/* <Route path="/" component={Posts} /> */}
+
+          
+          {/* 3.our app is working but now if we change the root path from '/' to '/posts.  */}
+          <Route path="/posts" component={Posts} />
+
+
           <Route path="/new-post" component={NewPost} />
-          <Route path="/:id" component={FullPost} /> 
+          {/* <Route path="/:id" component={FullPost} />  */}
         </Switch>
       </div>
     );
