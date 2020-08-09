@@ -23,7 +23,7 @@ axios.interceptors.response.use(responseConfig => {
   // console.log(responseConfig);
   return responseConfig;
 }, error => {
-  // console.log(error);
+  console.log(error);
   return Promise.reject(error);
 })
 

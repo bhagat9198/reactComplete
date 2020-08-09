@@ -1,5 +1,9 @@
+11.17. Extracting Route Parameters
+
+FullPost
+
+
 11.16. Passing Route Parameters
-// now, we want to display the FullPost when user clicks on any of the post.
 
 Blog
 Posts

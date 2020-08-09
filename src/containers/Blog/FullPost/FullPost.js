@@ -7,13 +7,25 @@ class FullPost extends Component {
   state = {
     loadedPost: null
   }
+  // so, rn we are always getting "Please select a Post!", which means props are not getting the id. and thats correct because "this.props.id" is null as we are doing multipage application and no props are passed to FullPost.
+  // hence, we will extract the id from url. As this route is directly called by Router, hence we will get get extra info in porps.
 
-  componentDidUpdate() {
-    if(this.props.id) {
-      if(!this.state.loadedPost || (this.props.id !== this.state.loadedPost.id)) {
-        axios.get('/posts/'+ this.props.id)
+  // changing "componentDidUpdate" to "componentDidMount()" as now  no longer component is getting updated but is getting removed or added to dom. hence componentDidMount() 
+  // componentDidUpdate() {
+  componentDidMount() {
+    console.log(this.props);
+    // here we can see teh extra info. in props => match => params => id: value
+    // and 'id' is present in pramas object because thats what we are passing in url.hence
+    // if(this.props.id) {
+    // console.log(this.props.match.params.id);
+    if(this.props.match.params.id) {
+      if(!this.state.loadedPost ||
+      // changing
+      (this.props.match.params.id !== this.state.loadedPost.id)) {
+        // changing
+        axios.get('/posts/'+ this.props.match.params.id)
         .then(response => {
-          // console.log(response.data);
+          console.log(response.data);
           this.setState({loadedPost: response.data})
         });
       }
@@ -31,7 +43,8 @@ class FullPost extends Component {
   render() {
     let post = <p style={{textAlign:'center'}}>Please select a Post!</p>;
 
-    if(this.props.id) {
+    // changing
+    if(this.props.match.params.id) {
       post = <p style={{textAlign:'center'}}>Loading...</p>;
       if(this.state.loadedPost) {
         post = (
