@@ -1,3 +1,10 @@
+11.16. Passing Route Parameters
+// now, we want to display the FullPost when user clicks on any of the post.
+
+Blog
+Posts
+
+
 11.15. Styling the Active Route
 
 Blog
