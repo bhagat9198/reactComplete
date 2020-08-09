@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import {Route, NavLink, Switch} from "react-router-dom"
+// import {Route, NavLink, Switch} from "react-router-dom"
+// 
+import {Route, NavLink, Switch, Redirect} from "react-router-dom"
 import "./Blog.css";
 import Posts from './Posts/Posts';
 import NewPost from './NewPost/NewPost';
-// import FullPost from './FullPost/FullPost';
 
 class Blog extends Component {
   render() {
@@ -19,14 +20,6 @@ class Blog extends Component {
                   textDecoration: 'underline'
                 }}
                 exact 
-                // to="/">Home</NavLink></li>
-                // here if we want 'Posts' lik should be highligted when all the posts are visible and when FullPost is visible. for that we need to remove 'excat' keyword and if we remove the 'exact' keyword than it will highlighted when we are on NewPost.
-                // so, this some problem which can be faced while dealing with common route like home(/) route.
-                // to="/">Posts</NavLink></li>
-
-
-
-                // 11.22
                 to="/posts">Posts</NavLink></li>
               <li><NavLink to={{
                 pathname: '/new-post',
@@ -36,22 +29,20 @@ class Blog extends Component {
             </ul>
           </nav>
         </header>
-        {/* <Route path="/" exact component={Posts} /> */}
         <Switch>
-          {/*1. we can remove the Switch if we want, not matter much */}
-          {/* <Route path="/" exact component={Posts} /> */}
-
-
-          {/*2. as we have nested route within this route. so when we go on '/1' or '/2' etc, its never gets rendered as we are using the 'exact'. only url changes but componenet doesnt get rendered. */}
+          <Route path="/posts" component={Posts} />
+          <Route path="/new-post" component={NewPost} />
+          {/* rn, if we go to '/' except the navbar, we cant see anything. But we want all the posts should be visible */}
+          {/* 1.way */}
           {/* <Route path="/" component={Posts} /> */}
 
-          
-          {/* 3.our app is working but now if we change the root path from '/' to '/posts.  */}
-          <Route path="/posts" component={Posts} />
-
-
-          <Route path="/new-post" component={NewPost} />
-          {/* <Route path="/:id" component={FullPost} />  */}
+          {/* 2.using Redirect component : its has 2 fields
+            from: url of user
+            to: where we want user to go
+            if we are using redirct in Switch componenent, we can use 'from' property. but if Redirect called outside of Switch component, then only 'to' property will be used.
+           */}
+          <Redirect from="/" to="/posts" />
+          {/* and automatically, '/' path will be converted into '/posts' */}
         </Switch>
       </div>
     );

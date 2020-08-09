@@ -1,3 +1,20 @@
+11.26. Using the History Prop to Redirect (Replace)
+
+NewPost : line 35
+
+
+11.25. Conditional Redirects
+
+now, we want to redirect the user once the user clicks on 'Submit' button.
+
+NewPost
+
+
+11.24. Redirecting Requests
+
+Blog
+
+
 11.23. Creating Dynamic Nested Routes
 
 FullPost

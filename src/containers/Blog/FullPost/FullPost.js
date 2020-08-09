@@ -8,21 +8,14 @@ class FullPost extends Component {
     loadedPost: null
   }
 
-  // there is one glinch that is after loding one FullPost, afterwards if we try to load another FullPost, it doesnt get loaded although url gets changed. this is beacuse for the first tym FullPOst get mounted afterwards its getting updated and for update we are not having any function.  
-
-
   componentDidMount() {
-    // console.log(this.props);
-    // 
     this.loadedData();
   }
 
-  // 
   componentDidUpdate() {
     this.loadedData();
   }
 
-  // creating common function
   loadedData() {
     if(this.props.match.params.id) {
       if(!this.state.loadedPost ||(this.props.match.params.id !== this.state.loadedPost.id)) {
@@ -36,7 +29,6 @@ class FullPost extends Component {
   }
 
   deletePostHandler = () => {
-    // 
     axios.delete('/posts/'+ this.props.match.params.id)
     .then(response => {
       console.log(response);
