@@ -1,3 +1,10 @@
+11.27. Working with Guards
+
+naviagtion gards: it is typically used when u dont know if user is authenticated or not and there are some parts in your application which should be only allowed if user is authenticated.
+
+Blog
+NewPost : another way 
+
 11.26. Using the History Prop to Redirect (Replace)
 
 NewPost : line 35
