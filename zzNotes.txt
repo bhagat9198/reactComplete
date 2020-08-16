@@ -1,3 +1,15 @@
+11.30. Lazy Loading with React Suspense (16.6)
+
+applying lazy loading in different way by help of react methods. for that we need react version 16.6 or higher. hence, updating our Project
+npm outdated
+npm update react
+npm install --save react-scripts@latest
+terminate the server and start again as new depencies were installed.
+
+
+Blog
+
+
 11.29. Loading Routes Lazily
 
 in network tab, if we the files which are rendered when page is loaded. there 'bundle.js'(realtively big file as compared to other files. will get smaller in production mode) is being loaded.
