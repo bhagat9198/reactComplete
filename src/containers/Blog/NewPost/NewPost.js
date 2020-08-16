@@ -13,12 +13,6 @@ class NewPost extends Component {
   };
 
   componentDidMount() {
-    // before we mount teh component, here also we can check if user is authticated or not.
-    // redirect if user is not authenticated
-    // this.props.history.replace('/posts');
-
-    // like this we can work with gards which is quite  differnt form other frameworks
-
     // console.log(this.props);
   }
 

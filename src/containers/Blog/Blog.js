@@ -5,7 +5,6 @@ import Posts from './Posts/Posts';
 import NewPost from './NewPost/NewPost';
 
 class Blog extends Component {
-  // state
   state = {
     auth: false
   };
@@ -33,20 +32,17 @@ class Blog extends Component {
           </nav>
         </header>
         <Switch>
-          {/* <Route path="/new-post" component={NewPost} /> */}
-          {/* if we want only authenticated user should able go throught NewPost. if we pass this route conditioanlly. */}
-          {/* hence, craeting a state for user and  and according to state passing teh route. */}
-          {/* using one line solution ie ternary operator or proper if block . using ternary */}
           {this.state.auth ? <Route path="/new-post" component={NewPost} /> : null}
-
-          {/* when auth is false. after clicking on NewPost route. we will be redirected to the starting page.
-          why?
-          redirecting operation is taking place by Redirect comp. from="/" is taking everything which is not caught by anyother route above it and redircys to post. Hece, it is gaurd now */}
-
-          {/* 2nd way: NewPost */}
-
           <Route path="/posts" component={Posts} />
-          <Redirect from="/" to="/posts" />
+
+          {/* commenting out redirect, as it will catch all the routes which are unkown from '/'. if redirect was from '/post' or anyother route other than root route, no need to comment */}
+          {/* <Redirect from="/" to="/posts" /> */}
+
+          {/* if we dont mention any route, then it will execute all the routes witch will come to it. */}
+          {/* <Route component={Posts} /> */}
+
+          {/* or, we can simply render jsx */}
+          <Route render = {() => <h1 style={{textAlign: 'center'}}>Page Not Found</h1>} />
         </Switch>
       </div>
     );
