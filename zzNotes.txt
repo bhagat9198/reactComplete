@@ -1,3 +1,21 @@
+11.29. Loading Routes Lazily
+
+in network tab, if we the files which are rendered when page is loaded. there 'bundle.js'(realtively big file as compared to other files. will get smaller in production mode) is being loaded.
+bundle.js: this contain all our source code. loading the entire bundle with all the code of our application upfront can be bad if application is big with distinct feature and distanct araes in our app where user might not visit certain area in the app.
+
+according to our project, let say user never visits NewPost. loading the code for that component is irrelevent.thus we only want to load the code for NewPost only if user goes to that route.
+
+the technique of downloading only what u need is known as code splitting or lazy loading and there we want to be sure to load the code only when it is needed.
+lazy loading will only work with craete-react-app and react-route-dom because code spliiting heavly depends on webpack configrations.
+
+to setup, craeting HOC
+hoc/AsyncComponent : new file
+
+AsyncComponent
+Blog
+
+
+
 11.28. Handling the 404 Case (Unknown Routes)
 
 Blog : line 38
@@ -222,7 +240,7 @@ NewPost
 
 showing one post details once it is clicked.
 which lifecycle hook should be used to display fullpost?
-we can Update lifecycle hook as componenet is already present from the start, we need to update(ie fetching the pdata for that post id) it when specific post is clicked.
+we can Update lifecycle hook as component is already present from the start, we need to update(ie fetching the pdata for that post id) it when specific post is clicked.
 "componentDidUpdate" is good place but it has one issue. if we update the state in there which means updating the state and hence again componentDidUpdate will be executed. thus, Infinite loop will be created.
 
 FullPost
@@ -300,7 +318,7 @@ componentDidUpdate and componentWillUpdate are imporatnt to cause side effects i
 we can add shouldComponentUpdate conditions at many places as we are changin the state again and again. but, we cant cluster our app with shouldComponentUpdate which can cause more perforamce hit than without checking.
 
 but, at one place we should check . this is OrderSummary. 
-lets see when the OrderSummary is getting rerendered. to use Lifecycle function, changing the OrderSummary functional componenet to class based.
+lets see when the OrderSummary is getting rerendered. to use Lifecycle function, changing the OrderSummary functional component to class based.
 
 OrderSummary
 MOdal
@@ -355,11 +373,11 @@ Toolbar
 rn, in our SideDrawer logo is way to big and thats is because it is inherting the style from Logo.css where height is 100% thust it is taking whole height of SideDrawer and leaving space of other things.
 and thus, we are not able to see NavigationItems.
 
-thus, we can add media query in Logo.css but its better to control the style where we embed that componenet.
+thus, we can add media query in Logo.css but its better to control the style where we embed that component.
 
-// 1.way: passing the styling property as props and then using inline style at that componenet.
+// 1.way: passing the styling property as props and then using inline style at that component.
 
-// 2. wrapping the componenet in the element and giving the css class name and editing css file.
+// 2. wrapping the component in the element and giving the css class name and editing css file.
 
 Toolbar : 1st method
 Logo : 1st method
@@ -373,7 +391,7 @@ SideDrawer.css: 2nd method
 
 8.29. Creating a Responsive SideDrawer
 
-creating separate componenet
+creating separate component
 components/Navigation/SideDrawer/SideDrawer.js : new
 components/Navigation/SideDrawer/SideDrawer.css : new
 
@@ -384,9 +402,9 @@ Layout
 
 8.28. Adding Reusable Navigation Items
 
-creating seprate navigation items in seprate componenet as latter we will use it in sidedraw.
+creating seprate navigation items in seprate component as latter we will use it in sidedraw.
 
-creating separate componenet
+creating separate component
 compenents/NavigationItems/NavigationItems.js : new
 compenents/NavigationItems/NavigationItems.css : new
 compenents/NavigationItems/NavigationItem/NavigationItems.js : new
@@ -401,7 +419,7 @@ Toolbar
 
 8.27. Using a Logo in our Application
 
-creating separate componenet
+creating separate component
 components/Logo/Logo.js : new
 components/Logo/Logo.css : new
 
@@ -411,7 +429,7 @@ Toolbar
 
 8.26. Adding a Toolbar
 
-creating separate componenet
+creating separate component
 compenents/Navigation/Toolbar/Toolbar.js : new
 compenents/Navigation/Toolbar/Toolbar.css : new
 
@@ -435,7 +453,7 @@ BurgerBuilder
 
 8.23. Adding a Custom Button Component
 
-creating separate componenet
+creating separate component
 UI/Button/Button.js : new
 UI/Button/Button.css : new (material)
 
@@ -461,7 +479,7 @@ Modal
 8.20. Creating the Order Summary Modal
 
 once the order now button is clicked, we want to show summary of the order in a model
-model : to have a wrapping element which provide teh styling which then simply warps itself about any content we want to show in tat model
+model : to have a wrapping element which provide the styling which then simply warps itself about any content we want to show in tat model
 
 creating new files:
 Burger/OrderSummary/OrderSummary.js : new
