@@ -1,3 +1,18 @@
+11.31. Routing and Server Deployment
+
+this is developement server and its already configured correctly and so we are not facing any problems when dealing with routing but when it comes to deploying the app to real server we should know how to handling of request works in real web.
+
+user => sends teh request to server => server loads react app => which loads index.html page.
+so, before server loads the index.html page, server needs to find out which page the user wants to visit.
+
+problem is reactapp knows the routes but server doesnt as we hace not defined routes on our server. hence we have to configer therserver in sucha way that it always forwards the routes to react app weatehr it understood the request or not so that it always return the index.html page all the request(Unknown or known) as this allows react to take over and parse the request.
+
+if we are serving our app from 'www.example.com/' then its fine but if we are serving our app from 'www.example.com/my-app/' then we need to tell this react router. as for that we have setup the baseurl.
+
+setting up baseurl:
+App.js  : it will not run, just for reffernce
+
+
 11.30. Lazy Loading with React Suspense (16.6)
 
 applying lazy loading in different way by help of react methods. for that we need react version 16.6 or higher. hence, updating our Project
