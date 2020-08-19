@@ -1,78 +1,78 @@
+// // 1.
 
-//  // 1.
-
-// // showing the working of redux
-// // creating store
-// // dispatching action
-// // subscription
-
-// // not importing like this. this syntax is used when we want write client side JS
-// // import redux from 'redux'
-
-// // using server side syntax
 // const redux = require('redux');
 
-// // creating store 
-// // createStore: its a function, but not executing the function
-// const createStore = redux.createStore;
-
-// // store
-// // storing the the store in a varaible 'store'
-// // const store = createStore(); 
-// // we have to inilize the store and for that we need to have reducer will inilize it
-
-// // rn, we just just have a store. it should be inilized with the reducer as reducer is strongly connected to store. it will only update the state in the end.
-
-
-// // reducer
-// // it will be just a function which will takes 2 arguments
-//   // 1arg: current state
-//   // 2arg: action
-//   // and then function will return the updated state
-// // const rootReducer = function(state, action) {}
-// // or
-// const rootReducer = (state, action) => {
-//   // returning the old state
-//   return state;
-//   // thus, its valid reducer but does nothing.
+// const inilialState = {
+//   counter: 0
 // }
 
-// // once, reducer is set now we can use as an argumemnt and inilize our store
+// const createStore = redux.createStore;
+// const rootReducer = (state = inilialState, action) => {
+//   return state;
+// }
+
 // const store = createStore(rootReducer);
-// // thus, now we have inilized our store. but this store will hold the undefined state
+// console.log(store.getState());
 
-// // to see oour state in store
-// // getState: its  function which should be called to extract the state form store 
-// console.log(store.getSate());
+// // dispatching the action
+// // action is dispatched on 'store'
+// // dispatch: its a function which takes action as an argument. argument will be object which needs to have 'type' property (as it will be helpful in reducer) followed by the payload
+// // 'type' is some unique identifier(any name)
+//   // convetion: use uppercase string
+// // payload can be another object or it can just be a another property within main object
+// store.dispatch({type: 'INC_COUNTER'});
+// // adding extra ag with type
+// store.dispatch({type: 'ADD_COUNTER', value: 10});
+// console.log(store.getState());
+// // output:
+// // { counter: 0 }
+// // { counter: 0 }
 
-// // executing the file:
-// // we will get 'undefined' as output 
+// // still we goy counter = 0, this is becasue we didint added any logic to our reducer. 
 
-/////////////////////////////////////////////////////////////
+
+
 
 // 2.
 
 const redux = require('redux');
 
-// rn, we are getting 'undefined' as we have not inilized our state.
-// creating our state. 
-  // state can be anything a number, string, etc
-
 const inilialState = {
   counter: 0
-};
+}
 
 const createStore = redux.createStore;
-
-// using es6: inilizing state with default value of value is not defined ie undefined. 
-// state = inilialState : this will be the case for 1st tym when reducer will run afterwards we will have a state which will be updated by rootrReducer. 
 const rootReducer = (state = inilialState, action) => {
+  // adding the logic to reducer for different actions
+  if(action.type === 'INC_COUNTER') {
+    // this is wrong way as we are mutating the original object
+    // state.counter++;
+    // return state;
+    
+    return {
+      ...state,
+      counter: state.counter + 1
+    }
+  }
+
+  // similarly, second
+  if(action.type === 'ADD_COUNTER') {
+    return {
+      ...state,
+      // as we have defined value property to action.
+      counter: state.counter + action.value
+    }
+  }
   return state;
 }
 
 const store = createStore(rootReducer);
-
 console.log(store.getState());
-// now we are getting the state as:
-// { counter: 0 }
 
+store.dispatch({type: 'INC_COUNTER'});
+store.dispatch({type: 'ADD_COUNTER', value: 10});
+console.log(store.getState());
+
+// output:
+// { counter: 0 }
+// { counter: 11 }
