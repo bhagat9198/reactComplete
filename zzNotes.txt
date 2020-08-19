@@ -1,0 +1,985 @@
+14.5. Setting Up Reducer and Store
+
+install redux:-
+npm install --save redux
+
+as we know redux is satndalone library, first we will use redux standalone(execute with node) and latter using redux with react
+craeting new file:
+redux-basics : newfile
+ 
+redux-basics
+
+
+14.4. Understanding the Redux Flow
+
+as we know, redux will make the react app chnages when some global varaiable value changes. so before connecting redux to our app, let see how redux work?
+1. central stote: its al about this central store. it will store the entire application state
+2. components: as redux is used along with react so we will have components. in components manuplications of state occurs or they needs current application state. it will directly not manupilate the central store as it can cause our central store pretty unpreditiable.  
+  if we can edit the central store from anywhere in our app then we can never see where we made certain change which broke the application.
+  so to have clear, predictable process of updating the state on which we rely on and which is the only process that can change our state. and this is the main aim of redux, having clearly defined process of how our state may change.
+
+3. Actions: its first building block beside the central store
+  these are displaced from js code whereas in react app, these will be displaced form react components.
+  it is just a info package at the end containing 'type' (type eg: addIngrediant, removeIngrediant) ie description
+  it aso holds the payload (eg: action like addIngrediant will contain type of ingrediant to be added)
+  this action will not dierctly reach the store
+  it doesnt contain any logic and hence, it doesnt know how to update the store
+  atlast it is just a messanger
+
+4. reducers: it changes the store
+  we can have mutiple reducers combined into one. atlast one will have one main reducer which will be directly connected to store
+  since action contain the 'type', reducer can check the 'type' of action. and then accrording to the type of action code will be defined
+  atlast reducer is pure function which recieves teh action and the old state as input and gives out updated state which gets stored in store replacing oldstate.
+  imporatnt: it only execute synchronous code only, no async code, no side effects, no http req, etc
+
+once the store is updated. how to get updated state form store?
+subscription modal: the store triggers all the subscriptions whenever the state changes/updated
+  compenents can subscibe to store updates and then they recieves the updates from stoore automtically.
+
+hence, this whole flow of redux
+
+14.3. The Complexity of Managing State
+
+considering that application(ppt.) App (root) whis has 2 parts Users(Auth and Dashboard components) and Products(Cart and ProductLists components) and each of component has sub components.
+thus to show the dashbaord, we neeed to check if user is authenticated which will be simple as bth are in same component.
+but, to show cart also we we need to check authenticated status of the user. for that need to reach the another component with long chain of props which will be quite tedious.
+
+atlast react is all js, hence we can craete an global object which can be used by every component. but, we cant do as react reactivity system doesnt raect to changes in global level variable and its good it doesnt as that makes it so efficient.
+
+but having a global variable can makes things easier and thats exactly what react is all about
+
+
+14.2. Understanding State
+
+---
+
+
+14.1. Module Introduction
+
+Redux: it named together with react, but its a standalone 3rd party library and works totaly independently. it is used to react projects to make state management easy as it can be comples in react apps.
+
+
+11.31. Routing and Server Deployment
+
+this is developement server and its already configured correctly and so we are not facing any problems when dealing with routing but when it comes to deploying the app to real server we should know how to handling of request works in real web.
+
+user => sends teh request to server => server loads react app => which loads index.html page.
+so, before server loads the index.html page, server needs to find out which page the user wants to visit.
+
+problem is reactapp knows the routes but server doesnt as we hace not defined routes on our server. hence we have to configer therserver in sucha way that it always forwards the routes to react app weatehr it understood the request or not so that it always return the index.html page all the request(Unknown or known) as this allows react to take over and parse the request.
+
+if we are serving our app from 'www.example.com/' then its fine but if we are serving our app from 'www.example.com/my-app/' then we need to tell this react router. as for that we have setup the baseurl.
+
+setting up baseurl:
+App.js  : it will not run, just for reffernce
+
+
+11.30. Lazy Loading with React Suspense (16.6)
+
+applying lazy loading in different way by help of react methods. for that we need react version 16.6 or higher. hence, updating our Project
+npm outdated
+npm update react
+npm install --save react-scripts@latest
+terminate the server and start again as new depencies were installed.
+
+
+Blog
+
+
+11.29. Loading Routes Lazily
+
+in network tab, if we the files which are rendered when page is loaded. there 'bundle.js'(realtively big file as compared to other files. will get smaller in production mode) is being loaded.
+bundle.js: this contain all our source code. loading the entire bundle with all the code of our application upfront can be bad if application is big with distinct feature and distanct araes in our app where user might not visit certain area in the app.
+
+according to our project, let say user never visits NewPost. loading the code for that component is irrelevent.thus we only want to load the code for NewPost only if user goes to that route.
+
+the technique of downloading only what u need is known as code splitting or lazy loading and there we want to be sure to load the code only when it is needed.
+lazy loading will only work with craete-react-app and react-route-dom because code spliiting heavly depends on webpack configrations.
+
+to setup, craeting HOC
+hoc/AsyncComponent : new file
+
+AsyncComponent
+Blog
+
+
+
+11.28. Handling the 404 Case (Unknown Routes)
+
+Blog : line 38
+
+
+11.27. Working with Guards
+
+naviagtion gards: it is typically used when u dont know if user is authenticated or not and there are some parts in your application which should be only allowed if user is authenticated.
+
+Blog
+NewPost : another way 
+
+11.26. Using the History Prop to Redirect (Replace)
+
+NewPost : line 35
+
+
+11.25. Conditional Redirects
+
+now, we want to redirect the user once the user clicks on 'Submit' button.
+
+NewPost
+
+
+11.24. Redirecting Requests
+
+Blog
+
+
+11.23. Creating Dynamic Nested Routes
+
+FullPost
+
+
+11.22. Understanding Nested Routes
+
+nested routing: one route below the another route. we can use Route object anywhere provided where ever we are using, that page is warrped with "BrowserRouter".
+putting the single post route indide the '/' where all the posts are shown.
+
+Blog
+Posts
+
+
+11.21. Additional Information Regarding Active Links
+
+Blog
+
+
+11.20. Navigating Programmatically
+
+Posts
+
+
+11.19. Using Switch to Load a Single Route
+
+Blog
+Posts
+
+
+11.18. Parsing Query Parameters & the Fragment
+
+---
+
+11.17. Extracting Route Parameters
+
+FullPost
+
+
+11.16. Passing Route Parameters
+
+Blog
+Posts
+
+
+11.15. Styling the Active Route
+
+Blog
+Blog.css
+
+
+
+11.14. Absolute vs Relative Paths (Article)
+
+---
+
+11.13. Absolute vs Relative Paths
+
+Blog
+
+
+11.12. The withRouter HOC & Route Props
+
+Posts : line no 44
+Post
+
+
+11.11. Using Routing-Related Props
+
+Posts
+NewPost
+
+
+11.10. Using Links to Switch Pages
+
+Blog
+
+
+11.9. Switching Between Pages
+
+Blog
+
+
+11.8. Rendering Components for Routes
+
+Blog
+
+
+11.7. Setting Up and Rendering Routes
+
+Now our project structure is setup, we dont want to render only 'Posts'. inilizing routing
+
+Blog
+
+
+11.6. Preparing the Project For Routing
+
+shifting state, componentDidUpdate, selectedPostHandler to Posts
+
+Posts
+Blog.css
+Posts.css
+Blog
+
+
+11.5. react-router vs react-router-dom
+We installed both react-router  and react-router-dom . Technically, only react-router-dom  is required for web development. It wraps react-router  and therefore uses it as a dependency. 
+
+We don't need to install react-router  on our own for it to work. You can omit this installation step, I left it in there for historic reasons and because I like to emphasize that the main package is named react-router. If you ever search for assistance, you probably want to search for "react router" - that's the name of the package.
+
+---
+
+
+11.4. Setting Up the Router Package
+
+install 2 new packages
+ npm install --save react-router react-router-dom
+
+these 2 packages are not craeted by Facebook but its a de-facto standard for routing in React.
+
+
+App.js
+Blog
+Containers/Blog/Posts/Posts : new
+
+
+11.3. Setting Up Links
+
+Blog
+Blog.css
+
+
+11.2. Routing and SPAs
+
+Routing: its about being able to show different pafges to user.
+Multiple pages in single page Application?
+SAP: we will have single html file but still want to provide normal web expirence to the user. we want to show different pages for differnt URLs.
+  we will not have mutiple HTML files, but we will use JS to render diff pages to diff url/path.
+
+thus, parsing the path and showing different JSX/components is routing. and to do the routing we will use "Router Package" as doing own our own is trival.
+Router Package: it has couple to tasks :
+  1.parsing the URL to understand what user needs
+  2.once router understand our path, it can read our configrations ie what should happen where user visit those paths
+  3.rendering of JSX
+
+
+9.16. Creating and Using Axios Instances
+
+index.js
+axios.js : new file
+Blog
+
+9.15. Setting a Default Global Configuration for Axios
+
+index.js
+
+
+9.14. Removing Interceptors
+
+---
+
+
+9.13. Adding Interceptors to Execute Code Globally
+
+sometimes it can happen that we want to execute a function globally irrespective of from which component is throwing that request.
+
+
+index.js
+see the various outputs by making url in Blog correct and wrong.
+
+
+9.12. Handling Errors Locally
+
+Blog
+
+
+9.11. Fixing a Bug
+
+---
+
+
+9.10. Sending a DELETE Request
+
+FullPost
+
+
+9.9. POSTing Data to the Server
+
+NewPost
+
+
+9.8. Fetching Data on Update (without Creating Infinite Loops)
+
+showing one post details once it is clicked.
+which lifecycle hook should be used to display fullpost?
+we can Update lifecycle hook as component is already present from the start, we need to update(ie fetching the pdata for that post id) it when specific post is clicked.
+"componentDidUpdate" is good place but it has one issue. if we update the state in there which means updating the state and hence again componentDidUpdate will be executed. thus, Infinite loop will be created.
+
+FullPost
+
+
+9.7. Making a Post Selectable
+
+now if we click on any one of the post, then its whole info should be visible down below.
+
+Post
+Blog
+FullPost
+
+
+9.6. Transforming Data
+
+Blog
+Post
+
+
+9.5. Rendering Fetched Data to the Screen
+
+instaed of 3 static post which we are getting from <Post /> we want dynamic data(post)to be printed
+for taht we need to manage the state of the post
+
+Blog
+Post
+Post.css :  width changing to 250px
+
+9.4. Creating a Http Request to GET Data
+
+container/Blog/Blog
+
+
+9.3. Understanding our Project and Introducing Axios
+
+---
+
+
+9.2. Understanding Http Requests in React
+
+---
+
+
+9.1. Module Introduction
+
+---
+
+
+8.39. Changing the Folder Structure
+
+restructuring the Layout and Aux files
+as we are maintaning state in Layout, we can put it in 'containers' folder.
+
+but, as Layout is just warpping our others components. thus, its is just a HOC.
+and same goes for App.js but we are just keeping is outside unchanged.
+
+as we have Layout in hoc folder, hence creating 'Auxilliary' folder Auxilliary.js
+
+correcting the imports of Layout and Auxilliary 
+
+Layout
+Auxilliary
+BurgerBuilder
+OrderSummary
+App.js
+
+8.38. Using Component Lifecycle Methods
+what about rest of the lifecycle functions like componentDidUpdate or componentWillUpdate. these function are also important when we do HTTP request.
+componentDidUpdate and componentWillUpdate are imporatnt to cause side effects ie doing some additional work as backend.
+---
+
+
+8.37. Improving Performance
+we can add shouldComponentUpdate conditions at many places as we are changin the state again and again. but, we cant cluster our app with shouldComponentUpdate which can cause more perforamce hit than without checking.
+
+but, at one place we should check . this is OrderSummary. 
+lets see when the OrderSummary is getting rerendered. to use Lifecycle function, changing the OrderSummary functional component to class based.
+
+OrderSummary
+MOdal
+
+
+8.36. Prop Type Validation
+---
+
+
+8.35. Improving the App - Introduction
+---
+
+
+8.34. Adding a Hamburger Icon
+replacing 'menu' with hanberger icon 
+
+DrawerToggele.css
+DrawerToggele.js
+
+
+8.33. Adding a Sidedrawer Toggle Button
+
+making the 'SideDrawer' toggleable with help of 'menu' btn of 'Toolbar'.
+try on your own!!!
+
+Creating new compenent
+compenents/Navigation/SideDrawer/DrawerToggele/DrawerToggele.js 
+compenents/Navigation/SideDrawer/DrawerToggele/DrawerToggele.css 
+
+DrawerToggele.js
+Toolbar
+Layout
+
+
+8.32. Reusing the Backdrop
+
+adding the backdrop behiend the SideDrawer and SideDrawer can be opened dynamically. 
+
+SideDrawer
+Layout : changing whole layout from function to class. 
+
+8.31. More about Responsive Adjustments
+
+NavigationItem.css : making mobile friendly
+NavigationItems.css : changing flex settings
+SideDrawer.css  : adding margin-bottom to logo
+Toolbar.css
+Toolbar
+
+
+8.30. Working on Responsive Adjustments
+rn, in our SideDrawer logo is way to big and thats is because it is inherting the style from Logo.css where height is 100% thust it is taking whole height of SideDrawer and leaving space of other things.
+and thus, we are not able to see NavigationItems.
+
+thus, we can add media query in Logo.css but its better to control the style where we embed that component.
+
+// 1.way: passing the styling property as props and then using inline style at that component.
+
+// 2. wrapping the component in the element and giving the css class name and editing css file.
+
+Toolbar : 1st method
+Logo : 1st method
+SideDrawer: 1st method
+Toolbar : 2nd methods
+Toolbar.css : 2nd methods
+SideDrawer: 2nd method
+SideDrawer.css: 2nd method
+
+
+
+8.29. Creating a Responsive SideDrawer
+
+creating separate component
+components/Navigation/SideDrawer/SideDrawer.js : new
+components/Navigation/SideDrawer/SideDrawer.css : new
+
+SideDrawer.css
+SideDrawer
+Layout
+
+
+8.28. Adding Reusable Navigation Items
+
+creating seprate navigation items in seprate component as latter we will use it in sidedraw.
+
+creating separate component
+compenents/NavigationItems/NavigationItems.js : new
+compenents/NavigationItems/NavigationItems.css : new
+compenents/NavigationItems/NavigationItem/NavigationItems.js : new
+compenents/NavigationItems/NavigationItem/NavigationItems.css : new
+
+
+compenents/NavigationItems/NavigationItems.js 
+compenents/NavigationItems/NavigationItems.css 
+compenents/NavigationItems/NavigationItem/NavigationItems.js 
+compenents/NavigationItems/NavigationItem/NavigationItem
+Toolbar
+
+8.27. Using a Logo in our Application
+
+creating separate component
+components/Logo/Logo.js : new
+components/Logo/Logo.css : new
+
+Logo.js
+Logo.css
+Toolbar
+
+8.26. Adding a Toolbar
+
+creating separate component
+compenents/Navigation/Toolbar/Toolbar.js : new
+compenents/Navigation/Toolbar/Toolbar.css : new
+
+Toolbar.js
+Toolbar.css
+Layout.js
+Layout.css : changing 16px to 12px
+
+
+8.25. Adding the Price to the Order Summary
+
+OrderSummary
+BurgerBuilder
+
+
+8.24. Implementing the Button Component
+
+OrderSummary
+BurgerBuilder
+
+
+8.23. Adding a Custom Button Component
+
+creating separate component
+UI/Button/Button.js : new
+UI/Button/Button.css : new (material)
+
+OrderSummary
+UI/Button/Button.js
+UI/Button/Button.css
+
+
+8.22. Implementing the Backdrop Component
+
+Backdrop.js
+Backdrop/Backdrop.css : new
+Modal
+BurgerBuilder
+
+
+8.21. Showing & Hiding the Modal (with Animation!)
+
+BurgerBuilder
+BuildControls : onclick
+Modal
+
+8.20. Creating the Order Summary Modal
+
+once the order now button is clicked, we want to show summary of the order in a model
+model : to have a wrapping element which provide the styling which then simply warps itself about any content we want to show in tat model
+
+creating new files:
+Burger/OrderSummary/OrderSummary.js : new
+Burger/UI/Backdrop/Backdrop.js : new
+Burger/UI/Modal/Modal.js : new
+Burger/UI/Modal/Modal.css : new
+
+
+filling out files:
+Burger/UI/Modal/Modal.js 
+Burger/UI/Modal/Modal.css
+Burger/OrderSummary/OrderSummary.js 
+BurgerBuilder
+
+
+
+8.19. Adding the Order Button
+add the 'order now' button
+check if burger is purchaseable or not.
+make 'order now' button disabled or enabled
+
+BuildControls
+BurgerBuilder
+
+
+8.18. Displaying and Updating the Burger Price
+
+BurgerBuilder
+BuildControls
+
+
+8.17. Removing Ingredients Safely
+first making 'Less' working, then giving the functionailty of disabled
+BurgerBuilder
+BuildControls
+BuildControl
+playgound.js
+
+8.16. Connecting State to Build Controls
+
+BurgerBuilder
+BuildControls
+BuildControl
+
+
+8.15. Outputting Multiple Build Controls
+
+BuildControls/BuildControls.js
+BurgerBuilder
+BuildControls/BuildControl/BuildControl.js :  correction button inplace of div
+
+8.14. Adding the Build Control Component
+
+BuildControls/BuildControls.js :new
+BuildControls/BuildControls.css :new
+BuildControls/BuildControl/BuildControl.js :new
+BuildControls/BuildControl/BuildControl.css :new
+
+
+8.13. Calculating the Ingredient Sum Dynamically
+making userfreindly ui. if no ingrediants are there, displaying message
+
+BurgerBuilder
+Burger
+
+
+8.12. Outputting Burger Ingredients Dynamically
+Our burger is getting displayed but the way we are displaying is hard coded. we need to display the ingrediants of the burger dynmically and for that we need a state.
+
+BurgerBuilder
+Burger
+
+
+
+8.11. Starting the Burger Component
+Burger/Burger.css : new file
+Burger
+BurgerIngrediant : correction 'bread-bottom'
+BurgerBuilder
+
+8.10. Adding Prop Type Validation
+BurgerIngrediant
+npm install --save prop-types
+
+
+8.9. Adding a Dynamic Ingredient Component
+Burger/Burger.js
+Burger/BurgerIngrediant/BurgerIngrediant.js
+Burger/BurgerIngrediant/BurgerIngrediant.css
+
+
+8.8. Starting Implementation of The Burger Builder Container
+containers/BurgerBuilder/BurgerBuilder : new file
+App
+containers/Layout/Layout.css : new file
+Layout
+
+
+8.7. Creating a Layout Component
+starting to build the app, we can divide it into 2 parts ie
+  1. layout (containing everything navbar + burgerBuilder)
+  2. burgerBuilder - main part of app
+components :  not managing state
+containers : managing state
+Components/Layout/Layout : new file
+
+
+8.6. Setting up the Project
+implemeneting css class modules with npm run eject
+
+config/webpack.config.js : modify
+App.css : delete
+logo.svg : delete
+App.js : modify
+public/index.html : title change
+index.css : font add
+favicon.ico : delete
+burger.ico : new icon
+
+
+8.5. Planning the State
+---
+
+8.4. Planning our App - Layout and Component Tree
+---
+
+8.3. Planning an App in React - Core Steps
+---
+
+8.2. Module Introduction
+---
+
+8.1. About React Hooks
+---
+
+7.32. Wrap Up
+---
+
+7.31. contextType & useContext()
+Person
+Cockpit
+
+7.30. Using the Context API
+context/auth-context.js : new file
+App
+Person
+Cockpit
+Persons
+
+7.29. Understanding Prop Chain Problems
+Cockpit
+App.js
+Persons.js
+Person
+
+7.28. Refs with React Hooks
+Cockpit.js
+
+
+7.27. Using Refs
+Person.js
+
+7.26. Using PropTypes
+npm install --save prop-types
+Person.js
+
+7.25. Setting State Correctly
+App.js
+
+
+7.24. Passing Unknown Props
+Person.js
+withClass
+
+7.23. Another Form of HOCs
+hoc/withClass : rename
+App.js
+Cockpit.js : comment timeout.
+
+7.22. Higher Order Components (HOC) - Introduction
+hoc/WithClass : new file
+App.js
+
+7.21. Using React.Fragment
+Person.js
+
+7.20 Windows user
+nil
+
+7.19. Rendering Adjacent JSX Elements
+Person.js
+hoc/Auxilliary.js 
+
+
+7.18. How React Updates the DOM
+nil
+
+7.17. PureComponents instead of shouldComponentUpdate
+Persons.js
+
+7.16. When should you optimize
+nil
+
+
+7.15. Optimizing Functional Components with React.memo()
+Cockpit.js
+App.js
+
+
+7.14. Using shouldComponentUpdate for Optimization
+Persons.js
+
+
+7.13. Cleanup Work with useEffect() - Ex
+Cockpit.js
+
+7.12. Cleaning up with Lifecycle Hooks & useEffect()
+Persons.js
+Cockpit.js
+App.js
+
+7.11. Controlling the useEffect() Behavior
+Cockpit.js
+
+
+7.10. Using useEffect() in Functional Components
+Cockpit.js
+
+
+7.9. Component Update Lifecycle (for state Changes)
+App.js
+
+
+7.8. Component Update Lifecycle (for props Changes)
+Persons.js
+App.js
+
+7.7. Component Creation Lifecycle in Action
+App.js
+Persons.js
+Person.js
+
+7.6. Class Component Lifecycle Overview
+---
+
+7.5. Class-based vs Functional Components
+index.js
+App.js
+Cockpit.js
+
+
+7.4. Comparing Stateless and Stateful Components
+---
+
+7.3. Splitting an App Into Components
+App.js
+Persons.js
+Cockpit.js
+Cockpit.css
+
+
+7.2. A Better Project Structure
+ErrorBoundary : deleted
+Components/Cockpit/Cockpit.js : new file
+Components/Persons/Persons.js :new file
+Components/Persons/Person/Person.js : deleted random error
+Components/Persons/Person/Person.css : no changes
+Containers/App.js : ErrorBoundary deleted, changing path
+Containers/App.css : no change
+Containers/App.test.js :  no change
+index.js : changing path
+assets : new folder, in case we nned to add any img
+
+
+
+
+6.5. Using Error Boundaries (React 16+)
+Person.js
+ErrorBoundary/ErrorBoundary.js
+App.js
+
+5.11. Working with Media Queries
+Person.js
+Person.css
+
+
+5.10. Adding Pseudo Selectors
+App.js
+App.css
+
+5.9
+---
+
+5.8. Enabling & Using CSS Modules
+webpack.config.js
+App.js
+Person.js
+
+5.7
+---
+
+5.6. Using Radium for Media Queries
+Person.js
+App.js
+
+5.5. Adding and Using Radium
+App.js
+Person.js
+
+5.4. Setting Class Names Dynamically
+App.js
+App.css
+
+
+5.3. Setting Styles Dynamically
+App.js
+
+
+5.2. Outlining the Problem Set
+---
+
+
+4.9
+App.js
+
+4.8 : adding key property
+App.js
+
+4.7 : deleting a list
+App.js
+
+4.6
+Person.js
+App.js
+
+4.5 : converting 'person' to 'persons' in state. hence changing at respective places where this.state.person is used
+App.js
+
+4.4
+intro
+
+4.3
+App.js
+
+4.2
+App.js
+
+3.25
+App.js
+
+3.24 :creating and linking css file
+Person.css
+Person.js
+
+3.23 : 
+now we want to user to enter the name and that should be visible instead of 'Bob'
+Person.js
+App.js
+
+3.22 : passing params
+App.js
+Person/Person.js
+
+3.21
+App.js
+
+
+3.20
+App.js
+
+
+3.18
+App.js
+
+3.16
+App.js  :button
+
+3.14
+App.js : state
+
+3.13
+App.js
+Person/Person.js
+
+
+3.12
+App.js
+Person/Person.js
+
+3.11
+Person/Person.js
+
+3.10
+App.js
+
+
+
+3.8
+Person/Person.js
+App.js
+
+it is convension that all the compenents name start with uppercase. as we are planning to create one component regarding person, hence created 'Person' compenent.
+
+
+3.6
+App.js
+
+3.5
+index.js
+App.js
+
+react is all about creating compenents. 
+"App" compenent gets used in "index.js" file and from it is reendered to "root" compenent of index.html file
+
+
