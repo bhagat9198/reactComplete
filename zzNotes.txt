@@ -1,3 +1,8 @@
+14.8. Connecting React to Redux
+
+index.js
+store/store.js : newfile
+
 14.7. Adding Subscriptions
 
 redux-basics
