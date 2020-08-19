@@ -1,7 +1,20 @@
+14.9. Connecting the Store to React
+
+npm install --save react-redux
+npm install --save raect react-dom raect-scripts
+
+'react-redux': this package will help us connect our redux store to react app.
+
+index.js
+Counter
+
+thus, '0' is seen on teh screen which is comming form redux store. as when we adding or subtarcting the counter, value is '0' only as we are not updating the state in redux store.
+
 14.8. Connecting React to Redux
 
 index.js
 store/store.js : newfile
+
 
 14.7. Adding Subscriptions
 
