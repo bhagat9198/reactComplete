@@ -1,40 +1,3 @@
-// // 1.
-
-// const redux = require('redux');
-
-// const inilialState = {
-//   counter: 0
-// }
-
-// const createStore = redux.createStore;
-// const rootReducer = (state = inilialState, action) => {
-//   return state;
-// }
-
-// const store = createStore(rootReducer);
-// console.log(store.getState());
-
-// // dispatching the action
-// // action is dispatched on 'store'
-// // dispatch: its a function which takes action as an argument. argument will be object which needs to have 'type' property (as it will be helpful in reducer) followed by the payload
-// // 'type' is some unique identifier(any name)
-//   // convetion: use uppercase string
-// // payload can be another object or it can just be a another property within main object
-// store.dispatch({type: 'INC_COUNTER'});
-// // adding extra ag with type
-// store.dispatch({type: 'ADD_COUNTER', value: 10});
-// console.log(store.getState());
-// // output:
-// // { counter: 0 }
-// // { counter: 0 }
-
-// // still we goy counter = 0, this is becasue we didint added any logic to our reducer. 
-
-
-
-
-// 2.
-
 const redux = require('redux');
 
 const inilialState = {
@@ -43,23 +6,16 @@ const inilialState = {
 
 const createStore = redux.createStore;
 const rootReducer = (state = inilialState, action) => {
-  // adding the logic to reducer for different actions
   if(action.type === 'INC_COUNTER') {
-    // this is wrong way as we are mutating the original object
-    // state.counter++;
-    // return state;
-    
     return {
       ...state,
       counter: state.counter + 1
     }
   }
 
-  // similarly, second
   if(action.type === 'ADD_COUNTER') {
     return {
       ...state,
-      // as we have defined value property to action.
       counter: state.counter + action.value
     }
   }
@@ -69,10 +25,34 @@ const rootReducer = (state = inilialState, action) => {
 const store = createStore(rootReducer);
 console.log(store.getState());
 
+// 2.
+// store.subscribe(() => {
+//   console.log('Subscriptions', store.getState());
+// });
+
+// output:
+// { counter: 0 }
+// Subscriptions { counter: 1 }
+// Subscriptions { counter: 11 }
+// { counter: 11 }
+// as soon as our actions will dispatch, subscription will execute and once all the actions have been dispatched, rest of the code will execute.
+
 store.dispatch({type: 'INC_COUNTER'});
 store.dispatch({type: 'ADD_COUNTER', value: 10});
 console.log(store.getState());
 
-// output:
-// { counter: 0 }
-// { counter: 11 }
+
+// // 1.
+// // subscriptions
+// // subscriptions make sure that we manually dont need to call getStore() function. it should be called automically as soon as our store state changes.
+
+// // subscribe(): it will execute whenever state changes, ie whenever action reaches reducer. it takes a fuction as a argument and that fuction diesnt take any arg
+
+// store.subscribe(() => {
+//   // here we can write any code which should be execute on state change
+//   console.log('subscriptions', store.getState());
+// });
+// // subscibtion is placed just below the store and above the actions dispatched.
+
+
+
