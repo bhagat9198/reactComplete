@@ -1,3 +1,14 @@
+14.13. Switch-Case in the Reducer
+
+reducer
+
+
+14.12. Passing and Retrieving Data with Action
+
+Counter
+reducer
+
+
 14.11. Dispatching Actions
 
 Counter

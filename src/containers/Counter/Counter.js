@@ -44,17 +44,17 @@ class Counter extends Component {
         />
         <CounterControl
           label="Decrement"
-          // clicked={() => this.counterChangedHandler("dec")}
           clicked={this.props.onDecrementCounter}
         />
         <CounterControl
-          label="Add 5"
-          // clicked={() => this.counterChangedHandler("add", 5)}
+          // label="Add 5"
+          label="Add 10"
           clicked={this.props.onAddCounter}
         />
         <CounterControl
-          label="Subtract 5"
-          // clicked={() => this.counterChangedHandler("sub", 5)}
+          // label="Subtract 5"
+          // changing the label to 15
+          label="Subtract 15"
           clicked={this.props.onSubtractCounter}
         />
       </div>
@@ -74,8 +74,10 @@ const mapDispatchToProps = dispatch => {
   return {
     onIncrementCounter : () => dispatch({type: 'INCREMENT'}),
     onDecrementCounter : () => dispatch({type: 'DECREMENT'}),
-    onAddCounter : () => dispatch({type: 'ADD'}),
-    onSubtractCounter : () => dispatch({type: 'SUBTRACT'})
+    // along with the type, passing the payload. payload can be in another object or simple passing payload values within main function 
+    onAddCounter : () => dispatch({type: 'ADD', val: 10}),
+    // 
+    onSubtractCounter : () => dispatch({type: 'SUBTRACT', val: 15})
   }
 }
 
