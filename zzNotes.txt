@@ -1,3 +1,10 @@
+14.10. Dispatching Actions from within the Component
+
+Counter
+reducer
+and now our increement btn will work.
+
+
 14.9. Connecting the Store to React
 
 npm install --save react-redux
@@ -13,7 +20,7 @@ thus, '0' is seen on teh screen which is comming form redux store. as when we ad
 14.8. Connecting React to Redux
 
 index.js
-store/store.js : newfile
+store/reducer.js : newfile
 
 
 14.7. Adding Subscriptions
