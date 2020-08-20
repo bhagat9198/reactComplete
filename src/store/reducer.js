@@ -3,12 +3,21 @@ const initialSate = {
 }
 
 const reducer  = (state = initialSate, action) => {
-  // checking the action dispatched
-    // type should be exactly same as writen as in counter while dispatching action
   if(action.type === 'INCREMENT') {
-    // returing updated state in immutalble way by copying the state. its not require as we have just one property and we are overwriting it 
     return {
       counter: state.counter + 1
+    }
+  } else if(action.type === 'DECREMENT') {
+    return {
+      counter: state.counter - 1
+    }
+  } else if(action.type === 'ADD') {
+    return {
+      counter: state.counter + 10
+    }
+  } else if(action.type === 'SUBTRACT') {
+    return {
+      counter: state.counter - 10
     }
   }
   return state;

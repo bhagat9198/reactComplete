@@ -1,3 +1,9 @@
+14.11. Dispatching Actions
+
+Counter
+reducer
+
+
 14.10. Dispatching Actions from within the Component
 
 Counter
