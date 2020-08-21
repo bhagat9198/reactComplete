@@ -1,30 +1,20 @@
 const initialSate = {
   counter: 0,
-  // adding one more property
   results: []
 }
 
 const reducer  = (state = initialSate, action) => {
   switch(action.type) {
     case 'INCREMENT' :
-      // now we are having 2 properties. if we do like this then we are missing out 'results' array. but the state we returened should have both teh properties.
-      // hence the making copying of objcet and then assigning new value.
-      // return {counter: state.counter + 1}
-
-      // creting new empty object which will copy all teh properties from'state' object.  
       const newState = Object.assign({}, state);
       newState.counter = state.counter + 1;
       return newState;
 
     case 'DECREMENT' :
-      // another way of mutataing the object in immutabel way by using spread operator
-      // return {counter: state.counter - 1}
       return {
         ...state,
-        // if the 'counter' property is not present, 'counter' property will be added else 'counter' value will be updated.
         counter: state.counter - 1
       }
-      // hence, now creating new object and passing the both properties
     case 'ADD' :
       return {
         ...state,
@@ -35,20 +25,36 @@ const reducer  = (state = initialSate, action) => {
         ...state,
         counter: state.counter - action.val
       }
-    // handling the case for 'STORE_RESULT'
     case 'STORE_RESULT':
-      console.log(state.results);
+      // console.log(state.results);
       return {
         ...state,
-        // arrays are also refference type. hence, we have to make copy of the array, we cant mutate is directly.
-        // to mutate the array in immutable way, we will use 'concat' method
-        // concat: its is same like push method. push method will add the element to exisiting array whereas concat will carete the new of the array copying the values from exisiting array.
-        // passing the value which should get added
-        // results: state.results.concat(state.counter) 
-
-        // as each result will be in seprate list, they shuould contain a unique id  
         results: state.results.concat({id: new Date(), value: state.counter}) 
       }
+    // adding the case for delete
+    case 'DELETE_RESULT':
+      // // to delete the data form array, we should know which know the index.
+      // // 1.way of deleting
+      // const id = 2 //just for eg
+      // // slice method will delete the data from given index but it mutate the original array. hence, silce should be put ob new copy of an array
+      // // new copy of array can be careted with spared operator. but objecats within this array are still reffernce types but that doesnt matter for this case as are just removing the object.
+      // const newArray = [...state.results];
+      // newArray.slice(id, 1);
+
+
+      // 2 way: using filter method which creates the new copy of the array.
+      // while dispatching the action, we will pass the property 'resultElId' which will contain the key.
+      // console.log(action.resultElId);
+      const updatedArray = state.results.filter(result => {
+        if(result.id !== action.resultElId) {
+          return result;
+        }
+      });
+      return {
+        ...state,
+        results: updatedArray
+      }
+
     default:
     return state
   }
