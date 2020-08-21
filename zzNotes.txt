@@ -1,3 +1,19 @@
+14.17. Outsourcing Action Types
+
+as we know action type which we are dispatching in ocmponennet should be exactly same in reducer. but there is chance of typo. thus creating a seprate 
+which will contain all teh action types and then we can use those action types both in component and reducer
+
+store/action : new file
+reducer
+Counter
+
+
+
+14.16. Immutable Update Patterns
+
+---
+
+
 14.15. Updating Arrays Immutably
 
 reducer
