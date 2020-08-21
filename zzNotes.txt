@@ -1,3 +1,18 @@
+14.18. Combining Multiple Reducers
+
+as our application grows, we use mutiple reducers. as we know we can have mutiple reducers but at last all reducers will be combined into one reducer.
+hence spillting our reducer. one reducer will maintain 'counter' and another reducer will maintain 'results'.
+
+creating new files:
+store/reducers/counter.js
+store/reducers/results.js
+store/reducer : delete
+
+counter
+results
+index
+Counter
+
 14.17. Outsourcing Action Types
 
 as we know action type which we are dispatching in ocmponennet should be exactly same in reducer. but there is chance of typo. thus creating a seprate 
